@@ -519,7 +519,7 @@ const ICONS = {
   '11-1':'🕯️','11-11':'🪿','11-25':'🌀','11-30':'🎣',
   '12-13':'🕯️','12-21':'🌑','12-24':'🌟','12-25':'⭐','12-26':'🐴','12-27':'📖','12-31':'🔔',
   // moveable
-  'fastelavn-tirsdag':'🥐','askeonsdag':'⚫','palmesøndag':'🌿',
+  'fastelavn-mandag':'🎭','fastelavn-tirsdag':'🥐','askeonsdag':'⚫','palmesøndag':'🌿',
   'skjærtorsdag':'🫙','langfredag':'✝️','påskeaften':'🕯️',
   'påskedag':'🥚','påskemåndag':'🐣','himmelfart':'☁️',
   'pinsedag':'🔥','pinsemandag':'🕊️','treenighet':'△','corpus':'🍞',
@@ -685,6 +685,7 @@ function buildMoveables(yr){
   const R={};
   const s=(dt,k,f,d,desc,icon)=>{ R[key(dt)]={k,f,d,desc,icon,mov:true}; };
   s(add(-49),'Quinquagesima','Halvfastes søndag','Quinquagesima','Søndag før fastetid.',ICONS['fastelavn-tirsdag']);
+  s(add(-48),'Fastelavn – mandag','Blåmandag','Fastelavn-mandag','Fastelavnsfeiringen.',ICONS['fastelavn-mandag']);
   s(add(-47),'Fastelavn – tirsdag','Fettisdagen','Fettisdag','Siste dag før fasten. Man spiste fett mat.',ICONS['fastelavn-tirsdag']);
   s(add(-46),'Askeonsdag','Askonsdag','Dies cinerum','Fastens første dag. Aska strykes i pannen.',ICONS['askeonsdag']);
   s(add(-14),'Midfaste-søndag','Middfast','Lætare søndag','Fjerde søndag i fasten.','🌼');

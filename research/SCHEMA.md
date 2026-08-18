@@ -13,7 +13,7 @@ The app has three kinds of day entries today (see `research/coverage.csv` and
 | type      | keyed by                        | count | current richness |
 |-----------|----------------------------------|-------|-------------------|
 | `fixed`   | `"M-D"` (1-indexed month, literal day) | 40  | k/f/d/desc/icon, but no sources |
-| `moveable`| offset in days from Easter Sunday | 15  | k/f/d/desc/icon, but no sources |
+| `moveable`| offset in days from Easter Sunday | 16  | k/f/d/desc/icon, but no sources |
 | `nameday` | `"M-D"`                          | 320   | name only, no desc/source |
 | *(gap)*   | `"M-D"`                          | 6     | nothing — `1-11`, `1-12`, `2-29`, `10-11`, `10-12`, `11-2` |
 
@@ -111,7 +111,7 @@ until "Surface sourcing in the UI" is picked up.
 
 - `confirmed` — at least 2 independent sources in `sources[]`, per
   `research/SOURCING.md`'s acceptable list.
-- `proposed` — 0 or 1 sources. **This includes all 55 currently-shipped
+- `proposed` — 0 or 1 sources. **This includes all 56 currently-shipped
   `fixed`/`moveable` entries** — they have real content but no citations on
   record, so under this standard they start as `proposed`, not `confirmed`,
   until sourced retroactively. That backfill is real work, not a formality —

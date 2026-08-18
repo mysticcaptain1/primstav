@@ -68,7 +68,7 @@ const KNOWN_EASTER = {
 
 // weekday each moveable feast must fall on, relative to Easter Sunday (getDay(): Sun=0)
 const EXPECTED_WEEKDAY = {
-  'Quinquagesima': 0, 'Fastelavn – tirsdag': 2, 'Askeonsdag': 3, 'Midfaste-søndag': 0,
+  'Quinquagesima': 0, 'Fastelavn – mandag': 1, 'Fastelavn – tirsdag': 2, 'Askeonsdag': 3, 'Midfaste-søndag': 0,
   'Palmesøndag': 0, 'Skjærtorsdag': 4, 'Langfredag': 5, 'Påskeaften': 6,
   'Første påskedag': 0, 'Andre påskedag': 1, 'Kristi himmelfartsdag': 4,
   'Pinsedag': 0, 'Andre pinsedag': 1, 'Treenighetsdag': 0, 'Kristi Legemsfest': 4,
