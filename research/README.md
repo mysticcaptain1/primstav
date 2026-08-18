@@ -28,6 +28,20 @@ sourcing standard. Backfilling citations for those is equally valid research
 work to filling the 6 gaps or fleshing out the 320 name-only `nameday`
 entries — track all three the same way in `coverage.csv`.
 
+## Workflow for content changes
+
+Once actual feast-day research starts landing (filling `missing`/`thin`
+entries, adding sources to reach `confirmed`), it follows stricter discipline
+than the infra/tooling changes in this repo's other commits:
+
+- **Always a branch + PR, never a direct commit to `master`.** Content
+  claims need a review point before they're live, even a self-review.
+- **Every PR gets a short provenance note**: which entries changed, why, and
+  which sources were used (or "no new sources — retroactive citation of
+  existing content" for backfill work). One or two sentences per entry is
+  enough — the sources themselves live in the entry's `sources[]`, this note
+  is just so a reviewer doesn't have to diff JSON to see what happened.
+
 ## What's not built yet
 
 This covers only the "Foundation" phase. Later phases from the original
