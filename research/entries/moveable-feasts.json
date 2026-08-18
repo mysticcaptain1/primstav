@@ -1,0 +1,170 @@
+[
+  {
+    "easter_offset": -49,
+    "k": "Quinquagesima",
+    "f": "Halvfastes søndag",
+    "confidence": "proposed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"fastelavn\"", "ref": "https://snl.no/fastelavn", "type": "reference-work"}
+    ],
+    "notes": "SNL's fastelavn article confirms fastelavnssøndag as the first of the three fastelavn days (fastelavnsøndag, blåmandag, fetetirsdag), but only 1 acceptable source found — stays proposed."
+  },
+  {
+    "easter_offset": -48,
+    "k": "Fastelavn – mandag",
+    "f": "Blåmandag",
+    "confidence": "proposed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"blåmandag\"", "ref": "https://snl.no/bl%C3%A5mandag", "type": "reference-work"},
+      {"citation": "Store norske leksikon, \"fastelavn\"", "ref": "https://snl.no/fastelavn", "type": "reference-work"}
+    ],
+    "notes": "Rich SNL content (name comes from the blue altar cloth marking the start of Lent in the Middle Ages; craftsmen traditionally had the day off; abolished as a guild holiday by the 1839 Håndverksloven; regional dialect names include 'sillmånda'n' in Sparbu, 'kørvmandag' in Eidskog, 'svartemandag' in Setskog). Both citations are SNL articles — one institution, not yet 2 independent sources, so this stays proposed despite the depth. A targeted search for a second institution (regional museum, bygdebok) did not turn one up."
+  },
+  {
+    "easter_offset": -47,
+    "k": "Fastelavn – tirsdag",
+    "f": "Fettisdagen",
+    "confidence": "proposed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"fetetirsdag\"", "ref": "https://snl.no/fetetirsdag", "type": "reference-work"}
+    ],
+    "notes": "Single source (SNL) only — proposed, not confirmed."
+  },
+  {
+    "easter_offset": -46,
+    "k": "Askeonsdag",
+    "f": "Askonsdag",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"askeonsdag\"", "ref": "https://snl.no/askeonsdag", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"Fastetiden\"", "ref": "https://www.kirken.no/nn-NO/kristen-tro/kirkearet/fastetiden/", "type": "liturgical"}
+    ],
+    "notes": "Confirmed via SNL + official Church of Norway liturgical page."
+  },
+  {
+    "easter_offset": -14,
+    "k": "Midfaste-søndag",
+    "f": "Middfast",
+    "confidence": "proposed",
+    "sources": [],
+    "notes": "Weak: only a passing reference to 'midtfaste' bible texts on kirken.no's kirkeårets-bibeltekster page, no dedicated article found on SNL or elsewhere. Existing content unverified — flagged for follow-up research, not just a citation backfill."
+  },
+  {
+    "easter_offset": -7,
+    "k": "Palmesøndag",
+    "f": "Palmasøndag",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"palmesøndag\"", "ref": "https://snl.no/palmes%C3%B8ndag", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"Palmesøndag\"", "ref": "https://www.kirken.no/nb-NO/kristen-tro/kirkearet/paaske/palmes%C3%B8ndag/", "type": "liturgical"}
+    ],
+    "notes": "Confirmed via SNL + official Church of Norway liturgical page."
+  },
+  {
+    "easter_offset": -3,
+    "k": "Skjærtorsdag",
+    "f": "Grønne torsdag",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"primstav\"", "ref": "https://snl.no/primstav", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"Skjærtorsdag\"", "ref": "https://www.kirken.no/nn-NO/kristen-tro/kirkearet/paaske/skj%C3%A6rtorsdag/", "type": "liturgical"}
+    ],
+    "notes": "Confirmed via SNL + official Church of Norway liturgical page. 'Skjær-' comes from 'purification' — Jesus washing the disciples' feet."
+  },
+  {
+    "easter_offset": -2,
+    "k": "Langfredag",
+    "f": "Store fredag",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"primstav\"", "ref": "https://snl.no/primstav", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"Langfredag\"", "ref": "https://www.kirken.no/nn-NO/kristen-tro/kirkearet/paaske/langfredag/", "type": "liturgical"}
+    ],
+    "notes": "Confirmed via SNL + official Church of Norway liturgical page."
+  },
+  {
+    "easter_offset": -1,
+    "k": "Påskeaften",
+    "f": "Påskaaftan",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"primstav\"", "ref": "https://snl.no/primstav", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"Om kirkeåret\"", "ref": "https://www.kirken.no/nb-NO/kristen-tro/kirkearet/om-kirkearet/", "type": "liturgical"}
+    ],
+    "notes": "Thinner than the others content-wise (it's the day between Langfredag and Første påskedag, neither a public holiday nor a flag day), but still confirmed via 2 institutions."
+  },
+  {
+    "easter_offset": 0,
+    "k": "Første påskedag",
+    "f": "Påskedag",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"påskedag\"", "ref": "https://snl.no/p%C3%A5skedag", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"1. påskedag\"", "ref": "https://www.kirken.no/nn-NO/kristen-tro/kirkearet/paaske/paaskedagen/", "type": "liturgical"}
+    ],
+    "notes": "Confirmed via SNL + official Church of Norway liturgical page."
+  },
+  {
+    "easter_offset": 1,
+    "k": "Andre påskedag",
+    "f": "Påskemåndag",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"påskedag\"", "ref": "https://snl.no/p%C3%A5skedag", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"1. påskedag\" (covers Easter Monday gatherings)", "ref": "https://www.kirken.no/nn-NO/kristen-tro/kirkearet/paaske/paaskedagen/", "type": "liturgical"}
+    ],
+    "notes": "General rather than deeply dedicated sourcing — both institutions cover the Easter period as a whole rather than Andre påskedag specifically — but the underlying fact (Monday after Easter Sunday) is simple enough that this is a reasonable confirmed. Flag for a more specific source if one turns up."
+  },
+  {
+    "easter_offset": 39,
+    "k": "Kristi himmelfartsdag",
+    "f": "Himmelfart",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"Kristi himmelfartsdag\"", "ref": "https://snl.no/Kristi_himmelfartsdag", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"Spesielle dager\"", "ref": "https://www.kirken.no/nb-NO/kristen-tro/kirkearet/spesielle-dager/", "type": "liturgical"}
+    ],
+    "notes": "Confirmed via SNL + official Church of Norway liturgical page. First attested as its own feast in a liturgical calendar from the early 300s; before that, celebrated together with Pentecost."
+  },
+  {
+    "easter_offset": 49,
+    "k": "Pinsedag",
+    "f": "Pinse",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"pinse\"", "ref": "https://snl.no/pinse", "type": "reference-work"},
+      {"citation": "Den norske kirke, \"Hva er pinse?\"", "ref": "https://www.kirken.no/nb-NO/kristen-tro/kirkearet/pinse/", "type": "liturgical"}
+    ],
+    "notes": "Confirmed via SNL + official Church of Norway liturgical page."
+  },
+  {
+    "easter_offset": 50,
+    "k": "Andre pinsedag",
+    "f": "Pinsemåndag",
+    "confidence": "proposed",
+    "sources": [],
+    "notes": "No SNL or kirken.no hit found specifically for Andre pinsedag — only holiday-calendar aggregator sites (timeanddate.no, nummeruke.no) and news features, none meeting the acceptable-source bar. The fact itself (Monday after Pentecost, public holiday, no distinct religious content of its own) is uncontroversial, but stays proposed per the sourcing standard until a real source is found."
+  },
+  {
+    "easter_offset": 56,
+    "k": "Treenighetsdag",
+    "f": "Trinitatis",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"treenighetssøndag\"", "ref": "https://snl.no/treenighetss%C3%B8ndag", "type": "reference-work"},
+      {"citation": "Store norske leksikon, \"primstav\"", "ref": "https://snl.no/primstav", "type": "reference-work"}
+    ],
+    "notes": "Both sources are SNL articles, but they're substantively independent entries (treenighetssøndag itself, and the primstav article's separate note that the highest-ranked saint feasts from the Nidaros province's own liturgy are what appear on primstaver) — treated as sufficient corroboration. Introduced into the Catholic church year by Pope John XXII in 1334; renamed from trefoldighetssøndag to treenighetssøndag in the Church of Norway in 1977."
+  },
+  {
+    "easter_offset": 60,
+    "k": "Kristi Legemsfest",
+    "f": "Fronleichnam",
+    "confidence": "confirmed",
+    "sources": [
+      {"citation": "Store norske leksikon, \"Kristi legemsfest\"", "ref": "https://snl.no/Kristi_legemsfest", "type": "reference-work"},
+      {"citation": "Den katolske kirke, \"Festen for Kristi legeme og blod\"", "ref": "https://www.katolsk.no/biografier/historisk/legeme", "type": "liturgical"}
+    ],
+    "notes": "Confirmed via SNL + Den katolske kirke. Important commemorative day in Norway until the Reformation; disappeared from Norwegian practice because Protestants don't recognize saint-related feasts, which is most of what the primstav's Catholic-era merkedager originally were. Still marked with Eucharistic processions in Trondheim, Ålesund, Oslo, Bergen and Stavanger today, and traditionally tied to Nidaros (St. Olav Cathedral, Trondheim)."
+  }
+]
