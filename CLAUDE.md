@@ -9,8 +9,8 @@ Primstav is an interactive Norwegian folk almanac (bondealmanak) rendered as a t
 ## Files
 
 - `index.html` — single-stave layout with a winter/summer half-toggle; mobile-first with a bottom-sheet popup
-- `primstav(1).html` — dual side-by-side stave layout showing both halves simultaneously
-- `index(2).html` — most polished version; uses JS-driven CSS variables (`--unit`, `--thick`, `--notch`) recalculated on load/resize for responsive metrics
+- `dual.html` — dual side-by-side stave layout showing both halves simultaneously
+- `polished.html` — most polished version; uses JS-driven CSS variables (`--unit`, `--thick`, `--notch`) recalculated on load/resize for responsive metrics
 - `primstav.zip` — archive copy, not the source of truth
 
 ## Architecture
@@ -36,7 +36,7 @@ Each file is a fully self-contained single-file app. The structure is the same a
 ### UI modes
 - **Name mode** (`nameMode`): `kirke` | `folk` | `dag` — controls which feast name field is displayed
 - **Half toggle** (index.html): shows one 6-month half at a time (winter = Jan–Jun, summer = Jul–Dec)
-- **Dual stave** (primstav(1).html): renders both sides simultaneously
+- **Dual stave** (dual.html): renders both sides simultaneously
 
 ### Popup
 Bottom-sheet overlay showing weekday, date, traditional name, golden number indicator, season + rune, feast details (with folk-name alternative), and moon phase.
