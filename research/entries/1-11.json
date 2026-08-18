@@ -1,0 +1,17 @@
+{
+  "date": "1-11",
+  "type": "fixed",
+  "k": "Brictivamesse",
+  "f": "Brettemesse",
+  "d": "Brictiva virgo",
+  "desc": "Rester av julematen ble brettet i biter, kokt og spist sammen med det siste juleølet.",
+  "icon": "🪓",
+  "region": null,
+  "sources": [
+    {"citation": "Store norske leksikon, \"brettemesse\"", "ref": "https://snl.no/brettemesse", "type": "reference-work"},
+    {"citation": "Store norske leksikon, \"primstav\"", "ref": "https://snl.no/primstav", "type": "reference-work"},
+    {"citation": "Musea i Nord-Østerdalen, \"Merkedager jula og januar\"", "ref": "https://museainordosterdalen.no/merkedager-jula-og-januar", "type": "museum"}
+  ],
+  "confidence": "confirmed",
+  "notes": "Named for the little-known Celtic saint Brictiva, martyred by axe — hence the axe icon (SNL's primstav table lists the carved symbol as 'Kors, hake, strek', of which the axe/hake element is the most distinctive). SNL's primstav table also lists a weather-lore function (morning weather predicts March, afternoon predicts April) not included in `desc` to keep it to one sentence — worth adding if the schema grows a secondary-lore field later. Merged into FIXED/ICONS in all three HTML files 2026-08-18."
+}

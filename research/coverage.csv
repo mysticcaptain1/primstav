@@ -9,8 +9,8 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 1-8,nameday,Erhard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-9,nameday,Julian,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-10,nameday,Agaton,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-1-11,none,,,missing,No entry in FIXED or DAYNAMES at all.
-1-12,none,,,missing,No entry in FIXED or DAYNAMES at all.
+1-11,fixed,Brictivamesse,Brettemesse,solid,"Confirmed via SNL + regional museum (see research/entries/1-11.json), merged into FIXED/ICONS 2026-08-18."
+1-12,none,,,thin,"Researched, deliberately NOT filled: Midtvinter is a real, well-documented pre-Christian midwinter date (SNL), but its own source states it is 'usually not marked on preserved primstaver' — adding it as a FIXED stave entry would misrepresent it as a carved merkedag when the evidence says otherwise. Single source only (SNL midtvinter), would be `proposed` even if added. Revisit if a second source turns up specifically confirming a stave carving."
 1-13,fixed,Knuts dag,Tyvendedagen,thin,Rich content in FIXED (kirkenavn/folkenavn/dagsnavn/desc) but no sources cited yet — needs retroactive citation to reach confirmed.
 1-14,nameday,Felix,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-15,nameday,Maurus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -58,7 +58,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 2-26,nameday,Alexander,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-27,nameday,Leander,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-28,nameday,Oskar,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-2-29,none,,,missing,No entry in FIXED or DAYNAMES at all.
+2-29,fixed,Mattiasmesse (skuddår),Skuddårsdagen,solid,"Confirmed via SNL x2 + regional museum (see research/entries/2-29.json), merged into FIXED/ICONS 2026-08-18."
 3-1,nameday,Albin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 3-2,nameday,Henrik,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 3-3,nameday,Kunigunde,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -283,8 +283,8 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 10-8,nameday,Birgitta,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-9,nameday,Dionysios,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-10,nameday,Frans Borgia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-10-11,none,,,missing,No entry in FIXED or DAYNAMES at all.
-10-12,none,,,missing,No entry in FIXED or DAYNAMES at all.
+10-11,none,,,missing,"Researched: SNL's primstav article (~110-date table, the most complete single source found) does not list this date at all. Evidence points to this genuinely not being a traditional primstav merkedag, not just an app oversight — leave blank rather than invent content."
+10-12,none,,,missing,"Researched: same finding as 10-11 — absent from SNL's primstav table. Leave blank."
 10-13,nameday,Edvard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-14,fixed,Vinternatt,Vinterdagen,thin,Rich content in FIXED (kirkenavn/folkenavn/dagsnavn/desc) but no sources cited yet — needs retroactive citation to reach confirmed.
 10-15,nameday,Teresia av Ávila,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -305,7 +305,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 10-30,nameday,Alfons,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-31,nameday,Wolfgang,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-1,fixed,Allehelgensdag,Alle-heilage-dag,thin,Rich content in FIXED (kirkenavn/folkenavn/dagsnavn/desc) but no sources cited yet — needs retroactive citation to reach confirmed.
-11-2,none,,,missing,No entry in FIXED or DAYNAMES at all.
+11-2,fixed,Allesjelersdag,Alle-sjeler-dag,solid,"Confirmed via SNL x2 + katolsk.no liturgical calendar (see research/entries/11-2.json), merged into FIXED/ICONS 2026-08-18."
 11-3,nameday,Martin de Porres,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-4,nameday,Karl Borromeo,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-5,nameday,Bertille,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
