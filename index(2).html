@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primstav – Den norske bondealmanakk</title>
+<meta name="description" content="Interaktiv norsk primstav – den gamle runealmanakken med helligdager, gyllental, sommer- og vinterhalvår. Bla langs trestaven og utforsk merkedagene.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --bg:         #0e0804;
+  --gold:       #c8922a;
+  --gold-dim:   #8a5f18;
+  --red:        #7a1f10;
+  --orange:     #9a3800;
+  --today:      #e0502a;
+  --parchment:  #f2e0b8;
+  --ink:        #1e1208;
+
+  /* JS-driven metrics (overwritten on load / zoom / layout change) */
+  --unit:  26px;   /* length along the stave, per day */
+  --thick: 94px;   /* thickness of the stave */
+  --notch: 30px;   /* notch length */
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html, body { height:100%; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, #1f1008 0%, #0a0502 65%);
+  min-height:100vh;
+  font-family:'Lora',serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding: 1.4rem 1rem 5rem;
+  color:#d4b880;
+}
+
+/* ── HEADER ── */
+header { text-align:center; margin-bottom:1rem; }
+.rune-row {
+  display:flex; justify-content:center; gap:.55rem;
+  font-size:.95rem; color:var(--gold-dim); opacity:.55;
+  letter-spacing:.1em; margin-bottom:.5rem;
+}
+h1 {
+  font-family:'Cinzel',serif;
+  font-size:clamp(2rem,8vw,3.4rem);
+  color:var(--gold);
+  letter-spacing:.22em; line-height:1;
+  text-shadow:0 2px 12px rgba(0,0,0,.9), 0 0 40px rgba(200,146,42,.25);
+}
+.subtitle {
+  font-style:italic; color:#7a5c30;
+  font-size:.82rem; margin-top:.4rem; letter-spacing:.12em;
+}
+
+/* ── CONTROLS ── */
+.controls {
+  display:flex; flex-wrap:wrap; gap:.7rem;
+  align-items:center; justify-content:center;
+  margin-bottom:1rem;
+}
+
+.pill-group {
+  display:flex; border:1px solid rgba(200,146,42,.3);
+  border-radius:40px; overflow:hidden;
+  background:rgba(255,255,255,.03);
+}
+.pill-btn {
+  background:transparent; border:none;
+  color:#7a5c30; font-family:'Cinzel',serif;
+  font-size:.7rem; letter-spacing:.08em;
+  padding:.5rem 1.1rem; cursor:pointer;
+  transition:all .2s; display:flex; align-items:center; gap:.4rem;
+}
+.pill-btn .ic { font-size:1rem; }
+.pill-btn.active {
+  background:rgba(200,146,42,.18); color:var(--gold);
+  text-shadow:0 0 12px rgba(200,146,42,.5);
+}
+
+/* zoom control */
+.zoom {
+  display:flex; align-items:center; gap:.5rem;
+  border:1px solid rgba(200,146,42,.3);
+  border-radius:40px; padding:.25rem .6rem;
+  background:rgba(255,255,255,.03);
+}
+.zoom button {
+  background:transparent; border:none; cursor:pointer;
+  color:var(--gold); font-family:'Cinzel',serif;
+  font-size:1.1rem; width:1.4rem; height:1.4rem; line-height:1;
+  border-radius:50%; transition:background .15s;
+}
+.zoom button:hover { background:rgba(200,146,42,.15); }
+.zoom input[type=range] {
+  -webkit-appearance:none; appearance:none;
+  width:90px; height:3px; border-radius:2px;
+  background:rgba(200,146,42,.3); outline:none; cursor:pointer;
+}
+.zoom input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none; appearance:none;
+  width:13px; height:13px; border-radius:50%;
+  background:var(--gold); box-shadow:0 0 6px rgba(200,146,42,.6);
+}
+.zoom input[type=range]::-moz-range-thumb {
+  width:13px; height:13px; border:none; border-radius:50%;
+  background:var(--gold); box-shadow:0 0 6px rgba(200,146,42,.6);
+}
+
+/* ── NAME MODE ── */
+.mode-bar {
+  display:flex; margin-bottom:1.2rem;
+  border:1px solid rgba(200,146,42,.22);
+  border-radius:4px; overflow:hidden;
+}
+.mode-btn {
+  background:transparent; border:none;
+  color:#5a4020; font-family:'Cinzel',serif;
+  font-size:.62rem; letter-spacing:.08em;
+  padding:.4rem .9rem; cursor:pointer; transition:all .15s;
+  border-right:1px solid rgba(200,146,42,.15);
+}
+.mode-btn:last-child { border-right:none; }
+.mode-btn.active { background:rgba(200,146,42,.14); color:var(--gold); }
+
+/* ── VIEWPORT (scrollable frame around the stave) ── */
+.stave-viewport {
+  width:100%;
+  max-width:min(94vw, 1100px);
+  max-height:72vh;
+  overflow:auto;
+  border-radius:14px;
+  border:1px solid rgba(200,146,42,.12);
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(40,22,10,.5) 0%, transparent 70%);
+  box-shadow: inset 0 0 60px rgba(0,0,0,.6);
+  scrollbar-width:thin;
+  scrollbar-color: rgba(200,146,42,.4) transparent;
+}
+.stave-viewport::-webkit-scrollbar { height:8px; width:8px; }
+.stave-viewport::-webkit-scrollbar-thumb {
+  background:rgba(200,146,42,.35); border-radius:4px;
+}
+
+/* ── SCENE (caps + stave, direction follows layout) ── */
+.stave-scene {
+  display:flex; align-items:center; justify-content:flex-start;
+  width:max-content; min-width:100%; min-height:100%;
+}
+[data-layout="vertical"]   .stave-scene { flex-direction:column; padding:14px 52px; }
+[data-layout="horizontal"] .stave-scene { flex-direction:row;    padding:54px 18px; }
+
+/* end-grain caps */
+.cap {
+  background: radial-gradient(ellipse at 50% 50%, #8a5030 0%, #3e1c08 55%, #150a04 100%);
+  flex:none;
+}
+[data-layout="vertical"] .cap {
+  width:var(--thick); height:13px;
+}
+[data-layout="vertical"] .cap.start { border-radius:9px 9px 0 0; box-shadow:0 -3px 8px rgba(0,0,0,.6); }
+[data-layout="vertical"] .cap.end   { border-radius:0 0 11px 11px; box-shadow:0 4px 10px rgba(0,0,0,.8); }
+[data-layout="horizontal"] .cap {
+  height:var(--thick); width:13px;
+}
+[data-layout="horizontal"] .cap.start { border-radius:9px 0 0 9px; box-shadow:-3px 0 8px rgba(0,0,0,.6); }
+[data-layout="horizontal"] .cap.end   { border-radius:0 11px 11px 0; box-shadow:4px 0 10px rgba(0,0,0,.8); }
+
+/* ── THE STAVE PLANK ── */
+.stave {
+  position:relative; display:flex; flex:none;
+}
+[data-layout="vertical"]   .stave { flex-direction:column; width:var(--thick); }
+[data-layout="horizontal"] .stave { flex-direction:row;    height:var(--thick); }
+
+/* wood body + cross-section shading */
+[data-layout="vertical"] .stave {
+  background:linear-gradient(90deg,
+    #0e0602 0%, #2a1206 7%, #5c2e12 20%, #7c4520 40%,
+    #855030 50%, #7c4520 60%, #5c2e12 80%, #2a1206 93%, #0e0602 100%);
+  box-shadow: inset 4px 0 12px rgba(0,0,0,.6), inset -4px 0 12px rgba(0,0,0,.6),
+              6px 0 18px rgba(0,0,0,.7), -4px 0 12px rgba(0,0,0,.5);
+}
+[data-layout="horizontal"] .stave {
+  background:linear-gradient(180deg,
+    #0e0602 0%, #2a1206 7%, #5c2e12 20%, #7c4520 40%,
+    #855030 50%, #7c4520 60%, #5c2e12 80%, #2a1206 93%, #0e0602 100%);
+  box-shadow: inset 0 4px 12px rgba(0,0,0,.6), inset 0 -4px 12px rgba(0,0,0,.6),
+              0 6px 18px rgba(0,0,0,.7), 0 -4px 12px rgba(0,0,0,.5);
+}
+/* grain runs along the length */
+.stave::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:1; }
+[data-layout="vertical"] .stave::before {
+  background:
+    repeating-linear-gradient(90deg, transparent 0, transparent 6px, rgba(0,0,0,.05) 6px, rgba(0,0,0,.05) 7px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 17px, rgba(255,255,255,.02) 17px, rgba(255,255,255,.02) 18px);
+}
+[data-layout="horizontal"] .stave::before {
+  background:
+    repeating-linear-gradient(0deg, transparent 0, transparent 6px, rgba(0,0,0,.05) 6px, rgba(0,0,0,.05) 7px),
+    repeating-linear-gradient(0deg, transparent 0, transparent 17px, rgba(255,255,255,.02) 17px, rgba(255,255,255,.02) 18px);
+}
+
+/* ── MONTH DIVIDERS & TAGS ── */
+[data-layout="vertical"]   .day-slot.month-start { box-shadow: inset 0 1px 0 rgba(180,120,50,.5); }
+[data-layout="horizontal"] .day-slot.month-start { box-shadow: inset 1px 0 0 rgba(180,120,50,.5); }
+
+.month-tag {
+  position:absolute;
+  font-family:'Cinzel',serif; font-size:7px; font-weight:700;
+  color:var(--gold); background:#3a1a08;
+  border:1px solid rgba(200,146,42,.4); border-radius:2px;
+  padding:1px 3px; letter-spacing:.06em; white-space:nowrap;
+  z-index:4; text-shadow:0 1px 3px #000; box-shadow:0 1px 4px rgba(0,0,0,.6);
+}
+[data-layout="vertical"]   .month-tag { left:50%; top:-1px; transform:translate(-50%,-55%); }
+[data-layout="horizontal"] .month-tag { top:50%; left:-1px; transform:translate(-55%,-50%); }
+
+/* ── DAY SLOT ── */
+.day-slot {
+  position:relative; flex:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .12s; z-index:2;
+}
+[data-layout="vertical"]   .day-slot { width:var(--thick); height:var(--unit); }
+[data-layout="horizontal"] .day-slot { width:var(--unit); height:var(--thick); }
+.day-slot:hover { background:rgba(255,200,80,.07); }
+.day-slot.today { background:rgba(224,80,42,.1); }
+
+/* ── CARVED MARK (stem + optional cross) ── */
+.mark {
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.stem, .cross {
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:var(--gold-dim); border-radius:1px;
+}
+/* orientation of the cut */
+[data-layout="vertical"] .stem  { width:var(--notch); height:2px; box-shadow:0 1px 0 rgba(255,225,150,.18), 0 -1px 0 rgba(0,0,0,.5); }
+[data-layout="vertical"] .cross { width:2px; height:10px; }
+[data-layout="horizontal"] .stem  { height:var(--notch); width:2px; box-shadow:1px 0 0 rgba(255,225,150,.18), -1px 0 0 rgba(0,0,0,.5); }
+[data-layout="horizontal"] .cross { height:2px; width:10px; }
+
+/* mark colours by day type */
+.day-slot.sunday  .stem { background:var(--gold); }
+[data-layout="vertical"]   .day-slot.sunday .stem { width:var(--notch); height:3px; }
+[data-layout="horizontal"] .day-slot.sunday .stem { height:var(--notch); width:3px; }
+.day-slot.feast    .stem, .day-slot.feast    .cross { background:var(--red); }
+.day-slot.moveable .stem, .day-slot.moveable .cross { background:var(--orange); }
+.day-slot.today    .stem { background:var(--today); box-shadow:0 0 7px rgba(224,80,42,.8); }
+[data-layout="vertical"]   .day-slot.today .stem { width:var(--notch); height:3px; }
+[data-layout="horizontal"] .day-slot.today .stem { height:var(--notch); width:3px; }
+.day-slot.today .cross { background:var(--today); }
+
+/* ── FEAST ICON / GOLDEN NUMBER / DATE NUMBER (gutter elements) ── */
+.feast-ic {
+  position:absolute; font-size:13px; line-height:1; z-index:3;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.9)); pointer-events:none;
+}
+.gn-b {
+  position:absolute; z-index:3; pointer-events:none;
+  font-family:'Cinzel',serif; font-size:7px; font-weight:700;
+  color:var(--gold); background:rgba(10,4,1,.85);
+  border-radius:2px; padding:0 2px; line-height:1.3;
+  text-shadow:0 0 3px #000;
+}
+.day-n {
+  position:absolute; z-index:3; pointer-events:none; user-select:none;
+  font-family:'Cinzel',serif; font-size:7px; color:rgba(170,120,55,.55);
+}
+/* vertical: icon+number to the left, golden number to the right */
+[data-layout="vertical"] .feast-ic { right:calc(100% + 6px); top:50%; transform:translateY(-50%); }
+[data-layout="vertical"] .day-n    { right:calc(100% + 28px); top:50%; transform:translateY(-50%); }
+[data-layout="vertical"] .gn-b     { left:calc(100% + 5px);  top:50%; transform:translateY(-50%); }
+/* horizontal: icon+number above, golden number below */
+[data-layout="horizontal"] .feast-ic { bottom:calc(100% + 7px); left:50%; transform:translateX(-50%); }
+[data-layout="horizontal"] .day-n    { bottom:calc(100% + 28px); left:50%; transform:translateX(-50%); }
+[data-layout="horizontal"] .gn-b     { top:calc(100% + 6px);   left:50%; transform:translateX(-50%); }
+
+/* ── POPUP ── */
+.overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,.6);
+  z-index:100; display:none; align-items:flex-end; justify-content:center;
+  backdrop-filter:blur(2px);
+}
+.overlay.open { display:flex; }
+.popup {
+  background:var(--parchment);
+  background-image:radial-gradient(ellipse at 20% 10%, rgba(255,255,220,.35) 0%, transparent 55%);
+  width:100%; max-width:460px; border-radius:16px 16px 0 0;
+  padding:1.5rem 1.6rem 2.4rem; position:relative;
+  box-shadow:0 -10px 50px rgba(0,0,0,.8);
+  max-height:85vh; overflow-y:auto; color:var(--ink);
+  animation:popUp .22s cubic-bezier(.2,.8,.3,1);
+}
+@keyframes popUp { from { transform:translateY(50px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+.popup::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--red), var(--gold), var(--red));
+  border-radius:16px 16px 0 0;
+}
+.popup-close {
+  position:absolute; top:.9rem; right:1.1rem; background:transparent;
+  border:none; color:#7a4010; font-size:1.5rem; cursor:pointer; line-height:1;
+}
+.popup-handle { width:36px; height:4px; border-radius:2px; background:rgba(100,60,20,.25); margin:0 auto 1.1rem; }
+.p-weekday { font-family:'Cinzel',serif; font-size:.78rem; color:#7a4020; letter-spacing:.12em; text-transform:uppercase; }
+.p-date    { font-family:'Cinzel',serif; font-size:1.8rem; color:var(--ink); font-weight:600; line-height:1.1; margin:.1rem 0; }
+.p-side    { font-style:italic; color:#7a4020; font-size:.8rem; }
+.p-trad    { font-style:italic; color:var(--red); font-size:.95rem; min-height:1.2rem; margin-top:.25rem; }
+.p-divider { height:1px; background:rgba(100,60,20,.2); margin:.8rem 0; }
+.p-gn {
+  display:inline-flex; align-items:center; gap:.4rem;
+  background:rgba(200,146,42,.1); border:1px solid rgba(200,146,42,.3);
+  border-radius:3px; padding:.15rem .6rem;
+  font-family:'Cinzel',serif; font-size:.75rem; color:#8a6010; margin-bottom:.7rem;
+}
+.p-season { display:flex; align-items:center; gap:.9rem; margin-bottom:.8rem; }
+.p-season-icon { font-size:2.4rem; }
+.p-season-text .slbl { font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.1em; color:var(--red); text-transform:uppercase; }
+.p-season-text .sval { font-size:.92rem; color:var(--ink); }
+.p-rune { font-size:1.8rem; color:var(--gold); margin-left:auto; opacity:.7; }
+.p-feast { border-left:3px solid var(--red); padding:.65rem .9rem; border-radius:0 3px 3px 0; background:rgba(122,31,16,.05); margin-top:.5rem; }
+.p-feast.mov { border-left-color:var(--orange); background:rgba(154,56,0,.05); }
+.p-feast-icon { font-size:1.4rem; margin-bottom:.3rem; }
+.p-feast-name { font-family:'Cinzel',serif; font-size:.9rem; color:var(--red); font-weight:600; }
+.p-feast.mov .p-feast-name { color:var(--orange); }
+.p-feast-folk { font-style:italic; font-size:.8rem; color:#6a3010; margin-top:.1rem; }
+.p-feast-desc { font-size:.78rem; color:#4a2810; margin-top:.25rem; font-style:italic; line-height:1.55; }
+.p-moon { display:flex; gap:.45rem; margin-top:.85rem; flex-wrap:wrap; }
+.p-moon-tag { background:rgba(44,26,14,.07); border:1px solid rgba(100,70,30,.25); border-radius:20px; padding:.18rem .65rem; font-size:.75rem; color:#4a2810; }
+
+/* ── LEGEND ── */
+.legend { display:flex; flex-wrap:wrap; gap:.6rem 1rem; margin-top:1.6rem; justify-content:center; opacity:.55; }
+.leg { display:flex; align-items:center; gap:.3rem; font-size:.66rem; color:#7a5a30; font-style:italic; }
+.lm { width:2px; height:13px; border-radius:1px; }
+.lm-d { background:rgba(180,130,60,.5); }
+.lm-s { background:var(--gold); }
+.lm-f { background:var(--red); }
+.lm-m { background:var(--orange); }
+.lm-t { background:var(--today); }
+.lm-g { width:8px; height:8px; border-radius:50%; background:var(--gold); border:1.5px solid rgba(200,146,42,.4); }
+</style>
+</head>
+<body data-layout="vertical">
+
+<header>
+  <div class="rune-row">ᚠ ᚢ ᚦ ᚬ ᚱ ᚴ ᚼ ᚾ ᛁ ᛅ ᛋ ᛏ ᛒ ᛘ ᛚ ᛦ</div>
+  <h1>PRIMSTAV</h1>
+  <p class="subtitle">Den norske bondealmanakk</p>
+</header>
+
+<div class="controls">
+  <div class="pill-group" id="sideGroup">
+    <button class="pill-btn" data-side="sommer"><span class="ic">☀️</span> Sommerside</button>
+    <button class="pill-btn" data-side="vinter"><span class="ic">❄️</span> Vinterside</button>
+  </div>
+
+  <div class="pill-group" id="layoutGroup">
+    <button class="pill-btn" data-layout="vertical"><span class="ic">↕</span> Stående</button>
+    <button class="pill-btn" data-layout="horizontal"><span class="ic">↔</span> Liggende</button>
+  </div>
+
+  <div class="zoom">
+    <button id="zoomOut" aria-label="Zoom ut">−</button>
+    <input type="range" id="zoomRange" min="0.6" max="2.2" step="0.1" value="1">
+    <button id="zoomIn" aria-label="Zoom inn">+</button>
+  </div>
+</div>
+
+<div class="mode-bar">
+  <button class="mode-btn active" data-mode="kirke">Kirkenavn</button>
+  <button class="mode-btn" data-mode="folk">Folkenavn</button>
+  <button class="mode-btn" data-mode="dag">Dagsnavn</button>
+</div>
+
+<div class="stave-viewport" id="viewport">
+  <div class="stave-scene" id="scene">
+    <div class="cap start"></div>
+    <div class="stave" id="stave"></div>
+    <div class="cap end"></div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="leg"><div class="lm lm-d"></div>Hverdag</div>
+  <div class="leg"><div class="lm lm-s"></div>Søndag</div>
+  <div class="leg"><div class="lm lm-f"></div>Fast helligdag</div>
+  <div class="leg"><div class="lm lm-m"></div>Bevegelig høytid</div>
+  <div class="leg"><div class="lm lm-t"></div>I dag</div>
+  <div class="leg"><div class="lm lm-g"></div>Gyllental</div>
+</div>
+
+<!-- POPUP -->
+<div class="overlay" id="overlay">
+  <div class="popup" id="popup">
+    <div class="popup-handle"></div>
+    <button class="popup-close" id="popupClose">×</button>
+    <div class="p-weekday" id="pWeekday"></div>
+    <div class="p-date"    id="pDate"></div>
+    <div class="p-side"    id="pSide"></div>
+    <div class="p-trad"    id="pTrad"></div>
+    <div class="p-divider"></div>
+    <div id="pGolden"></div>
+    <div class="p-season"  id="pSeason"></div>
+    <div id="pFeast"></div>
+    <div class="p-moon"    id="pMoon"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// ICONS — primstav symbols (emoji approximations)
+// ══════════════════════════════════════════════════════
+const ICONS = {
+  '1-1':'☀️','1-6':'⭐','1-13':'🕯️','1-20':'🏹','1-25':'⚡',
+  '2-2':'🕯️','2-14':'❤️','2-24':'🎲',
+  '3-12':'📜','3-25':'🌿',
+  '4-14':'🌱','4-23':'⚔️','4-25':'🌾',
+  '5-1':'☀️','5-3':'✝️',
+  '6-24':'🔥','6-29':'⚓',
+  '7-25':'🐚',
+  '8-1':'⛓️','8-10':'💧','8-15':'🌸','8-24':'🗡️','8-29':'🌾',
+  '9-8':'🌹','9-14':'✝️','9-21':'📖','9-29':'⚖️',
+  '10-28':'❄️',
+  '11-1':'🕯️','11-11':'🪿','11-25':'🌀','11-30':'🎣',
+  '12-13':'🕯️','12-21':'🌑','12-24':'🌟','12-25':'⭐','12-26':'🐴','12-27':'📖','12-31':'🔔',
+};
+
+const WD  = ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'];
+const MON = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
+const RUNES = ['ᚠ','ᚢ','ᚦ','ᚬ','ᚱ','ᚴ','ᚼ','ᚾ','ᛁ','ᛅ','ᛋ','ᛏ','ᛒ','ᛘ','ᛚ','ᛦ'];
+
+const FIXED = {
+  '1-1': {k:'Nyttårsdag',f:'Nyttårsdagen',d:'Omskjærelsesdagen',desc:'Kristi omskjærelse. Nytt år begynner.'},
+  '1-6': {k:'Heilag Tre Kongers dag',f:'Trettendagen',d:'Epifanias',desc:'Tre vise menn fra Østen. Slutten på julefeiringen.'},
+  '1-13':{k:'Knuts dag',f:'Tyvendedagen',d:'Knutsmesse',desc:'«Tyvendedagen jul er omme.» Julen avsluttes.'},
+  '1-20':{k:'Fabian og Sebastian',f:'Fabian-Sebastians dag',d:'Sebastiansdag',desc:'Martyrene Fabianus og Sebastianus.'},
+  '1-25':{k:'Paulus omvendelse',f:'Paulsmesse',d:'Paulus-dag',desc:'Paulus faller av hesten på vei til Damaskus.'},
+  '2-2': {k:'Kyndelsmesse',f:'Kyndelmesse',d:'Mariæ renselsesdag',desc:'Lysene i kirken velsignes. Midtvinters.'},
+  '2-14':{k:'Valentinsdagen',f:'Valentinsdag',d:'Valentinsmesse',desc:'Martyren Valentinus. Kjærlighetens dag.'},
+  '2-24':{k:'Mattiasmesse',f:'Mattiasdag',d:'Mattiasmesse',desc:'Apostelen Mattias valgt til å erstatte Judas.'},
+  '3-12':{k:'Gregoriusmesse',f:'Gregoriusdag',d:'Gregoriusdagen',desc:'Pave Gregorius den store. Skolestart i gammel tid.'},
+  '3-25':{k:'Mariæ bebudelse',f:'Mariamesse om våren',d:'Jomfru-Marias-dag',desc:'Engelen Gabriel kunngjør at Maria skal føde Guds sønn.'},
+  '4-14':{k:'Tiburti-messe',f:'Tiburtius-dag',d:'Tiburtiusmesse',desc:'Sommermål – sommerhalvåret begynner. Tradisjonelt start på sommerpløying.'},
+  '4-23':{k:'Jørgensmesse',f:'Jørgensdagen',d:'Georgsmesse',desc:'Sankt Georg draper dragen. Vårens seier over vinteren.'},
+  '4-25':{k:'Markusmesse',f:'Markusdag',d:'Markusmesse',desc:'Bønneprosesjon rundt åkrene for god høst.'},
+  '5-1': {k:'Filipp-Jakob-messe',f:'Filippus-dag',d:'Filipsmesse',desc:'Apostlene Filip og Jakob.'},
+  '5-3': {k:'Kors-oppfinnelsen',f:'Korsmesse om våren',d:'Inventio Crucis',desc:'Helena finner det sanne korset i Jerusalem.'},
+  '6-24':{k:'Jonsok',f:'Sankthansdag',d:'Jonsok-natt',desc:'Johannes Døperens fødsel. Midtsommer. Bål tennes.'},
+  '6-29':{k:'Peter og Pauls dag',f:'Petersmesse',d:'Petri-Pauli-dag',desc:'Apostlene Peter og Paulus.'},
+  '7-25':{k:'Jakobsmesse',f:'Jakobsdag',d:'Jakobsmesse',desc:'Apostelen Jakob den eldre. Pilegrimsrute til Santiago.'},
+  '8-1': {k:'Petersmesse',f:'Peters lenkefall',d:'Petri ad vincula',desc:'Peters lenkefall. Ny tidsregning for høst.'},
+  '8-10':{k:'Laurentiusmesse',f:'Lavransmesse',d:'Lorensdag',desc:'Martyren Laurentius. «Laurentiusgråt» — augustregnet.'},
+  '8-15':{k:'Mariæ himmelfartsdag',f:'Vor-Frue-messe',d:'Assumptionis-dag',desc:'Jomfru Maria tas opp til himmelen.'},
+  '8-24':{k:'Bartolomeusmesse',f:'Bartolomeus-dag',d:'Bartolomeusmesse',desc:'Apostelen Bartolomeus. Sluttmarkering av høysommer.'},
+  '8-29':{k:'Johannes halshugning',f:'Jonsok-hals',d:'Decollatio Johannis',desc:'Johannes Døperens martyrium. Slutten på kornhøsten.'},
+  '9-8': {k:'Mariæ fødselsdagen',f:'Vor-Frue-messe høst',d:'Nativitatis Mariæ',desc:'Jomfru Marias fødsel. Bønn for god avling.'},
+  '9-14':{k:'Kors-opphøyelsen',f:'Korsmesse om høsten',d:'Exaltatio Crucis',desc:'Opphøyelsen av det hellige kors.'},
+  '9-21':{k:'Matteusmesse',f:'Matteusdag',d:'Matteusmesse',desc:'Apostelen og evangelisten Matteus.'},
+  '9-29':{k:'Mikkelsmesse',f:'Mikkelsdagen',d:'Mikkelsdag',desc:'Erkeengelen Mikael. Kveget tas inn. Jordleie betales.'},
+  '10-14':{k:'Vinternatt',f:'Vinterdagen',d:'Vinternatt',desc:'Vinterhalvåret begynner. Kveget på bås, vinterforråd talt.'},
+  '10-28':{k:'Simon og Judas dag',f:'Simonsdag',d:'Simonidag',desc:'Apostlene Simon og Judas. Vinterforberedelser.'},
+  '11-1':{k:'Allehelgensdag',f:'Alle-heilage-dag',d:'Alle-heilag-dag',desc:'Alle hellige minnes. Forbønn for de avdøde.'},
+  '11-11':{k:'Mårtensmesse',f:'Mårtensdagen',d:'Mortensdag',desc:'Sankt Martin av Tours. Gjess slaktes.'},
+  '11-25':{k:'Katarinamesse',f:'Katarinadag',d:'Katarinadagen',desc:'Katarina av Aleksandria. Spinnerinnenes festdag.'},
+  '11-30':{k:'Andreasmesse',f:'Andreasdag',d:'Andreasdagen',desc:'Apostelen Andreas. Nyttårsforberedelse i bondekulturen.'},
+  '12-13':{k:'Luciadagen',f:'Lussi-natt',d:'Luciadagen',desc:'Lyset i mørket. Lucia bærer lys. «Lussenatten».'},
+  '12-21':{k:'Tommasmesse',f:'Tomasdag',d:'Tomas-dag',desc:'Apostelen Tomas. Vintersolverv. Korteste dag.'},
+  '12-24':{k:'Julaften',f:'Julaftan',d:'Vigilia Nativitatis',desc:'Julenattens vigilie. Midtvintersblot i nordisk tradisjon.'},
+  '12-25':{k:'Juledag',f:'Første juledag',d:'Nativitas-dag',desc:'Kristi fødsel. Midt i den mørke vinteren — lyset blir født.'},
+  '12-26':{k:'Stefansmesse',f:'Andre juledag',d:'Stefansdag',desc:'Den første kristne martyr.'},
+  '12-27':{k:'Johannes apostelmesse',f:'Tredje juledag',d:'Johannesdagen',desc:'Johannes apostelen og evangelisten.'},
+  '12-31':{k:'Nyttårsaften',f:'Nyttårskvelden',d:'Silvesterdagen',desc:'Siste dag i året. Nytt år forestår.'},
+};
+
+const DAYNAMES = {
+  '1-2':'Makarius','1-3':'Genoveva','1-4':'Rigobert','1-5':'Simeon','1-7':'Knut','1-8':'Erhard',
+  '1-9':'Julian','1-10':'Agaton','1-14':'Felix','1-15':'Maurus','1-16':'Marcellus','1-17':'Anton',
+  '1-18':'Peter av Roma','1-19':'Marius','1-21':'Agnes','1-22':'Vincentius','1-23':'Ildefons',
+  '1-24':'Timoteus','1-26':'Polykarpus','1-27':'J. Chrysostomos','1-28':'Thomas Aquinas',
+  '1-29':'Valerian','1-30':'Aldegunde','1-31':'Nils',
+  '2-1':'Brigitte','2-3':'Blasius','2-4':'Veronika','2-5':'Agata','2-6':'Dorothea','2-7':'Romuald',
+  '2-8':'Johannes','2-9':'Apollonia','2-10':'Scholastika','2-11':'Lourdes','2-12':'Euladius',
+  '2-13':'Katarina','2-15':'Faustin','2-16':'Juliana','2-17':'Donat','2-18':'Simeon',
+  '2-19':'Bonifatius','2-20':'Eleuther','2-21':'Irene','2-22':'Kathedra Petri','2-23':'Polykarpus',
+  '2-25':'Matthias','2-26':'Alexander','2-27':'Leander','2-28':'Oskar',
+  '3-1':'Albin','3-2':'Henrik','3-3':'Kunigunde','3-4':'Kasimir','3-5':'Eusebius','3-6':'Felicitas',
+  '3-7':'Thomas','3-8':'Johan','3-9':'Franziska','3-10':'Alexander','3-11':'Eulogius',
+  '3-13':'Nicephor','3-14':'Matilda','3-15':'Klemens','3-16':'Herbert','3-17':'Patrik',
+  '3-18':'Edvard','3-19':'Josef','3-20':'Wulfram','3-21':'Benedikt','3-22':'Lea',
+  '3-23':'Turibius','3-24':'Irenæus','3-26':'Luidger','3-27':'Rupert','3-28':'Guntram',
+  '3-29':'Eustasio','3-30':'Amadeus','3-31':'Balbina',
+  '4-1':'Hugo','4-2':'Frans','4-3':'Irene','4-4':'Isidor','4-5':'Vikentius Ferrer','4-6':'Sixtus',
+  '4-7':'Johannes Bapt.','4-8':'Perpetua','4-9':'Kasimir','4-10':'Ezekiel','4-11':'Stanislav',
+  '4-12':'Julius','4-13':'Hermenegild','4-15':'Anastasia','4-16':'Magnus','4-17':'Anicetus',
+  '4-18':'Apollonius','4-19':'Emma','4-20':'Hildegund','4-21':'Ansgar','4-22':'Kajus',
+  '4-24':'Fidel','4-26':'Marcellin','4-27':'Zita','4-28':'Peter','4-29':'Katarina av Siena','4-30':'Pius V',
+  '5-2':'Atanasios','5-4':'Florianus','5-5':'Pils','5-6':'Dominik','5-7':'Stanislaw','5-8':'Victor',
+  '5-9':'Gregor','5-10':'Antoninus','5-11':'Gangulf','5-12':'Pankratius','5-13':'Servatius',
+  '5-14':'Bonifatius','5-15':'Sofia','5-16':'Peregrin','5-17':'Paschalis','5-18':'Venantius',
+  '5-19':'Peter','5-20':'Bernardin','5-21':'Kristoffer','5-22':'Rita','5-23':'Desidérius',
+  '5-24':'David','5-25':'Gregor VII','5-26':'Filip Neri','5-27':'Augustin av Canterbury',
+  '5-28':'German','5-29':'Maximinus','5-30':'Johanna av Arc','5-31':'Mariadagen',
+  '6-1':'Justin','6-2':'Erasmus','6-3':'Kevin','6-4':'Quirinus','6-5':'Bonifatius','6-6':'Norbert',
+  '6-7':'Robert','6-8':'Medard','6-9':'Efrem','6-10':'Margaret','6-11':'Barnabas',
+  '6-12':'Onuphrius','6-13':'Antoni av Padua','6-14':'Valerius','6-15':'Vitus','6-16':'Benno',
+  '6-17':'Rainer','6-18':'Markus','6-19':'Gervasius','6-20':'Silverius','6-21':'Alois',
+  '6-22':'Paulinus','6-23':'Adelheid','6-25':'Eloi','6-26':'Johannes','6-27':'Sirenæus',
+  '6-28':'Leo II','6-30':'Otto',
+  '7-1':'Aaron','7-2':'Mariæ hjemsøkelse','7-3':'Tomas','7-4':'Ulrik','7-5':'Anastasia',
+  '7-6':'Goar','7-7':'Willibald','7-8':'Kilian','7-9':'Anatol','7-10':'Rufin','7-11':'Benedikt',
+  '7-12':'Nabor','7-13':'Henrik','7-14':'Kamillus','7-15':'Bonaventura',
+  '7-16':'Vår Frue av Karmel','7-17':'Alexius','7-18':'Fredrik','7-19':'Arsenius',
+  '7-20':'Margarita','7-21':'Daniel','7-22':'Maria Magdalena','7-23':'Birgitta',
+  '7-24':'Kristina','7-26':'Anne','7-27':'Pantaleon','7-28':'Innocent','7-29':'Marta',
+  '7-30':'Peter Chrysologus','7-31':'Ignatius av Loyola',
+  '8-2':'Eusebius','8-3':'Lydia','8-4':'Dominikus','8-5':'Oswald','8-6':'Forklaringsdagen',
+  '8-7':'Kajetan','8-8':'Cyriacus','8-9':'Roman','8-11':'Klara','8-12':'Euplus',
+  '8-13':'Pontianus','8-14':'Maximilian','8-16':'Roch','8-17':'Hyasint','8-18':'Helena',
+  '8-19':'Johannes Eudes','8-20':'Bernhard','8-21':'Pius X','8-22':'Timoteus',
+  '8-23':'Rosa av Lima','8-25':'Ludvig','8-26':'Zefyrinus','8-27':'Monika','8-28':'Augustin',
+  '8-30':'Felix','8-31':'Raymund',
+  '9-1':'Giles','9-2':'Stefan','9-3':'Gregor den store','9-4':'Marsellin','9-5':'Moder Teresa',
+  '9-6':'Magnus','9-7':'Regina','9-9':'Petrus Claver','9-10':'Nils','9-11':'Protus',
+  '9-12':'Maria','9-13':'Johannes','9-15':'Smertenes Mor','9-16':'Kornelius',
+  '9-17':'Hildegard','9-18':'Johan','9-19':'Januarius','9-20':'Eustakios','9-22':'Mauritius',
+  '9-23':'Linus','9-24':'Gerhard','9-25':'Kleophas','9-26':'Kosmas','9-27':'Vinsent av Paul',
+  '9-28':'Venseslaus','9-30':'Hieronymus',
+  '10-1':'Teresia av Lisieux','10-2':'Skytsengledagen','10-3':'Gerard','10-4':'Frans av Assisi',
+  '10-5':'Placidus','10-6':'Bruno','10-7':'Vår Frue av Rosenkransen','10-8':'Birgitta',
+  '10-9':'Dionysios','10-10':'Frans Borgia','10-13':'Edvard','10-15':'Teresia av Ávila',
+  '10-16':'Hedvig','10-17':'Ignatius','10-18':'Lukas','10-19':'Paulus av Korset',
+  '10-20':'Johan Cantius','10-21':'Ursola','10-22':'Johannes Paulus II','10-23':'Johan av Capistrano',
+  '10-24':'Anton Claret','10-25':'Krisantos','10-26':'Evaristus','10-27':'Frumentius',
+  '10-29':'Narsai','10-30':'Alfons','10-31':'Wolfgang',
+  '11-3':'Martin de Porres','11-4':'Karl Borromeo','11-5':'Bertille','11-6':'Leonard',
+  '11-7':'Engelbert','11-8':'Gottfried','11-9':'Teodor','11-10':'Leo den store',
+  '11-12':'Josafat','11-13':'Stanislaw Kostka','11-14':'Nikolaus Tavelic',
+  '11-15':'Albert den store','11-16':'Gertrud','11-17':'Elisabet','11-18':'Odo',
+  '11-19':'Mechtild','11-20':'Edmund','11-21':'Presentasjonen av Maria',
+  '11-22':'Cecilia','11-23':'Clemens','11-24':'Krisogon','11-26':'Silvester',
+  '11-27':'Bilhild','11-28':'Jak av Marken','11-29':'Saturnin',
+  '12-1':'Natalia','12-2':'Bibiana','12-3':'Frans Xavier','12-4':'Barbara','12-5':'Sabbas',
+  '12-6':'Nils','12-7':'Ambrosius','12-8':'Marias uplettede unnfangelse',
+  '12-9':'Leokadia','12-10':'Lorettas dag','12-11':'Damasus','12-12':'Jane',
+  '12-14':'Johannes av Korset','12-15':'Christiane','12-16':'Adelheid','12-17':'Lazar',
+  '12-18':'Gratian','12-19':'Urban','12-20':'Timoteus','12-22':'Honoratus',
+  '12-23':'Johan of Kanty','12-28':'Uskyldige barns dag','12-29':'Thomas Becket','12-30':'Rogelius',
+};
+
+const GN_TABLE = {
+  1:[{m:1,d:23},{m:2,d:22},{m:3,d:23},{m:4,d:22},{m:5,d:21},{m:6,d:20},{m:7,d:19},{m:8,d:18},{m:9,d:16},{m:10,d:16},{m:11,d:14},{m:12,d:14}],
+  2:[{m:1,d:13},{m:2,d:11},{m:3,d:12},{m:4,d:11},{m:5,d:10},{m:6,d:9},{m:7,d:8},{m:8,d:7},{m:9,d:5},{m:10,d:5},{m:11,d:3},{m:12,d:3}],
+  3:[{m:1,d:2},{m:2,d:1},{m:3,d:2},{m:3,d:31},{m:4,d:30},{m:5,d:29},{m:6,d:28},{m:7,d:27},{m:8,d:26},{m:9,d:24},{m:10,d:24},{m:11,d:22},{m:12,d:22}],
+  4:[{m:1,d:21},{m:2,d:20},{m:3,d:21},{m:4,d:19},{m:5,d:18},{m:6,d:17},{m:7,d:16},{m:8,d:15},{m:9,d:13},{m:10,d:13},{m:11,d:11},{m:12,d:11}],
+  5:[{m:1,d:10},{m:2,d:9},{m:3,d:10},{m:4,d:9},{m:5,d:8},{m:6,d:6},{m:7,d:6},{m:8,d:4},{m:9,d:3},{m:10,d:2},{m:11,d:1},{m:11,d:30},{m:12,d:30}],
+  6:[{m:1,d:30},{m:2,d:28},{m:3,d:29},{m:4,d:28},{m:5,d:27},{m:6,d:26},{m:7,d:25},{m:8,d:24},{m:9,d:22},{m:10,d:22},{m:11,d:20},{m:12,d:19}],
+  7:[{m:1,d:18},{m:2,d:17},{m:3,d:18},{m:4,d:17},{m:5,d:16},{m:6,d:15},{m:7,d:14},{m:8,d:13},{m:9,d:11},{m:10,d:11},{m:11,d:9},{m:12,d:9}],
+  8:[{m:1,d:8},{m:2,d:6},{m:3,d:7},{m:4,d:6},{m:5,d:5},{m:6,d:4},{m:7,d:3},{m:8,d:2},{m:8,d:31},{m:9,d:30},{m:10,d:29},{m:11,d:28},{m:12,d:28}],
+  9:[{m:1,d:27},{m:2,d:26},{m:3,d:27},{m:4,d:25},{m:5,d:25},{m:6,d:23},{m:7,d:23},{m:8,d:21},{m:9,d:19},{m:10,d:19},{m:11,d:17},{m:12,d:17}],
+  10:[{m:1,d:16},{m:2,d:15},{m:3,d:15},{m:4,d:14},{m:5,d:14},{m:6,d:12},{m:7,d:12},{m:8,d:10},{m:9,d:9},{m:10,d:8},{m:11,d:7},{m:12,d:6}],
+  11:[{m:1,d:5},{m:2,d:4},{m:3,d:5},{m:4,d:3},{m:5,d:3},{m:6,d:1},{m:7,d:1},{m:7,d:30},{m:8,d:29},{m:9,d:27},{m:10,d:27},{m:11,d:25},{m:12,d:25}],
+  12:[{m:1,d:25},{m:2,d:23},{m:3,d:24},{m:4,d:23},{m:5,d:22},{m:6,d:21},{m:7,d:20},{m:8,d:19},{m:9,d:17},{m:10,d:16},{m:11,d:15},{m:12,d:14}],
+  13:[{m:1,d:13},{m:2,d:12},{m:3,d:13},{m:4,d:12},{m:5,d:11},{m:6,d:10},{m:7,d:9},{m:8,d:8},{m:9,d:6},{m:10,d:6},{m:11,d:4},{m:12,d:4}],
+  14:[{m:1,d:2},{m:2,d:1},{m:3,d:2},{m:4,d:1},{m:4,d:30},{m:5,d:30},{m:6,d:28},{m:7,d:28},{m:8,d:26},{m:9,d:25},{m:10,d:25},{m:11,d:23},{m:12,d:23}],
+  15:[{m:1,d:22},{m:2,d:21},{m:3,d:22},{m:4,d:21},{m:5,d:20},{m:6,d:18},{m:7,d:17},{m:8,d:16},{m:9,d:14},{m:10,d:14},{m:11,d:12},{m:12,d:12}],
+  16:[{m:1,d:11},{m:2,d:10},{m:3,d:11},{m:4,d:10},{m:5,d:9},{m:6,d:7},{m:7,d:7},{m:8,d:5},{m:9,d:4},{m:10,d:3},{m:11,d:2},{m:12,d:1},{m:12,d:31}],
+  17:[{m:1,d:31},{m:3,d:1},{m:3,d:30},{m:4,d:29},{m:5,d:28},{m:6,d:27},{m:7,d:26},{m:8,d:25},{m:9,d:23},{m:10,d:23},{m:11,d:21},{m:12,d:21}],
+  18:[{m:1,d:19},{m:2,d:18},{m:3,d:19},{m:4,d:18},{m:5,d:17},{m:6,d:16},{m:7,d:15},{m:8,d:14},{m:9,d:12},{m:10,d:12},{m:11,d:10},{m:12,d:10}],
+  19:[{m:1,d:8},{m:2,d:7},{m:3,d:8},{m:4,d:7},{m:5,d:6},{m:6,d:5},{m:7,d:4},{m:8,d:3},{m:9,d:1},{m:10,d:1},{m:10,d:30},{m:11,d:29},{m:12,d:29}],
+};
+
+function easter(yr){
+  const a=yr%19,b=Math.floor(yr/100),c=yr%100,d=Math.floor(b/4),e=b%4;
+  const f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3);
+  const h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4;
+  const l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451);
+  const mo=Math.floor((h+l-7*m+114)/31),dy=((h+l-7*m+114)%31)+1;
+  return new Date(yr,mo-1,dy);
+}
+
+function buildMoveables(yr){
+  const E=easter(yr), add=n=>{const d=new Date(E);d.setDate(d.getDate()+n);return d;};
+  const key=dt=>`${dt.getMonth()+1}-${dt.getDate()}`;
+  const R={};
+  const s=(dt,k,f,d,desc,icon)=>{ R[key(dt)]={k,f,d,desc,icon,mov:true}; };
+  s(add(-49),'Quinquagesima','Halvfastes søndag','Quinquagesima','Søndag før fastetid.','🥞');
+  s(add(-47),'Fastelavn – tirsdag','Fettisdagen','Fettisdag','Siste dag før fasten. Man spiste fett mat.','🥐');
+  s(add(-46),'Askeonsdag','Askonsdag','Dies cinerum','Fastens første dag. Aska strykes i pannen.','⚫');
+  s(add(-14),'Midfaste-søndag','Middfast','Lætare søndag','Fjerde søndag i fasten.','🌼');
+  s(add(-7), 'Palmesøndag','Palmasøndag','Palmarum','Jesu inntreden i Jerusalem.','🌿');
+  s(add(-3), 'Skjærtorsdag','Grønne torsdag','Cena Domini','Den siste nattverd.','🫙');
+  s(add(-2), 'Langfredag','Store fredag','Parasceve','Kristi korsfestelse og død.','✝️');
+  s(add(-1), 'Påskeaften','Påskaaftan','Sabbato sancto','Den stille lørdag. Lysvake.','🕯️');
+  s(add(0),  'Første påskedag','Påskedag','Resurrectio Domini','Kristi oppstandelse. Høytidenes høytid.','🥚');
+  s(add(1),  'Andre påskedag','Påskemåndag','Lunes Paschæ','Emmaus-vandringen.','🐣');
+  s(add(39), 'Kristi himmelfartsdag','Himmelfart','Ascensio','Kristus farer opp til himmelen.','☁️');
+  s(add(49), 'Pinsedag','Pinse','Pentecoste','Den Hellige Ånd. 50 dager etter påske.','🔥');
+  s(add(50), 'Andre pinsedag','Pinsemåndag','Lunes Pentecostes','Pinsefeiring fortsetter.','🕊️');
+  s(add(56), 'Treenighetsdag','Trinitatis','Festum Trinitatis','Guds treenige natur feires.','△');
+  s(add(60), 'Kristi Legemsfest','Fronleichnam','Corpus Christi','Eukaristiens fest.','🍞');
+  return R;
+}
+
+function moonPhase(date){
+  const p=((((date-new Date(2000,0,6))/86400000)%29.53058867)+29.53058867)%29.53058867;
+  if(p<1.85) return{e:'🌑',n:'Nymåne'};
+  if(p<7.38) return{e:'🌒',n:'Tiltagende halvmåne'};
+  if(p<9.22) return{e:'🌓',n:'Halvmåne'};
+  if(p<14.76)return{e:'🌔',n:'Tiltagende måne'};
+  if(p<16.61)return{e:'🌕',n:'Fullmåne'};
+  if(p<22.15)return{e:'🌖',n:'Avtagende måne'};
+  if(p<23.99)return{e:'🌗',n:'Halvmåne'};
+  return{e:'🌘',n:'Avtagende halvmåne'};
+}
+
+function season(m0){
+  const m=m0+1;
+  if(m===12||m<=2)return{e:'❄️',n:'Vintermåned',r:'ᛁ'};
+  if(m<=5)        return{e:'🌿',n:'Vårmåned',r:'ᛒ'};
+  if(m<=8)        return{e:'☀️',n:'Sommermåned',r:'ᛋ'};
+  return{e:'🍂',n:'Høstmåned',r:'ᛏ'};
+}
+
+// ══════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════
+const TODAY = new Date();
+const YEAR  = TODAY.getFullYear();
+
+let nameMode = 'kirke';
+let side     = 'sommer';   // sommer | vinter
+let layout   = 'vertical'; // vertical | horizontal
+let zoom     = 1;
+let moveables, gnSet, gnVal;
+
+const BASE = {
+  vertical:   { unit:26, thick:96 },
+  horizontal: { unit:22, thick:120 },
+};
+
+const scene   = document.getElementById('scene');
+const stave   = document.getElementById('stave');
+const viewport= document.getElementById('viewport');
+
+function initYear(){
+  moveables = buildMoveables(YEAR);
+  gnVal = (YEAR%19)+1;
+  gnSet = new Set();
+  (GN_TABLE[gnVal]||[]).forEach(({m,d})=>gnSet.add(`${m}-${d}`));
+}
+
+function daysInMonth(m0){ return new Date(YEAR,m0+1,0).getDate(); }
+
+// summer side = 14 Apr .. 13 Oct ; winter side = 14 Oct .. 13 Apr
+function isSummer(m0,d){
+  const after  = (m0>3) || (m0===3 && d>=14);
+  const before = (m0<9) || (m0===9 && d<=13);
+  return after && before;
+}
+
+function summerDays(){
+  const seq=[];
+  for(let d=14; d<=30; d++) seq.push([3,d]);            // Apr 14–30
+  for(let m0=4; m0<=8; m0++)                            // May–Sep
+    for(let d=1; d<=daysInMonth(m0); d++) seq.push([m0,d]);
+  for(let d=1; d<=13; d++) seq.push([9,d]);             // Oct 1–13
+  return seq;
+}
+function winterDays(){
+  const seq=[];
+  for(let d=14; d<=31; d++) seq.push([9,d]);            // Oct 14–31
+  for(let m0=10; m0<=11; m0++)                          // Nov, Dec
+    for(let d=1; d<=daysInMonth(m0); d++) seq.push([m0,d]);
+  for(let m0=0; m0<=2; m0++)                            // Jan–Mar
+    for(let d=1; d<=daysInMonth(m0); d++) seq.push([m0,d]);
+  for(let d=1; d<=13; d++) seq.push([3,d]);             // Apr 1–13
+  return seq;
+}
+
+function getFeast(m0,d){
+  const key=`${m0+1}-${d}`;
+  const fx=FIXED[key]; if(fx) return{...fx,icon:ICONS[key]||null,mov:false};
+  const mv=moveables[key]; if(mv) return mv;
+  return null;
+}
+function lbl(feast){
+  if(!feast)return'';
+  return nameMode==='kirke'?feast.k: nameMode==='folk'?feast.f: feast.d||feast.k;
+}
+function tradName(m0,d){
+  const feast=getFeast(m0,d);
+  const key=`${m0+1}-${d}`;
+  if(nameMode==='dag') return feast?(feast.d||feast.k):(DAYNAMES[key]||'');
+  return feast?lbl(feast):'';
+}
+
+// ── METRICS ──
+function applyMetrics(){
+  const b=BASE[layout];
+  const unit  = b.unit  * zoom;
+  const thick = b.thick * (0.62 + 0.38*zoom);
+  const notch = Math.min(thick*0.34, 16+20*Math.min(zoom,1.6));
+  scene.style.setProperty('--unit',  unit+'px');
+  scene.style.setProperty('--thick', thick+'px');
+  scene.style.setProperty('--notch', notch+'px');
+}
+
+// ── BUILD ──
+function buildStave(){
+  stave.innerHTML='';
+  const seq = side==='sommer' ? summerDays() : winterDays();
+  let prevM = -1;
+
+  seq.forEach(([m0,d])=>{
+    const dt    = new Date(YEAR,m0,d);
+    const dow   = dt.getDay();
+    const isT   = dt.toDateString()===TODAY.toDateString();
+    const feast = getFeast(m0,d);
+    const isGN  = gnSet.has(`${m0+1}-${d}`);
+
+    const slot=document.createElement('div');
+    slot.className='day-slot';
+    if(dow===0)    slot.classList.add('sunday');
+    if(feast?.mov) slot.classList.add('moveable');
+    else if(feast) slot.classList.add('feast');
+    if(isT)        slot.classList.add('today');
+
+    // month divider + tag
+    if(m0!==prevM){
+      slot.classList.add('month-start');
+      const tag=document.createElement('div');
+      tag.className='month-tag';
+      tag.textContent=MON[m0].slice(0,3).toUpperCase();
+      slot.appendChild(tag);
+      prevM=m0;
+    }
+
+    // sparse date number
+    if([1,5,10,15,20,25].includes(d)){
+      const dn=document.createElement('div');
+      dn.className='day-n'; dn.textContent=d;
+      slot.appendChild(dn);
+    }
+
+    // feast icon
+    if(feast?.icon){
+      const fi=document.createElement('div');
+      fi.className='feast-ic'; fi.textContent=feast.icon;
+      slot.appendChild(fi);
+    }
+
+    // carved mark
+    const mark=document.createElement('div'); mark.className='mark';
+    const stem=document.createElement('div'); stem.className='stem'; mark.appendChild(stem);
+    if(feast){ const cr=document.createElement('div'); cr.className='cross'; mark.appendChild(cr); }
+    slot.appendChild(mark);
+
+    // golden number
+    if(isGN){
+      const gn=document.createElement('div');
+      gn.className='gn-b'; gn.textContent=gnVal;
+      slot.appendChild(gn);
+    }
+
+    slot.addEventListener('click',()=>openPopup(m0,d));
+    stave.appendChild(slot);
+  });
+
+  scrollToToday();
+}
+
+function scrollToToday(){
+  requestAnimationFrame(()=>{
+    const t=stave.querySelector('.today');
+    if(t) t.scrollIntoView({behavior:'smooth',block:'center',inline:'center'});
+  });
+}
+
+// ── POPUP ──
+function openPopup(m0,d){
+  const dt    = new Date(YEAR,m0,d);
+  const dow   = dt.getDay();
+  const feast = getFeast(m0,d);
+  const sea   = season(m0);
+  const moon  = moonPhase(dt);
+  const isGN  = gnSet.has(`${m0+1}-${d}`);
+  const isT   = dt.toDateString()===TODAY.toDateString();
+  const tn    = tradName(m0,d);
+
+  document.getElementById('pWeekday').textContent = WD[dow].toUpperCase();
+  document.getElementById('pDate').textContent    = `${d}. ${MON[m0]}${isT?' · I dag':''}`;
+  document.getElementById('pSide').textContent    = isSummer(m0,d)?'☀️ Sommerhalvåret':'❄️ Vinterhalvåret';
+  document.getElementById('pTrad').textContent    = tn;
+
+  document.getElementById('pGolden').innerHTML = isGN
+    ?`<div class="p-gn">🌙 Gyllental ${gnVal} — ny-måne-dag</div>`:'';
+
+  document.getElementById('pSeason').innerHTML=`
+    <div class="p-season-icon">${sea.e}</div>
+    <div class="p-season-text">
+      <div class="slbl">Primstav-merke</div>
+      <div class="sval">${sea.n}</div>
+    </div>
+    <div class="p-rune">${sea.r}</div>`;
+
+  if(feast){
+    const cls=feast.mov?'p-feast mov':'p-feast';
+    const name=lbl(feast);
+    const alt=(nameMode!=='folk'&&feast.f&&feast.f!==name)
+      ?`<div class="p-feast-folk">${feast.f}</div>`:'';
+    const icon=feast.icon?`<div class="p-feast-icon">${feast.icon}</div>`:'';
+    document.getElementById('pFeast').innerHTML=`
+      <div class="${cls}">
+        ${icon}
+        <div class="p-feast-name">${name}</div>
+        ${alt}
+        <div class="p-feast-desc">${feast.desc}</div>
+      </div>`;
+  } else {
+    document.getElementById('pFeast').innerHTML='';
+  }
+
+  document.getElementById('pMoon').innerHTML=`
+    <div class="p-moon-tag">${moon.e} ${moon.n}</div>
+    <div class="p-moon-tag">${RUNES[((m0*30+d)%RUNES.length)]}</div>`;
+
+  document.getElementById('overlay').classList.add('open');
+}
+
+document.getElementById('overlay').addEventListener('click',e=>{
+  if(e.target===e.currentTarget) e.currentTarget.classList.remove('open');
+});
+document.getElementById('popupClose').addEventListener('click',()=>{
+  document.getElementById('overlay').classList.remove('open');
+});
+
+// ── CONTROL WIRING ──
+function setActive(group, attr, val){
+  group.querySelectorAll('.pill-btn').forEach(b=>
+    b.classList.toggle('active', b.dataset[attr]===val));
+}
+
+function setSide(s){ side=s; setActive(document.getElementById('sideGroup'),'side',s); buildStave(); }
+function setLayout(l){
+  layout=l;
+  document.body.dataset.layout=l;
+  setActive(document.getElementById('layoutGroup'),'layout',l);
+  applyMetrics();
+  buildStave();
+}
+
+document.getElementById('sideGroup').querySelectorAll('.pill-btn')
+  .forEach(b=>b.addEventListener('click',()=>setSide(b.dataset.side)));
+document.getElementById('layoutGroup').querySelectorAll('.pill-btn')
+  .forEach(b=>b.addEventListener('click',()=>setLayout(b.dataset.layout)));
+
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    nameMode=btn.dataset.mode;
+    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    buildStave();
+  });
+});
+
+const zoomRange=document.getElementById('zoomRange');
+function setZoom(z){
+  zoom=Math.max(0.6,Math.min(2.2,Math.round(z*10)/10));
+  zoomRange.value=zoom;
+  applyMetrics();
+}
+zoomRange.addEventListener('input',()=>setZoom(parseFloat(zoomRange.value)));
+document.getElementById('zoomIn').addEventListener('click',()=>setZoom(zoom+0.2));
+document.getElementById('zoomOut').addEventListener('click',()=>setZoom(zoom-0.2));
+
+// ── INIT ──
+initYear();
+side   = isSummer(TODAY.getMonth(),TODAY.getDate()) ? 'sommer' : 'vinter';
+layout = window.matchMedia('(min-width:900px)').matches ? 'horizontal' : 'vertical';
+document.body.dataset.layout=layout;
+setActive(document.getElementById('sideGroup'),'side',side);
+setActive(document.getElementById('layoutGroup'),'layout',layout);
+applyMetrics();
+buildStave();
+</script>
+</body>
+</html>

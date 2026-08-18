@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primstav</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --bark:       #2c1a0e;
+  --dark-wood:  #140c04;
+  --parchment:  #f4e4c0;
+  --rune-gold:  #c8922a;
+  --rune-red:   #8b2615;
+  --move-org:   #b04000;
+  --stave-w:    44px;    /* plank width */
+  --day-h:      22px;    /* height per day */
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { background: var(--dark-wood); }
+
+body {
+  background: var(--dark-wood);
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(255,255,255,0.012) 39px, rgba(255,255,255,0.012) 40px),
+    repeating-linear-gradient(0deg,  transparent 0, transparent 59px, rgba(0,0,0,0.08) 59px, rgba(0,0,0,0.08) 60px);
+  min-height: 100vh;
+  font-family: 'Lora', serif;
+  color: #e8d8b0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0.5rem 5rem;
+}
+
+/* ── HEADER ── */
+header { text-align:center; margin-bottom:1.2rem; }
+h1 {
+  font-family:'Cinzel',serif;
+  font-size: clamp(1.8rem,7vw,3.2rem);
+  color: var(--rune-gold);
+  letter-spacing:.2em;
+  text-shadow: 0 2px 8px rgba(0,0,0,.8), 0 0 30px rgba(200,146,42,.3);
+}
+.subtitle {
+  font-style:italic; color:#a08060; font-size:.85rem;
+  margin-top:.3rem; letter-spacing:.1em;
+}
+.rune-div {
+  display:flex; align-items:center; gap:.8rem;
+  margin:.6rem auto; width:fit-content;
+}
+.rune-div span { color:var(--rune-gold); font-size:1.2rem; opacity:.7; }
+.rune-div::before,.rune-div::after {
+  content:''; width:50px; height:1px;
+  background:linear-gradient(90deg,transparent,var(--rune-gold),transparent);
+}
+
+/* ── MODE BAR ── */
+.mode-bar {
+  display:flex; margin-bottom:1rem;
+  border:1px solid rgba(200,146,42,.35);
+  border-radius:4px; overflow:hidden;
+}
+.mode-btn {
+  background:transparent; border:none;
+  color:#a08060; font-family:'Cinzel',serif;
+  font-size:.65rem; letter-spacing:.08em;
+  padding:.4rem .9rem; cursor:pointer; transition:all .15s;
+  border-right:1px solid rgba(200,146,42,.2);
+}
+.mode-btn:last-child { border-right:none; }
+.mode-btn:hover { background:rgba(200,146,42,.08); color:var(--rune-gold); }
+.mode-btn.active {
+  background:rgba(200,146,42,.18); color:var(--rune-gold);
+  text-shadow:0 0 8px rgba(200,146,42,.4);
+}
+
+/* ── YEAR LABEL ── */
+.year-label {
+  font-family:'Cinzel',serif; color:var(--rune-gold);
+  font-size:.8rem; letter-spacing:.2em; opacity:.7;
+  margin-bottom:.8rem;
+}
+
+/* ── STAVE PAIR WRAPPER ── */
+.stave-pair {
+  display:flex;
+  gap: clamp(2.5rem, 8vw, 5rem);
+  align-items:flex-start;
+  justify-content:center;
+  width:100%;
+  max-width:360px;
+}
+
+/* ── SINGLE STAVE COLUMN ── */
+.stave-col {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+}
+
+.half-label {
+  font-family:'Cinzel',serif;
+  font-size:.65rem; color:var(--rune-gold);
+  letter-spacing:.15em; text-transform:uppercase;
+  opacity:.75; margin-bottom:.5rem;
+}
+
+/* ── STAVE PLANK (SVG-drawn wood feel) ── */
+.stave-plank {
+  position:relative;
+  width: var(--stave-w);
+  background:
+    linear-gradient(90deg,
+      #120802 0%,
+      #2e1508 6%,
+      #5a2e10 18%,
+      #6e3a16 35%,
+      #7a4420 50%,
+      #6e3a16 65%,
+      #5a2e10 82%,
+      #2e1508 94%,
+      #120802 100%);
+  box-shadow:
+    inset 3px  0 8px rgba(0,0,0,.55),
+    inset -3px 0 8px rgba(0,0,0,.55),
+    5px 0 14px rgba(0,0,0,.7),
+    -3px 0 10px rgba(0,0,0,.5);
+  /* grain overlay via repeating gradient */
+  background-size: 100% 100%;
+}
+/* subtle grain lines */
+.stave-plank::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    repeating-linear-gradient(180deg,
+      transparent 0, transparent 7px,
+      rgba(0,0,0,.04) 7px, rgba(0,0,0,.04) 8px),
+    repeating-linear-gradient(180deg,
+      transparent 0, transparent 19px,
+      rgba(255,255,255,.025) 19px, rgba(255,255,255,.025) 20px);
+}
+
+/* top & bottom end-grain caps */
+.cap {
+  width: var(--stave-w);
+  height: 10px;
+}
+.cap.top {
+  background: radial-gradient(ellipse at 50% 30%, #8a5030 0%, #3e1c08 60%, #1a0a04 100%);
+  border-radius:8px 8px 0 0;
+  box-shadow: 0 -3px 6px rgba(0,0,0,.5);
+}
+.cap.bottom {
+  background: radial-gradient(ellipse at 50% 70%, #5a2e10 0%, #220e04 70%, #110602 100%);
+  border-radius:0 0 10px 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.7);
+}
+
+/* month divider band on plank */
+.month-band {
+  position:relative;
+  width:100%;
+  border-top: 1.5px solid rgba(160,110,50,.45);
+}
+.month-band:first-child { border-top:none; }
+
+.month-tag {
+  position:absolute;
+  left:50%; transform:translateX(-50%);
+  top: -9px;
+  font-family:'Cinzel',serif;
+  font-size:6.5px; font-weight:700;
+  color: var(--rune-gold);
+  background: #2e1508;
+  border:1px solid rgba(200,146,42,.35);
+  border-radius:2px;
+  padding:0 3px;
+  letter-spacing:.06em;
+  white-space:nowrap;
+  z-index:2;
+  text-shadow:0 1px 3px rgba(0,0,0,.9);
+}
+
+/* ── DAY SLOT ── */
+.day-slot {
+  position:relative;
+  width:100%;
+  height: var(--day-h);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition: background .1s;
+}
+.day-slot:hover { background: rgba(255,200,100,.07); }
+.day-slot.selected { background: rgba(255,200,100,.12); }
+
+/* The carved mark */
+.mark {
+  position:absolute;
+  left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column;
+  align-items:center; gap:0;
+}
+
+/* vertical stem */
+.stem {
+  width:2px; height:12px;
+  background:rgba(200,160,80,.55);
+  border-radius:1px;
+}
+/* horizontal crossbar (for feasts) */
+.cross {
+  width:10px; height:2px;
+  border-radius:1px;
+  margin-bottom:-1px; /* sits above stem */
+}
+
+.day-slot.sunday   .stem { width:3px; height:16px; background:var(--rune-gold); box-shadow:0 0 4px rgba(200,146,42,.6); }
+.day-slot.today    .stem { background:#ff6644; box-shadow:0 0 6px rgba(255,100,68,.8); width:3px; }
+.day-slot.feast    .stem { background:var(--rune-red); }
+.day-slot.feast    .cross { background:var(--rune-red); }
+.day-slot.moveable .stem { background:var(--move-org); }
+.day-slot.moveable .cross { background:var(--move-org); }
+.day-slot.today.feast    .stem { background:#ff6644; }
+.day-slot.today.moveable .stem { background:#ff6644; }
+
+/* golden number badge */
+.gn-badge {
+  position:absolute;
+  top:1px; right:3px;
+  font-family:'Cinzel',serif;
+  font-size:7px; font-weight:700;
+  color:var(--rune-gold);
+  background:rgba(14,6,2,.85);
+  border-radius:2px; padding:0 1.5px;
+  line-height:1.2;
+  text-shadow:0 0 3px rgba(0,0,0,1);
+  pointer-events:none;
+}
+
+/* day number label (left side) */
+.day-num {
+  position:absolute;
+  right: calc(100% + 5px);
+  font-size:7px;
+  color:rgba(180,140,80,.5);
+  font-family:'Cinzel',serif;
+  white-space:nowrap;
+  line-height:1;
+  user-select:none;
+}
+/* show only on 1st, 5th, 10th, 15th, 20th, 25th */
+.day-num.hidden { display:none; }
+
+/* ── POPUP ── */
+.popup-overlay {
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:50;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+}
+.popup-overlay.open { display:flex; }
+
+.popup {
+  background: var(--parchment);
+  background-image:
+    radial-gradient(ellipse at 20% 8%, rgba(255,255,200,.3) 0%, transparent 55%);
+  width:100%; max-width:460px;
+  border-radius:14px 14px 0 0;
+  padding:1.4rem 1.5rem 2.2rem;
+  position:relative;
+  box-shadow:0 -8px 40px rgba(0,0,0,.7);
+  border-top:3px solid;
+  border-image: linear-gradient(90deg,var(--rune-red),var(--rune-gold),var(--rune-red)) 1;
+  color: var(--bark);
+  max-height:82vh; overflow-y:auto;
+  animation: slideUp .22s ease;
+}
+@keyframes slideUp {
+  from { transform:translateY(40px); opacity:0; }
+  to   { transform:translateY(0);    opacity:1; }
+}
+
+.popup-close {
+  position:absolute; top:.9rem; right:1rem;
+  background:transparent; border:none;
+  color:#8a5020; font-size:1.4rem; cursor:pointer; line-height:1;
+}
+
+.popup-date {
+  font-family:'Cinzel',serif; font-size:1.5rem;
+  color:var(--bark); font-weight:600; line-height:1.1;
+}
+.popup-tradname {
+  font-style:italic; color:var(--rune-red);
+  font-size:.92rem; margin-top:.15rem; min-height:1.2rem;
+}
+.popup-sub {
+  font-size:.8rem; color:#7a4020; font-style:italic;
+  margin-top:.1rem; margin-bottom:.9rem;
+  border-bottom:1px solid rgba(100,60,20,.2);
+  padding-bottom:.7rem;
+}
+.popup-gn {
+  display:inline-flex; align-items:center; gap:.4rem;
+  background:rgba(200,146,42,.1); border:1px solid rgba(200,146,42,.3);
+  border-radius:3px; padding:.15rem .55rem;
+  font-family:'Cinzel',serif; font-size:.75rem;
+  color:var(--rune-gold); margin-bottom:.8rem;
+}
+.popup-season {
+  display:flex; align-items:center; gap:.8rem; margin-bottom:.8rem;
+}
+.season-emoji { font-size:2.2rem; }
+.season-info .slabel {
+  font-family:'Cinzel',serif; font-size:.65rem;
+  letter-spacing:.1em; color:var(--rune-red); text-transform:uppercase;
+}
+.season-info .sval { font-size:.9rem; color:var(--bark); }
+.season-rune { font-size:1.8rem; color:var(--rune-gold); margin-left:auto; }
+
+.feast-box {
+  border-left:3px solid var(--rune-red);
+  padding:.65rem .85rem; margin-top:.5rem;
+  border-radius:0 3px 3px 0;
+  background:rgba(139,38,21,.06);
+}
+.feast-box.mov { border-left-color:var(--move-org); background:rgba(176,64,0,.06); }
+.feast-name {
+  font-family:'Cinzel',serif; font-size:.9rem;
+  color:var(--rune-red); font-weight:600;
+}
+.feast-box.mov .feast-name { color:var(--move-org); }
+.feast-folk { font-style:italic; font-size:.8rem; color:#7a4010; margin-top:.1rem; }
+.feast-desc { font-size:.78rem; color:#5a3018; margin-top:.2rem; font-style:italic; line-height:1.5; }
+
+.moon-row { display:flex; gap:.5rem; margin-top:.8rem; flex-wrap:wrap; }
+.moon-tag {
+  background:rgba(44,26,14,.08);
+  border:1px solid rgba(100,70,30,.3);
+  border-radius:20px; padding:.18rem .65rem;
+  font-size:.75rem; color:#5a3018;
+}
+
+/* ── LEGEND ── */
+.legend {
+  display:flex; flex-wrap:wrap; gap:.8rem 1.2rem;
+  margin-top:2rem; justify-content:center; opacity:.65;
+}
+.leg {
+  display:flex; align-items:center; gap:.35rem;
+  font-size:.68rem; color:#a08060; font-style:italic;
+}
+.lm { width:3px; height:13px; border-radius:1px; }
+.lm-d { background:rgba(200,160,80,.6); }
+.lm-s { background:var(--rune-gold); }
+.lm-f { background:var(--rune-red); }
+.lm-m { background:var(--move-org); }
+.lm-t { background:#ff6644; }
+.lm-g { width:8px; height:8px; border-radius:50%; background:var(--rune-gold); border:1.5px solid rgba(200,146,42,.4); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>PRIMSTAV</h1>
+  <div class="rune-div"><span>ᚱ</span></div>
+  <p class="subtitle">Den norske bondealmanak</p>
+</header>
+
+<div class="mode-bar">
+  <button class="mode-btn active" data-mode="kirke">Kirkenavn</button>
+  <button class="mode-btn" data-mode="folk">Folkenavn</button>
+  <button class="mode-btn" data-mode="dag">Dagsnavn</button>
+</div>
+
+<div class="year-label" id="yearLabel"></div>
+
+<div class="stave-pair">
+  <div class="stave-col" id="winterCol">
+    <div class="half-label">Vinter ᛁ</div>
+    <div class="cap top"></div>
+    <div class="stave-plank" id="winterStave"></div>
+    <div class="cap bottom"></div>
+  </div>
+  <div class="stave-col" id="summerCol">
+    <div class="half-label">Sommer ᛋ</div>
+    <div class="cap top"></div>
+    <div class="stave-plank" id="summerStave"></div>
+    <div class="cap bottom"></div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="leg"><div class="lm lm-d"></div>Hverdag</div>
+  <div class="leg"><div class="lm lm-s"></div>Søndag</div>
+  <div class="leg"><div class="lm lm-f"></div>Fast helligdag</div>
+  <div class="leg"><div class="lm lm-m"></div>Bevegelig høytid</div>
+  <div class="leg"><div class="lm lm-t"></div>I dag</div>
+  <div class="leg"><div class="lm lm-g"></div>Gyllentall</div>
+</div>
+
+<!-- Popup -->
+<div class="popup-overlay" id="overlay">
+  <div class="popup" id="popup">
+    <button class="popup-close" id="popupClose">×</button>
+    <div class="popup-date"    id="pDate"></div>
+    <div class="popup-tradname" id="pTrad"></div>
+    <div class="popup-sub"    id="pSub"></div>
+    <div id="pGolden"></div>
+    <div class="popup-season" id="pSeason"></div>
+    <div id="pFeast"></div>
+    <div class="moon-row"     id="pMoon"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// DATA TABLES
+// ══════════════════════════════════════════════
+const WD  = ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'];
+const MON = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
+const RUNES = ['ᚠ','ᚢ','ᚦ','ᚬ','ᚱ','ᚴ','ᚼ','ᚾ','ᛁ','ᛅ','ᛋ','ᛏ','ᛒ','ᛘ','ᛚ','ᛦ'];
+
+const FIXED = {
+  '1-1':  {k:'Nyttårsdag',          f:'Nyttårsdagen',       d:'Omskjærelsesdagen',    desc:'Kristi omskjærelse. Nytt år begynner.',s:'☀️'},
+  '1-6':  {k:'Heilag Tre Kongers',  f:'Trettendagen',       d:'Epifanias',            desc:'Tre vise menn fra Østen. Slutten på julefeiringen.',s:'⭐'},
+  '1-13': {k:'Knuts dag',           f:'Tyvendedagen',       d:'Knutsmesse',           desc:'«Tyvendedagen jul er omme.» Julen avsluttes.',s:'🕯️'},
+  '1-20': {k:'Fabian og Sebastian', f:'Fabian-Sebastians dag',d:'Sebastiansdag',      desc:'Martyrene Fabianus og Sebastianus.',s:'🏹'},
+  '1-25': {k:'Paulus omvendelse',   f:'Paulsmesse',         d:'Paulus-dag',           desc:'Paulus faller av hesten på vei til Damaskus.',s:'⚡'},
+  '2-2':  {k:'Kyndelsmesse',        f:'Kyndelmesse',        d:'Mariæ renselsesdag',   desc:'Lysene i kirken velsignes. Midtvinters.',s:'🕯️'},
+  '2-14': {k:'Valentinsdagen',      f:'Valentinsdag',       d:'Valentinsmesse',       desc:'Martyren Valentinus. Kjærlighetens dag.',s:'❤️'},
+  '2-24': {k:'Mattiasmesse',        f:'Mattiasdag',         d:'Mattiasmesse',         desc:'Apostelen Mattias valgt til å erstatte Judas.',s:'🎲'},
+  '3-12': {k:'Gregoriusmesse',      f:'Gregoriusdag',       d:'Gregoriusdagen',       desc:'Pave Gregorius den store. Skolestart i gammel tid.',s:'📜'},
+  '3-25': {k:'Mariæ bebudelse',     f:'Mariamesse om våren',d:'Jomfru-Marias-dag',    desc:'Engelen Gabriel kunngjør at Maria skal føde Guds sønn.',s:'🌿'},
+  '4-14': {k:'Tiburti-messe',       f:'Tiburtius-dag',      d:'Tiburtiusmesse',       desc:'Tradisjonelt begynnelse av sommerpløying.',s:'🌱'},
+  '4-23': {k:'Jørgensmesse',        f:'Jørgensdagen',       d:'Georgsmesse',          desc:'Sankt Georg draper dragen. Vårens seier over vinteren.',s:'⚔️'},
+  '4-25': {k:'Markusmesse',         f:'Markusdag',          d:'Markusmesse',          desc:'Bønneprosesjon rundt åkrene for god høst.',s:'🌾'},
+  '5-1':  {k:'Filipp-Jakob-messe',  f:'Filippus-dag',       d:'Filipsmesse',          desc:'Apostlene Filip og Jakob. Sommerhalvåret begynner.',s:'☀️'},
+  '5-3':  {k:'Kors-oppfinnelsen',   f:'Korsmesse om våren', d:'Inventio Crucis',      desc:'Helena finner det sanne korset i Jerusalem.',s:'✝️'},
+  '6-24': {k:'Jonsok',              f:'Sankthansdag',       d:'Jonsok-natt',          desc:'Johannes Døperens fødsel. Midsommer. Bål tennes.',s:'🔥'},
+  '6-29': {k:'Peter og Pauls dag',  f:'Petersmesse',        d:'Petri-Pauli-dag',      desc:'Apostlene Peter og Paulus. Rettspraksis.',s:'⚓'},
+  '7-25': {k:'Jakobsmesse',         f:'Jakobsdag',          d:'Jakobsmesse',          desc:'Apostelen Jakob den eldre. Pilegrimsrute til Santiago.',s:'🐚'},
+  '8-1':  {k:'Petersmesse',         f:'Peters lenkefall',   d:'Petri ad vincula',     desc:'Peters lenkefall. Ny tidsregning for høst.',s:'⛓️'},
+  '8-10': {k:'Laurentiusmesse',     f:'Lavransmesse',       d:'Lorensdag',            desc:'Martyren Laurentius. «Laurentiusgråt» — augustregnet.',s:'💧'},
+  '8-15': {k:'Mariæ himmelfartsdag',f:'Vor-Frue-messe',     d:'Assumptionis-dag',     desc:'Jomfru Maria tas opp til himmelen.',s:'🌸'},
+  '8-24': {k:'Bartolomeusmesse',    f:'Bartolomeus-dag',    d:'Bartolomeusmesse',     desc:'Apostelen Bartolomeus. Sluttmarkering av høysommer.',s:'🔪'},
+  '8-29': {k:'Johannes halshugning',f:'Jonsok-hals',        d:'Decollatio Johannis',  desc:'Johannes Døperens martyrium. Slutten på kornhøsten.',s:'🌾'},
+  '9-8':  {k:'Mariæ fødselsdagen',  f:'Vor-Frue-messe høst',d:'Nativitatis Mariæ',   desc:'Jomfru Marias fødsel. Bønn for god avling.',s:'🌹'},
+  '9-14': {k:'Kors-opphøyelsen',    f:'Korsmesse om høsten',d:'Exaltatio Crucis',     desc:'Opphøyelsen av det hellige kors. Høst begynner.',s:'✝️'},
+  '9-21': {k:'Matteusmesse',        f:'Matteusdag',         d:'Matteusmesse',         desc:'Apostelen og evangelisten Matteus.',s:'📖'},
+  '9-29': {k:'Mikkelsmesse',        f:'Mikkelsdagen',       d:'Mikkelsdag',           desc:'Erkeengelen Mikael. Kveget tas inn. Jordleie betales.',s:'⚖️'},
+  '10-28':{k:'Simon og Judas dag',  f:'Simonsdag',          d:'Simonidag',            desc:'Apostlene Simon og Judas. Vinterforberedelser.',s:'❄️'},
+  '11-1': {k:'Allehelgensdag',      f:'Alle-heilage-dag',   d:'Alle-heilag-dag',      desc:'Alle hellige minnes. Forbønn for de avdøde.',s:'🕯️'},
+  '11-11':{k:'Mårtensmesse',        f:'Mårtensdagen',       d:'Mortensdag',           desc:'Sankt Martin av Tours. Gjess slaktes. Vintertida begynner.',s:'🪿'},
+  '11-25':{k:'Katarinamesse',       f:'Katarinadag',        d:'Katarinadagen',        desc:'Katarina av Aleksandria. Spinnerinnenes festdag.',s:'🌀'},
+  '11-30':{k:'Andreasmesse',        f:'Andreasdag',         d:'Andreasdagen',         desc:'Apostelen Andreas. Nyttårsforberedelse i bondekulturen.',s:'🎣'},
+  '12-13':{k:'Luciadagen',          f:'Lussi-natt',         d:'Luciadagen',           desc:'Lyset i mørket. Lucia bærer lys. «Lussenatten».',s:'🕯️'},
+  '12-21':{k:'Tommasmesse',         f:'Tomasdag',           d:'Tomas-dag',            desc:'Apostelen Tomas. Vintersolverv. Korteste dag.',s:'🌑'},
+  '12-24':{k:'Julaften',            f:'Julaftan',           d:'Vigilia Nativitatis',  desc:'Julenattens vigilie. Midtvintersblot i nordisk tradisjon.',s:'🌟'},
+  '12-25':{k:'Juledag',             f:'Første juledag',     d:'Nativitas-dag',        desc:'Kristi fødsel. Midt i den mørke vinteren — lyset blir født.',s:'⭐'},
+  '12-26':{k:'Stefansmesse',        f:'Andre juledag',      d:'Stefansdag',           desc:'Den første kristne martyr. Riddere rir rundt kirken.',s:'🐴'},
+  '12-27':{k:'Johannes apostelmesse',f:'Tredje juledag',    d:'Johannesdagen',        desc:'Johannes apostelen og evangelisten.',s:'📖'},
+  '12-31':{k:'Nyttårsaften',        f:'Nyttårskvelden',     d:'Silvesterdagen',       desc:'Siste dag i Herren år. Nytt år forestår.',s:'🔔'},
+};
+
+const DAYNAMES = {
+  '1-2':'Makarius','1-3':'Genoveva','1-4':'Rigobert','1-5':'Simeon','1-7':'Knut','1-8':'Erhard',
+  '1-9':'Julian','1-10':'Agaton','1-11':'Hyginus','1-12':'Arkadius','1-14':'Felix','1-15':'Maurus',
+  '1-16':'Marcellus','1-17':'Anton','1-18':'Peter av Roma','1-19':'Marius','1-21':'Agnes',
+  '1-22':'Vincentius','1-23':'Ildefons','1-24':'Timoteus','1-26':'Polykarpus',
+  '1-27':'Johannes Chrysostomos','1-28':'Thomas Aquinas','1-29':'Valerian','1-30':'Aldegunde','1-31':'Nils',
+  '2-1':'Brigitte','2-3':'Blasius','2-4':'Veronika','2-5':'Agata','2-6':'Dorothea','2-7':'Romuald',
+  '2-8':'Johannes','2-9':'Apollonia','2-10':'Scholastika','2-11':'Lourdes','2-12':'Euladius',
+  '2-13':'Katarina','2-15':'Faustin','2-16':'Juliana','2-17':'Donat','2-18':'Simeon',
+  '2-19':'Bonifatius','2-20':'Eleuther','2-21':'Irene','2-22':'Kathedra Petri','2-23':'Polykarpus',
+  '2-25':'Matthias','2-26':'Alexander','2-27':'Leander','2-28':'Oskar',
+  '3-1':'Albin','3-2':'Henrik','3-3':'Kunigunde','3-4':'Kasimir','3-5':'Eusebius','3-6':'Felicitas',
+  '3-7':'Thomas','3-8':'Johan','3-9':'Franziska','3-10':'Alexander','3-11':'Eulogius',
+  '3-13':'Nicephor','3-14':'Matilda','3-15':'Klemens','3-16':'Herbert','3-17':'Patrik',
+  '3-18':'Edvard','3-19':'Josef','3-20':'Wulfram','3-21':'Benedikt','3-22':'Lea',
+  '3-23':'Turibius','3-24':'Irenæus','3-26':'Luidger','3-27':'Rupert','3-28':'Guntram',
+  '3-29':'Eustasio','3-30':'Amadeus','3-31':'Balbina',
+  '4-1':'Hugo','4-2':'Frans','4-3':'Irene','4-4':'Isidor','4-5':'Vikentius Ferrer','4-6':'Sixtus',
+  '4-7':'Johannes Bapt.','4-8':'Perpetua','4-9':'Kasimir','4-10':'Ezekiel','4-11':'Stanislav',
+  '4-12':'Julius','4-13':'Hermenegild','4-15':'Anastasia','4-16':'Magnus','4-17':'Anicetus',
+  '4-18':'Apollonius','4-19':'Emma','4-20':'Hildegund','4-21':'Ansgar','4-22':'Kajus',
+  '4-24':'Fidel','4-26':'Marcellin','4-27':'Zita','4-28':'Peter','4-29':'Katarina av Siena','4-30':'Pius V',
+  '5-2':'Atanasios','5-4':'Florianus','5-5':'Pils','5-6':'Dominik','5-7':'Stanislaw','5-8':'Victor',
+  '5-9':'Gregor','5-10':'Antoninus','5-11':'Gangulf','5-12':'Pankratius','5-13':'Servatius',
+  '5-14':'Bonifatius','5-15':'Sofia','5-16':'Peregrin','5-17':'Paschalis','5-18':'Venantius',
+  '5-19':'Peter','5-20':'Bernardin','5-21':'Kristoffer','5-22':'Rita','5-23':'Desidérius',
+  '5-24':'David','5-25':'Gregor VII','5-26':'Filip Neri','5-27':'Augustin av Canterbury',
+  '5-28':'German','5-29':'Maximinus','5-30':'Johanna av Arc','5-31':'Mariadagen',
+  '6-1':'Justin','6-2':'Erasmus','6-3':'Kevin','6-4':'Quirinus','6-5':'Bonifatius','6-6':'Norbert',
+  '6-7':'Robert','6-8':'Medard','6-9':'Efrem','6-10':'Margaret','6-11':'Barnabas',
+  '6-12':'Onuphrius','6-13':'Antoni av Padua','6-14':'Valerius','6-15':'Vitus','6-16':'Benno',
+  '6-17':'Rainer','6-18':'Markus','6-19':'Gervasius','6-20':'Silverius','6-21':'Alois',
+  '6-22':'Paulinus','6-23':'Adelheid','6-25':'Eloi','6-26':'Johannes','6-27':'Sirenæus',
+  '6-28':'Leo II','6-30':'Otto',
+  '7-1':'Aaron','7-2':'Mariæ hjemsøkelse','7-3':'Tomas','7-4':'Ulrik','7-5':'Anastasia',
+  '7-6':'Goar','7-7':'Willibald','7-8':'Kilian','7-9':'Anatol','7-10':'Rufin','7-11':'Benedikt',
+  '7-12':'Nabor','7-13':'Henrik','7-14':'Kamillus','7-15':'Bonaventura',
+  '7-16':'Vår Frue av Karmel','7-17':'Alexius','7-18':'Fredrik','7-19':'Arsenius',
+  '7-20':'Margarita','7-21':'Daniel','7-22':'Maria Magdalena','7-23':'Birgitta',
+  '7-24':'Kristina','7-26':'Anne','7-27':'Pantaleon','7-28':'Innocent','7-29':'Marta',
+  '7-30':'Peter Chrysologus','7-31':'Ignatius av Loyola',
+  '8-2':'Eusebius','8-3':'Lydia','8-4':'Dominikus','8-5':'Oswald','8-6':'Forklaringsdagen',
+  '8-7':'Kajetan','8-8':'Cyriacus','8-9':'Roman','8-11':'Klara','8-12':'Euplus',
+  '8-13':'Pontianus','8-14':'Maximilian','8-16':'Roch','8-17':'Hyasint','8-18':'Helena',
+  '8-19':'Johannes Eudes','8-20':'Bernhard','8-21':'Pius X','8-22':'Timoteus',
+  '8-23':'Rosa av Lima','8-25':'Ludvig','8-26':'Zefyrinus','8-27':'Monika','8-28':'Augustin',
+  '8-30':'Felix','8-31':'Raymund',
+  '9-1':'Giles','9-2':'Stefan','9-3':'Gregor den store','9-4':'Marsellin','9-5':'Moder Teresa',
+  '9-6':'Magnus','9-7':'Regina','9-9':'Petrus Claver','9-10':'Nils','9-11':'Protus',
+  '9-12':'Maria','9-13':'Johannes','9-15':'Smertenes Mor','9-16':'Kornelius',
+  '9-17':'Hildegard','9-18':'Johan','9-19':'Januarius','9-20':'Eustakios','9-22':'Mauritius',
+  '9-23':'Linus','9-24':'Gerhard','9-25':'Kleophas','9-26':'Kosmas','9-27':'Vinsent av Paul',
+  '9-28':'Venseslaus','9-30':'Hieronymus',
+  '10-1':'Teresia av Lisieux','10-2':'Skytsengledagen','10-3':'Gerard','10-4':'Frans av Assisi',
+  '10-5':'Placidus','10-6':'Bruno','10-7':'Vår Frue av Rosenkransen','10-8':'Birgitta',
+  '10-9':'Dionysios','10-10':'Frans Borgia','10-13':'Edvard','10-14':'Kalixtus',
+  '10-15':'Teresia av Ávila','10-16':'Hedvig','10-17':'Ignatius','10-18':'Lukas',
+  '10-19':'Paulus av Korset','10-20':'Johan Cantius','10-21':'Ursola',
+  '10-22':'Johannes Paulus II','10-23':'Johan av Capistrano','10-24':'Anton Claret',
+  '10-25':'Krisantos','10-26':'Evaristus','10-27':'Frumentius','10-29':'Narsai',
+  '10-30':'Alfons','10-31':'Wolfgang',
+  '11-3':'Martin de Porres','11-4':'Karl Borromeo','11-5':'Bertille','11-6':'Leonard',
+  '11-7':'Engelbert','11-8':'Gottfried','11-9':'Teodor','11-10':'Leo den store',
+  '11-12':'Josafat','11-13':'Stanislaw Kostka','11-14':'Nikolaus Tavelic',
+  '11-15':'Albert den store','11-16':'Gertrud','11-17':'Elisabet','11-18':'Odo',
+  '11-19':'Mechtild','11-20':'Edmund','11-21':'Presentasjonen av Maria',
+  '11-22':'Cecilia','11-23':'Clemens','11-24':'Krisogon','11-26':'Silvester',
+  '11-27':'Bilhild','11-28':'Jak av Marken','11-29':'Saturnin',
+  '12-1':'Natalia','12-2':'Bibiana','12-3':'Frans Xavier','12-4':'Barbara','12-5':'Sabbas',
+  '12-6':'Nils','12-7':'Ambrosius','12-8':'Marias uplettede unnfangelse',
+  '12-9':'Leokadia','12-10':'Lorettas dag','12-11':'Damasus','12-12':'Jane',
+  '12-14':'Johannes av Korset','12-15':'Christiane','12-16':'Adelheid','12-17':'Lazar',
+  '12-18':'Gratian','12-19':'Urban','12-20':'Timoteus','12-22':'Honoratus',
+  '12-23':'Johan of Kanty','12-28':'Uskyldige barns dag','12-29':'Thomas Becket','12-30':'Rogelius',
+};
+
+// Golden number table (metonic: gn = year%19+1)
+const GN_TABLE = {
+  1: [{m:1,d:23},{m:2,d:22},{m:3,d:23},{m:4,d:22},{m:5,d:21},{m:6,d:20},{m:7,d:19},{m:8,d:18},{m:9,d:16},{m:10,d:16},{m:11,d:14},{m:12,d:14}],
+  2: [{m:1,d:13},{m:2,d:11},{m:3,d:12},{m:4,d:11},{m:5,d:10},{m:6,d:9},{m:7,d:8},{m:8,d:7},{m:9,d:5},{m:10,d:5},{m:11,d:3},{m:12,d:3}],
+  3: [{m:1,d:2},{m:2,d:1},{m:3,d:2},{m:3,d:31},{m:4,d:30},{m:5,d:29},{m:6,d:28},{m:7,d:27},{m:8,d:26},{m:9,d:24},{m:10,d:24},{m:11,d:22},{m:12,d:22}],
+  4: [{m:1,d:21},{m:2,d:20},{m:3,d:21},{m:4,d:19},{m:5,d:18},{m:6,d:17},{m:7,d:16},{m:8,d:15},{m:9,d:13},{m:10,d:13},{m:11,d:11},{m:12,d:11}],
+  5: [{m:1,d:10},{m:2,d:9},{m:3,d:10},{m:4,d:9},{m:5,d:8},{m:6,d:6},{m:7,d:6},{m:8,d:4},{m:9,d:3},{m:10,d:2},{m:11,d:1},{m:11,d:30},{m:12,d:30}],
+  6: [{m:1,d:30},{m:2,d:28},{m:3,d:29},{m:4,d:28},{m:5,d:27},{m:6,d:26},{m:7,d:25},{m:8,d:24},{m:9,d:22},{m:10,d:22},{m:11,d:20},{m:12,d:19}],
+  7: [{m:1,d:18},{m:2,d:17},{m:3,d:18},{m:4,d:17},{m:5,d:16},{m:6,d:15},{m:7,d:14},{m:8,d:13},{m:9,d:11},{m:10,d:11},{m:11,d:9},{m:12,d:9}],
+  8: [{m:1,d:8},{m:2,d:6},{m:3,d:7},{m:4,d:6},{m:5,d:5},{m:6,d:4},{m:7,d:3},{m:8,d:2},{m:8,d:31},{m:9,d:30},{m:10,d:29},{m:11,d:28},{m:12,d:28}],
+  9: [{m:1,d:27},{m:2,d:26},{m:3,d:27},{m:4,d:25},{m:5,d:25},{m:6,d:23},{m:7,d:23},{m:8,d:21},{m:9,d:19},{m:10,d:19},{m:11,d:17},{m:12,d:17}],
+  10:[{m:1,d:16},{m:2,d:15},{m:3,d:15},{m:4,d:14},{m:5,d:14},{m:6,d:12},{m:7,d:12},{m:8,d:10},{m:9,d:9},{m:10,d:8},{m:11,d:7},{m:12,d:6}],
+  11:[{m:1,d:5},{m:2,d:4},{m:3,d:5},{m:4,d:3},{m:5,d:3},{m:6,d:1},{m:7,d:1},{m:7,d:30},{m:8,d:29},{m:9,d:27},{m:10,d:27},{m:11,d:25},{m:12,d:25}],
+  12:[{m:1,d:25},{m:2,d:23},{m:3,d:24},{m:4,d:23},{m:5,d:22},{m:6,d:21},{m:7,d:20},{m:8,d:19},{m:9,d:17},{m:10,d:16},{m:11,d:15},{m:12,d:14}],
+  13:[{m:1,d:13},{m:2,d:12},{m:3,d:13},{m:4,d:12},{m:5,d:11},{m:6,d:10},{m:7,d:9},{m:8,d:8},{m:9,d:6},{m:10,d:6},{m:11,d:4},{m:12,d:4}],
+  14:[{m:1,d:2},{m:2,d:1},{m:3,d:2},{m:4,d:1},{m:4,d:30},{m:5,d:30},{m:6,d:28},{m:7,d:28},{m:8,d:26},{m:9,d:25},{m:10,d:25},{m:11,d:23},{m:12,d:23}],
+  15:[{m:1,d:22},{m:2,d:21},{m:3,d:22},{m:4,d:21},{m:5,d:20},{m:6,d:18},{m:7,d:17},{m:8,d:16},{m:9,d:14},{m:10,d:14},{m:11,d:12},{m:12,d:12}],
+  16:[{m:1,d:11},{m:2,d:10},{m:3,d:11},{m:4,d:10},{m:5,d:9},{m:6,d:7},{m:7,d:7},{m:8,d:5},{m:9,d:4},{m:10,d:3},{m:11,d:2},{m:12,d:1},{m:12,d:31}],
+  17:[{m:1,d:31},{m:3,d:1},{m:3,d:30},{m:4,d:29},{m:5,d:28},{m:6,d:27},{m:7,d:26},{m:8,d:25},{m:9,d:23},{m:10,d:23},{m:11,d:21},{m:12,d:21}],
+  18:[{m:1,d:19},{m:2,d:18},{m:3,d:19},{m:4,d:18},{m:5,d:17},{m:6,d:16},{m:7,d:15},{m:8,d:14},{m:9,d:12},{m:10,d:12},{m:11,d:10},{m:12,d:10}],
+  19:[{m:1,d:8},{m:2,d:7},{m:3,d:8},{m:4,d:7},{m:5,d:6},{m:6,d:5},{m:7,d:4},{m:8,d:3},{m:9,d:1},{m:10,d:1},{m:10,d:30},{m:11,d:29},{m:12,d:29}],
+};
+
+// Easter (Anonymous Gregorian)
+function easter(yr) {
+  const a=yr%19,b=Math.floor(yr/100),c=yr%100,d=Math.floor(b/4),e=b%4;
+  const f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3);
+  const h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4;
+  const l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451);
+  const mo=Math.floor((h+l-7*m+114)/31),dy=((h+l-7*m+114)%31)+1;
+  return new Date(yr,mo-1,dy);
+}
+
+function moveable(yr) {
+  const E=easter(yr), add=n=>{const d=new Date(E);d.setDate(d.getDate()+n);return d;};
+  const key=dt=>`${dt.getMonth()+1}-${dt.getDate()}`;
+  const R={};
+  const s=(dt,k,f,d,desc,s)=>{ R[key(dt)]={k,f,d,desc,s,mov:true}; };
+  s(add(-49),'Quinquagesima','Halvfastes søndag','Quinquagesima','Søndag før fastetid.','🥞');
+  s(add(-48),'Fastelavn – mandag','Blåmandag','Fastelavn-mandag','Fastelavnsfeiringen.','🎭');
+  s(add(-47),'Fastelavn – tirsdag','Fettisdagen','Fettisdag','Siste dag før fasten. Man spiste fett mat.','🥐');
+  s(add(-46),'Askeonsdag','Askonsdag','Dies cinerum','Fastens første dag. Aska strykes i pannen.','⚫');
+  s(add(-14),'Midfaste-søndag','Middfast','Lætare søndag','Fjerde søndag i fasten.','🌼');
+  s(add(-7),'Palmesøndag','Palmasøndag','Palmarum','Jesu inntreden i Jerusalem.','🌿');
+  s(add(-3),'Skjærtorsdag','Grønne torsdag','Cena Domini','Den siste nattverd.','🫙');
+  s(add(-2),'Langfredag','Store fredag','Parasceve','Kristi korsfestelse og død.','✝️');
+  s(add(-1),'Påskeaften','Påskaaftan','Sabbato sancto','Den stille lørdag. Lysvake.','🕯️');
+  s(add(0),'Første påskedag','Påskedag','Resurrectio Domini','Kristi oppstandelse. Høytidenes høytid.','🥚');
+  s(add(1),'Andre påskedag','Påskemåndag','Lunes Paschæ','Emmaus-vandringen.','🐣');
+  s(add(39),'Kristi himmelfartsdag','Himmelfart','Ascensio','Kristus farer opp til himmelen.','☁️');
+  s(add(49),'Pinsedag','Pinse','Pentecoste','Den Hellige Ånd. 50 dager etter påske.','🔥');
+  s(add(50),'Andre pinsedag','Pinsemåndag','Lunes Pentecostes','Pinsefeiring fortsetter.','🕊️');
+  s(add(56),'Treenighetsdag','Trinitatis','Festum Trinitatis','Guds treenige natur feires.','△');
+  s(add(60),'Kristi Legemsfest','Fronleichnam','Corpus Christi','Eukaristiens fest.','🍞');
+  return R;
+}
+
+function moonPhase(date) {
+  const p=((((date-new Date(2000,0,6))/86400000)%29.53058867)+29.53058867)%29.53058867;
+  if(p<1.85)  return{e:'🌑',n:'Nymåne'};
+  if(p<7.38)  return{e:'🌒',n:'Tiltagende halvmåne'};
+  if(p<9.22)  return{e:'🌓',n:'Halvmåne'};
+  if(p<14.76) return{e:'🌔',n:'Tiltagende måne'};
+  if(p<16.61) return{e:'🌕',n:'Fullmåne'};
+  if(p<22.15) return{e:'🌖',n:'Avtagende måne'};
+  if(p<23.99) return{e:'🌗',n:'Halvmåne'};
+  return{e:'🌘',n:'Avtagende halvmåne'};
+}
+
+function season(m0) {
+  const m=m0+1;
+  if(m===12||m<=2) return{e:'❄️',n:'Vintermåned',r:'ᛁ'};
+  if(m<=5)         return{e:'🌿',n:'Vårmåned',r:'ᛒ'};
+  if(m<=8)         return{e:'☀️',n:'Sommermåned',r:'ᛋ'};
+  return{e:'🍂',n:'Høstmåned',r:'ᛏ'};
+}
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+const TODAY = new Date();
+const year  = TODAY.getFullYear();
+let nameMode = 'kirke';
+let moveables, gnSet, gnVal;
+
+function initYear() {
+  moveables = moveable(year);
+  const gn = (year%19)+1;
+  gnVal = gn;
+  gnSet = new Set();
+  (GN_TABLE[gn]||[]).forEach(({m,d})=>gnSet.add(`${m}-${d}`));
+}
+
+function getFeast(m0,d) {
+  const key=`${m0+1}-${d}`;
+  const fx=FIXED[key]; if(fx) return{...fx,mov:false};
+  return moveables[key]||null;
+}
+
+function label(feast) {
+  if(!feast) return'';
+  return nameMode==='kirke'?feast.k: nameMode==='folk'?feast.f: feast.d||feast.k;
+}
+
+function tradName(m0,d) {
+  const feast=getFeast(m0,d);
+  const key=`${m0+1}-${d}`;
+  if(nameMode==='dag') return feast?(feast.d||feast.k):(DAYNAMES[key]||'');
+  return feast?label(feast):'';
+}
+
+// ══════════════════════════════════════════════
+// BUILD STAVES
+// ══════════════════════════════════════════════
+function daysInMonth(y,m){return new Date(y,m+1,0).getDate();}
+
+// months 0-5 = winter side, 6-11 = summer side
+function buildHalf(plank, months) {
+  plank.innerHTML='';
+  months.forEach((m0,idx) => {
+    const days = daysInMonth(year, m0);
+    const band = document.createElement('div');
+    band.className='month-band';
+
+    // month label tab
+    const tag = document.createElement('div');
+    tag.className='month-tag';
+    tag.textContent = MON[m0].toUpperCase().slice(0,3);
+    band.appendChild(tag);
+
+    for(let d=1;d<=days;d++){
+      const dt    = new Date(year,m0,d);
+      const dow   = dt.getDay();
+      const isT   = dt.toDateString()===TODAY.toDateString();
+      const feast = getFeast(m0,d);
+      const gnKey = `${m0+1}-${d}`;
+      const isGN  = gnSet.has(gnKey);
+
+      const slot = document.createElement('div');
+      slot.className='day-slot';
+      if(dow===0)    slot.classList.add('sunday');
+      if(isT)        slot.classList.add('today');
+      if(feast?.mov) slot.classList.add('moveable');
+      else if(feast) slot.classList.add('feast');
+
+      // day number (sparse)
+      const showNum=[1,5,10,15,20,25].includes(d);
+      const numEl = document.createElement('div');
+      numEl.className='day-num'+(showNum?'':' hidden');
+      numEl.textContent=d;
+      slot.appendChild(numEl);
+
+      // the carved mark
+      const mark = document.createElement('div');
+      mark.className='mark';
+      if(feast){
+        const cross=document.createElement('div');
+        cross.className='cross';
+        mark.appendChild(cross);
+      }
+      const stem=document.createElement('div');
+      stem.className='stem';
+      mark.appendChild(stem);
+      slot.appendChild(mark);
+
+      // golden number badge
+      if(isGN){
+        const gn=document.createElement('div');
+        gn.className='gn-badge';
+        gn.textContent=gnVal;
+        slot.appendChild(gn);
+      }
+
+      slot.addEventListener('click',()=>openPopup(year,m0,d));
+      band.appendChild(slot);
+    }
+    plank.appendChild(band);
+  });
+}
+
+function buildStaves() {
+  buildHalf(document.getElementById('winterStave'), [0,1,2,3,4,5]);
+  buildHalf(document.getElementById('summerStave'), [6,7,8,9,10,11]);
+}
+
+// ══════════════════════════════════════════════
+// POPUP
+// ══════════════════════════════════════════════
+function openPopup(yr,m0,d){
+  const dt    = new Date(yr,m0,d);
+  const dow   = dt.getDay();
+  const feast = getFeast(m0,d);
+  const sea   = season(m0);
+  const moon  = moonPhase(dt);
+  const gnKey = `${m0+1}-${d}`;
+  const isGN  = gnSet.has(gnKey);
+  const isT   = dt.toDateString()===TODAY.toDateString();
+  const tn    = tradName(m0,d);
+
+  document.getElementById('pDate').textContent =
+    `${WD[dow]} ${d}. ${MON[m0].toLowerCase()}`;
+  document.getElementById('pTrad').textContent = tn;
+  document.getElementById('pSub').textContent  =
+    `${yr}` + (isT?' · I dag':'');
+
+  document.getElementById('pGolden').innerHTML = isGN
+    ?`<div class="popup-gn">🌙 Gyllentall ${gnVal} — ny-måne-dag</div>`:'';
+
+  document.getElementById('pSeason').innerHTML=`
+    <div class="season-emoji">${sea.e}</div>
+    <div class="season-info">
+      <div class="slabel">Primstav-merke</div>
+      <div class="sval">${sea.n}</div>
+    </div>
+    <div class="season-rune">${sea.r}</div>`;
+
+  if(feast){
+    const cls=feast.mov?'feast-box mov':'feast-box';
+    const lbl=label(feast);
+    const alt=(nameMode!=='folk'&&feast.f&&feast.f!==lbl)
+      ?`<div class="feast-folk">${feast.f}</div>`:'';
+    document.getElementById('pFeast').innerHTML=`
+      <div class="${cls}">
+        <div class="feast-name">${feast.s} ${lbl}</div>
+        ${alt}
+        <div class="feast-desc">${feast.desc}</div>
+      </div>`;
+  } else {
+    document.getElementById('pFeast').innerHTML='';
+  }
+
+  document.getElementById('pMoon').innerHTML=`
+    <div class="moon-tag">${moon.e} ${moon.n}</div>
+    <div class="moon-tag">${RUNES[((m0*30+d)%RUNES.length)]}</div>`;
+
+  document.getElementById('overlay').classList.add('open');
+
+  // scroll today's slot into view
+  document.querySelector('.day-slot.selected')?.classList.remove('selected');
+}
+
+document.getElementById('overlay').addEventListener('click', e=>{
+  if(e.target===e.currentTarget) document.getElementById('overlay').classList.remove('open');
+});
+document.getElementById('popupClose').addEventListener('click',()=>{
+  document.getElementById('overlay').classList.remove('open');
+});
+
+// ══════════════════════════════════════════════
+// MODE TOGGLE
+// ══════════════════════════════════════════════
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    nameMode=btn.dataset.mode;
+    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    buildStaves();
+  });
+});
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+document.getElementById('yearLabel').textContent = year;
+initYear();
+buildStaves();
+
+// scroll to today on load
+setTimeout(()=>{
+  const allSlots = document.querySelectorAll('.day-slot.today');
+  if(allSlots.length>0) allSlots[0].scrollIntoView({behavior:'smooth',block:'center'});
+},200);
+</script>
+</body>
+</html>
