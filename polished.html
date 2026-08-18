@@ -420,8 +420,8 @@ h1 {
 // ICONS — primstav symbols (emoji approximations)
 // ══════════════════════════════════════════════════════
 const ICONS = {
-  '1-1':'☀️','1-6':'⭐','1-13':'🕯️','1-20':'🏹','1-25':'⚡',
-  '2-2':'🕯️','2-14':'❤️','2-24':'🎲',
+  '1-1':'☀️','1-6':'⭐','1-11':'🪓','1-13':'🕯️','1-20':'🏹','1-25':'⚡',
+  '2-2':'🕯️','2-14':'❤️','2-24':'🎲','2-29':'👑',
   '3-12':'📜','3-25':'🌿',
   '4-14':'🌱','4-23':'⚔️','4-25':'🌾',
   '5-1':'☀️','5-3':'✝️',
@@ -430,7 +430,7 @@ const ICONS = {
   '8-1':'⛓️','8-10':'💧','8-15':'🌸','8-24':'🗡️','8-29':'🌾',
   '9-8':'🌹','9-14':'✝️','9-21':'📖','9-29':'⚖️',
   '10-28':'❄️',
-  '11-1':'🕯️','11-11':'🪿','11-25':'🌀','11-30':'🎣',
+  '11-1':'🕯️','11-2':'✝️','11-11':'🪿','11-25':'🌀','11-30':'🎣',
   '12-13':'🕯️','12-21':'🌑','12-24':'🌟','12-25':'⭐','12-26':'🐴','12-27':'📖','12-31':'🔔',
 };
 
@@ -441,12 +441,14 @@ const RUNES = ['ᚠ','ᚢ','ᚦ','ᚬ','ᚱ','ᚴ','ᚼ','ᚾ','ᛁ','ᛅ','ᛋ'
 const FIXED = {
   '1-1': {k:'Nyttårsdag',f:'Nyttårsdagen',d:'Omskjærelsesdagen',desc:'Kristi omskjærelse. Nytt år begynner.'},
   '1-6': {k:'Heilag Tre Kongers dag',f:'Trettendagen',d:'Epifanias',desc:'Tre vise menn fra Østen. Slutten på julefeiringen.'},
+  '1-11':{k:'Brictivamesse',f:'Brettemesse',d:'Brictiva virgo',desc:'Rester av julematen ble brettet i biter, kokt og spist sammen med det siste juleølet.'},
   '1-13':{k:'Knuts dag',f:'Tyvendedagen',d:'Knutsmesse',desc:'«Tyvendedagen jul er omme.» Julen avsluttes.'},
   '1-20':{k:'Fabian og Sebastian',f:'Fabian-Sebastians dag',d:'Sebastiansdag',desc:'Martyrene Fabianus og Sebastianus.'},
   '1-25':{k:'Paulus omvendelse',f:'Paulsmesse',d:'Paulus-dag',desc:'Paulus faller av hesten på vei til Damaskus.'},
   '2-2': {k:'Kyndelsmesse',f:'Kyndelmesse',d:'Mariæ renselsesdag',desc:'Lysene i kirken velsignes. Midtvinters.'},
   '2-14':{k:'Valentinsdagen',f:'Valentinsdag',d:'Valentinsmesse',desc:'Martyren Valentinus. Kjærlighetens dag.'},
   '2-24':{k:'Mattiasmesse',f:'Mattiasdag',d:'Mattiasmesse',desc:'Apostelen Mattias valgt til å erstatte Judas.'},
+  '2-29':{k:'Mattiasmesse (skuddår)',f:'Skuddårsdagen',d:'Laupårsdagen',desc:'Skuddårsdagen. Tradisjonelt den eneste dagen kvinner kunne fri til menn.'},
   '3-12':{k:'Gregoriusmesse',f:'Gregoriusdag',d:'Gregoriusdagen',desc:'Pave Gregorius den store. Skolestart i gammel tid.'},
   '3-25':{k:'Mariæ bebudelse',f:'Mariamesse om våren',d:'Jomfru-Marias-dag',desc:'Engelen Gabriel kunngjør at Maria skal føde Guds sønn.'},
   '4-14':{k:'Tiburti-messe',f:'Tiburtius-dag',d:'Tiburtiusmesse',desc:'Sommermål – sommerhalvåret begynner. Tradisjonelt start på sommerpløying.'},
@@ -469,6 +471,7 @@ const FIXED = {
   '10-14':{k:'Vinternatt',f:'Vinterdagen',d:'Vinternatt',desc:'Vinterhalvåret begynner. Kveget på bås, vinterforråd talt.'},
   '10-28':{k:'Simon og Judas dag',f:'Simonsdag',d:'Simonidag',desc:'Apostlene Simon og Judas. Vinterforberedelser.'},
   '11-1':{k:'Allehelgensdag',f:'Alle-heilage-dag',d:'Alle-heilag-dag',desc:'Alle hellige minnes. Forbønn for de avdøde.'},
+  '11-2':{k:'Allesjelersdag',f:'Alle-sjeler-dag',d:'Sjelemesse',desc:'Minnefest for de døde med rekviemmesse. Graver pyntes med blomster og lys.'},
   '11-11':{k:'Mårtensmesse',f:'Mårtensdagen',d:'Mortensdag',desc:'Sankt Martin av Tours. Gjess slaktes.'},
   '11-25':{k:'Katarinamesse',f:'Katarinadag',d:'Katarinadagen',desc:'Katarina av Aleksandria. Spinnerinnenes festdag.'},
   '11-30':{k:'Andreasmesse',f:'Andreasdag',d:'Andreasdagen',desc:'Apostelen Andreas. Nyttårsforberedelse i bondekulturen.'},

@@ -1,0 +1,17 @@
+{
+  "date": "11-2",
+  "type": "fixed",
+  "k": "Allesjelersdag",
+  "f": "Alle-sjeler-dag",
+  "d": "Sjelemesse",
+  "desc": "Minnefest for de døde med rekviemmesse. Graver pyntes med blomster og lys.",
+  "icon": "✝️",
+  "region": null,
+  "sources": [
+    {"citation": "Store norske leksikon, \"allesjelersdag\"", "ref": "https://snl.no/allesjelersdag", "type": "reference-work"},
+    {"citation": "Store norske leksikon, \"primstav\"", "ref": "https://snl.no/primstav", "type": "reference-work"},
+    {"citation": "Den katolske kirke, liturgisk kalender", "ref": "https://www.katolsk.no/biografier/historisk/kalender", "type": "liturgical"}
+  ],
+  "confidence": "confirmed",
+  "notes": "Celebrated since the 900s. SNL's primstav table confirms this was a carved merkedag (symbol: 'Kors, tre, strek' — cross, tree, line), which is worth recording since not every church calendar date made it onto a physical stave (see 1-12 Midtvinter, researched but excluded for exactly this reason). Merged into FIXED/ICONS in all three HTML files 2026-08-18."
+}

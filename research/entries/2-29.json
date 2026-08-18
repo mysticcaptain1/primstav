@@ -1,0 +1,17 @@
+{
+  "date": "2-29",
+  "type": "fixed",
+  "k": "Mattiasmesse (skuddår)",
+  "f": "Skuddårsdagen",
+  "d": "Laupårsdagen",
+  "desc": "Skuddårsdagen. Tradisjonelt den eneste dagen kvinner kunne fri til menn.",
+  "icon": "👑",
+  "region": null,
+  "sources": [
+    {"citation": "Store norske leksikon, \"primstav\"", "ref": "https://snl.no/primstav", "type": "reference-work"},
+    {"citation": "Store norske leksikon, \"mattismesse\"", "ref": "https://snl.no/mattismesse", "type": "reference-work"},
+    {"citation": "Musea i Nord-Østerdalen, \"Merkedager januar og februar\"", "ref": "https://museainordosterdalen.no/merkedager-januar-og-februar", "type": "museum"}
+  ],
+  "confidence": "confirmed",
+  "notes": "Calendrical wrinkle worth flagging: under the old Julian reckoning, the leap day was inserted between Feb 23 and 24, so Mattiasmesse itself shifted to Feb 25 in leap years — not Feb 29. SNL's primstav table nonetheless places 'Laupårsdagen (i skuddår), Mattismesse' at the Feb 29 position, which is the natural mapping onto the modern Gregorian leap day. This entry is deliberately scoped to the leap-year/women's-proposal-right folklore, not a restatement of the Matthias-the-apostle story already told at 2-24. Merged into FIXED/ICONS in all three HTML files 2026-08-18. Icon 👑 matches the sourced primstav symbol 'krone' (crown)."
+}
