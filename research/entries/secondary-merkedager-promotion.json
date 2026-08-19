@@ -1,0 +1,126 @@
+[
+  {"date":"2-3","k":"Blåsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager januar og februar\"","ref":"https://museainordosterdalen.no/merkedager-januar-og-februar","type":"museum"}
+  ],"notes":"Museum source: 'Not included on the Vingelen primstav' — day is documented in the broader tradition but wasn't universally carved regionally. Same nuance as 12-24."},
+  {"date":"2-22","k":"Persok","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager januar og februar\"","ref":"https://museainordosterdalen.no/merkedager-januar-og-februar","type":"museum"}
+  ],"notes":"Key symbol, same theme as Petersmesse (6-29)."},
+  {"date":"3-16","k":"Gudmundsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mars\"","ref":"https://museainordosterdalen.no/merkedager-mars","type":"museum"}
+  ],"notes":"Minor day, mainly eastern Norway per museum source."},
+  {"date":"3-17","k":"Gjertrudsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mars\"","ref":"https://museainordosterdalen.no/merkedager-mars","type":"museum"}
+  ],"notes":null},
+  {"date":"3-21","k":"Benediktsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mars\"","ref":"https://museainordosterdalen.no/merkedager-mars","type":"museum"}
+  ],"notes":null},
+  {"date":"4-16","k":"Magnusmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager april\"","ref":"https://museainordosterdalen.no/merkedager-april","type":"museum"}
+  ],"notes":null},
+  {"date":"5-15","k":"Hallvardsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mai\"","ref":"https://museainordosterdalen.no/merkedager-mai","type":"museum"}
+  ],"notes":"Oslo's patron saint; martyred and weighted with a millstone, which surfaced intact — the millstone symbol."},
+  {"date":"5-18","k":"Eriksmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mai\"","ref":"https://museainordosterdalen.no/merkedager-mai","type":"museum"}
+  ],"notes":null},
+  {"date":"5-22","k":"Bjørnevåk","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mai\"","ref":"https://museainordosterdalen.no/merkedager-mai","type":"museum"}
+  ],"notes":null},
+  {"date":"5-25","k":"Urbansmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mai\"","ref":"https://museainordosterdalen.no/merkedager-mai","type":"museum"}
+  ],"notes":null},
+  {"date":"6-3","k":"Rasmusmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juni\"","ref":"https://museainordosterdalen.no/merkedager-juni","type":"museum"}
+  ],"notes":null},
+  {"date":"6-9","k":"Kolumbamesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juni\"","ref":"https://museainordosterdalen.no/merkedager-juni","type":"museum"}
+  ],"notes":null},
+  {"date":"6-17","k":"Botolvsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juni\"","ref":"https://museainordosterdalen.no/merkedager-juni","type":"museum"}
+  ],"notes":null},
+  {"date":"7-2","k":"Svithunsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juli\"","ref":"https://museainordosterdalen.no/merkedager-juli","type":"museum"}
+  ],"notes":null},
+  {"date":"7-8","k":"Seljumannamesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juli\"","ref":"https://museainordosterdalen.no/merkedager-juli","type":"museum"}
+  ],"notes":"SNL calls this 'Seljumannamesse'; the museum source names it 'Sunnivadagen' — same date, same saint-cluster (Sunniva of Selje), different name emphasis. Noted as a naming variance, not a contradiction."},
+  {"date":"7-10","k":"Knutsok","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juli\"","ref":"https://museainordosterdalen.no/merkedager-juli","type":"museum"}
+  ],"notes":null},
+  {"date":"7-14","k":"Midtsommerdagen","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juli\"","ref":"https://museainordosterdalen.no/merkedager-juli","type":"museum"}
+  ],"notes":null},
+  {"date":"7-22","k":"Magdalimesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juli\"","ref":"https://museainordosterdalen.no/merkedager-juli","type":"museum"}
+  ],"notes":"Naming variance: museum source calls it 'Mari stol'; same date/saint (Mary Magdalene)."},
+  {"date":"7-27","k":"Sju sovere","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juli\"","ref":"https://museainordosterdalen.no/merkedager-juli","type":"museum"}
+  ],"notes":null},
+  {"date":"7-29","k":"Olsok","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juli\"","ref":"https://museainordosterdalen.no/merkedager-juli","type":"museum"}
+  ],"notes":"NOTABLE: this was missing from the app entirely before this pass. St. Olav's death at Stiklestad (1030) — one of the most historically significant days in the Norwegian calendar, described by the museum source as one of the great medieval church festivals in Norway. Worth flagging as the most surprising gap found in this whole research effort."},
+  {"date":"8-3","k":"Vesle Olsok","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager august\"","ref":"https://museainordosterdalen.no/merkedager-august","type":"museum"}
+  ],"notes":"The secondary Olav commemoration — his remains found incorrupt in 1031."},
+  {"date":"9-1","k":"Egidiusmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager september\"","ref":"https://museainordosterdalen.no/merkedager-september","type":"museum"}
+  ],"notes":null},
+  {"date":"10-4","k":"Fransmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager oktober\"","ref":"https://museainordosterdalen.no/merkedager-oktober","type":"museum"}
+  ],"notes":null},
+  {"date":"10-7","k":"Britemesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager oktober\"","ref":"https://museainordosterdalen.no/merkedager-oktober","type":"museum"}
+  ],"notes":null},
+  {"date":"10-18","k":"Lukasmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager oktober\"","ref":"https://museainordosterdalen.no/merkedager-oktober","type":"museum"}
+  ],"notes":null},
+  {"date":"11-23","k":"Klemetsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager november\"","ref":"https://museainordosterdalen.no/merkedager-november","type":"museum"}
+  ],"notes":null},
+  {"date":"12-4","k":"Barbromesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager desember\"","ref":"https://museainordosterdalen.no/merkedager-desember","type":"museum"}
+  ],"notes":null},
+  {"date":"12-6","k":"Nilsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager desember\"","ref":"https://museainordosterdalen.no/merkedager-desember","type":"museum"}
+  ],"notes":"Nikolaus av Myra — origin of the Santa Claus figure."},
+  {"date":"12-8","k":"Maria uplettede unnfangelse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager desember\"","ref":"https://museainordosterdalen.no/merkedager-desember","type":"museum"}
+  ],"notes":"SNL calls it 'Marimesse'; museum source names it explicitly as the Immaculate Conception. Same date/feast."},
+  {"date":"12-9","k":"Annamesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\" (full table)","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager desember\"","ref":"https://museainordosterdalen.no/merkedager-desember","type":"museum"}
+  ],"notes":null},
+  {"date":"10-14","k":"Vinternatt","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager oktober\"","ref":"https://museainordosterdalen.no/merkedager-oktober","type":"museum"}
+  ],"notes":"Not a new addition — this is a cross-file consistency fix. polished.html already had this entry (already confirmed in the earlier fixed-feasts backfill); index.html and dual.html were missing it entirely (had only a generic DAYNAMES 'Kalixtus' entry). Synced across all three files, and gave it an icon (🧤, mitten — the sourced primstav symbol per the museum source) since it had none before, and dual.html's rendering interpolates the icon unconditionally so an empty one would leave a stray space."}
+]
