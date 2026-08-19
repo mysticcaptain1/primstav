@@ -3,9 +3,9 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 1-2,nameday,Makarius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-3,nameday,Genoveva,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-4,nameday,Rigobert,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-1-5,nameday,Simeon,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+1-5,nameday,Simeon,,thin,"SNL's primstav table lists this as 'Trettendeaften', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Simeon') left as-is."
 1-6,fixed,Heilag Tre Kongers dag,Trettendagen,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
-1-7,nameday,Knut,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+1-7,nameday,Knut,,thin,"SNL's primstav table lists this as 'Eldbjørgdagen', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Knut') left as-is."
 1-8,nameday,Erhard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-9,nameday,Julian,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-10,nameday,Agaton,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -15,12 +15,12 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 1-14,nameday,Felix,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-15,nameday,Maurus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-16,nameday,Marcellus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-1-17,nameday,Anton,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+1-17,nameday,Anton,,thin,"SNL's primstav table lists this as 'Antonsmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Anton') left as-is."
 1-18,nameday,Peter av Roma,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-19,nameday,Marius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-20,fixed,Fabian og Sebastian,Fabian-Sebastians dag,thin,"Researched: in SNL's primstav table, but a second source wasn't confirmed in the museum-page excerpt fetched — stays proposed. See research/entries/fixed-feasts-backfill.json."
-1-21,nameday,Agnes,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-1-22,nameday,Vincentius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+1-21,nameday,Agnes,,thin,"SNL's primstav table lists this as 'Agnesmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Agnes') left as-is."
+1-22,nameday,Vincentius,,thin,"SNL's primstav table lists this as 'Vincentsmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Vincentius') left as-is."
 1-23,nameday,Ildefons,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-24,nameday,Timoteus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-25,fixed,Paulus omvendelse,Paulsmesse,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
@@ -30,22 +30,22 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 1-29,nameday,Valerian,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-30,nameday,Aldegunde,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 1-31,nameday,Nils,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-2-1,nameday,Brigitte,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+2-1,nameday,Brigitte,,thin,"SNL's primstav table lists this as 'Brigidamesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Brigitte') left as-is."
 2-2,fixed,Kyndelsmesse,Kyndelmesse,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 2-3,fixed,Blåsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 2-4,nameday,Veronika,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-2-5,nameday,Agata,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-2-6,nameday,Dorothea,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+2-5,nameday,Agata,,thin,"SNL's primstav table lists this as 'Ågotsmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Agata') left as-is."
+2-6,nameday,Dorothea,,thin,"SNL's primstav table lists this as 'Dortemesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Dorothea') left as-is."
 2-7,nameday,Romuald,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-8,nameday,Johannes,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-2-9,nameday,Apollonia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+2-9,nameday,Apollonia,,thin,"SNL's primstav table lists this as 'Apolloniemesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Apollonia') left as-is."
 2-10,nameday,Scholastika,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-11,nameday,Lourdes,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-12,nameday,Euladius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-13,nameday,Katarina,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-14,none,,,missing,"Removed 2026-08-19: was shipped content, but absent from both SNL's primstav table and the regional museum's month pages. No evidence this was ever a traditional primstav day. See research/entries/fixed-feasts-backfill.json for the original finding."
-2-15,nameday,Faustin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-2-16,nameday,Juliana,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+2-15,nameday,Faustin,,thin,"SNL's primstav table lists this as 'Sigfrid', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Faustin') left as-is."
+2-16,nameday,Juliana,,thin,"SNL's primstav table lists this as 'Julianemesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Juliana') left as-is."
 2-17,nameday,Donat,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-18,nameday,Simeon,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-19,nameday,Bonifatius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -145,9 +145,9 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 5-23,nameday,Desidérius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-24,nameday,David,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-25,fixed,Urbansmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
-5-26,nameday,Filip Neri,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+5-26,nameday,Filip Neri,,thin,"SNL's primstav table lists this as 'Augustinsmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Filip Neri') left as-is."
 5-27,nameday,Augustin av Canterbury,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-5-28,nameday,German,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+5-28,nameday,German,,thin,"SNL's primstav table lists this as 'Germanusmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('German') left as-is."
 5-29,nameday,Maximinus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-30,nameday,Johanna av Arc,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-31,nameday,Mariadagen,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -161,8 +161,8 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 6-8,nameday,Medard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-9,fixed,Kolumbamesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 6-10,nameday,Margaret,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-6-11,nameday,Barnabas,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-6-12,nameday,Onuphrius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+6-11,nameday,Barnabas,,thin,"SNL's primstav table lists this as 'Barnabasmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Barnabas') left as-is."
+6-12,nameday,Onuphrius,,thin,"SNL's primstav table lists this as 'Basilidismesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Onuphrius') left as-is."
 6-13,nameday,Antoni av Padua,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-14,nameday,Valerius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-15,nameday,Vitus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -172,7 +172,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 6-19,nameday,Gervasius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-20,nameday,Silverius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-21,nameday,Alois,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-6-22,nameday,Paulinus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+6-22,nameday,Paulinus,,thin,"SNL's primstav table lists this as 'Albansmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Paulinus') left as-is."
 6-23,nameday,Adelheid,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-24,fixed,Jonsok,Sankthansdag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 6-25,nameday,Eloi,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -195,7 +195,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 7-12,nameday,Nabor,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-13,nameday,Henrik,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-14,fixed,Midtsommerdagen,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
-7-15,nameday,Bonaventura,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-15,nameday,Bonaventura,,thin,"SNL's primstav table lists this as 'Apostlenes splittelse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Bonaventura') left as-is."
 7-16,nameday,Vår Frue av Karmel,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-17,nameday,Alexius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-18,nameday,Fredrik,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -206,7 +206,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 7-23,nameday,Birgitta,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-24,nameday,Kristina,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-25,fixed,Jakobsmesse,Jakobsdag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
-7-26,nameday,Anne,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-26,nameday,Anne,,thin,"SNL's primstav table lists this as 'Annamesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Anne') left as-is."
 7-27,fixed,Sju sovere,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 7-28,nameday,Innocent,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-29,fixed,Olsok,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
@@ -227,12 +227,12 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 8-13,nameday,Pontianus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-14,nameday,Maximilian,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-15,fixed,Mariæ himmelfartsdag,Vor-Frue-messe,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
-8-16,nameday,Roch,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+8-16,nameday,Roch,,thin,"SNL's primstav table lists this as 'Rugdagen', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Roch') left as-is."
 8-17,nameday,Hyasint,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-18,nameday,Helena,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-19,nameday,Johannes Eudes,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-20,nameday,Bernhard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-8-21,nameday,Pius X,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+8-21,nameday,Pius X,,thin,"SNL's primstav table lists this as 'Rangvaldsmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Pius X') left as-is."
 8-22,nameday,Timoteus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-23,nameday,Rosa av Lima,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-24,fixed,Bartolomeusmesse,Bartolomeus-dag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
@@ -241,7 +241,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 8-27,nameday,Monika,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-28,nameday,Augustin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-29,fixed,Johannes halshugning,Jonsok-hals,thin,"Researched: in SNL's primstav table, but a second source wasn't confirmed in the museum-page excerpt fetched — stays proposed. See research/entries/fixed-feasts-backfill.json."
-8-30,nameday,Felix,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+8-30,nameday,Felix,,thin,"SNL's primstav table lists this as 'Felix og Adauctus', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Felix') left as-is."
 8-31,nameday,Raymund,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 9-1,fixed,Egidiusmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 9-2,nameday,Stefan,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -254,7 +254,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 9-9,nameday,Petrus Claver,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 9-10,nameday,Nils,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 9-11,nameday,Protus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-9-12,nameday,Maria,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+9-12,nameday,Maria,,thin,"SNL's primstav table lists this as 'Fingergullmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Maria') left as-is."
 9-13,nameday,Johannes,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 9-14,fixed,Kors-opphøyelsen,Korsmesse om høsten,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 9-15,nameday,Smertenes Mor,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -281,7 +281,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 10-6,nameday,Bruno,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-7,fixed,Britemesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 10-8,nameday,Birgitta,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-10-9,nameday,Dionysios,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+10-9,nameday,Dionysios,,thin,"SNL's primstav table lists this as 'Dinesmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Dionysios') left as-is."
 10-10,nameday,Frans Borgia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-11,none,,,missing,"Researched: SNL's primstav article (~110-date table, the most complete single source found) does not list this date at all. Evidence points to this genuinely not being a traditional primstav merkedag, not just an app oversight — leave blank rather than invent content."
 10-12,none,,,missing,Researched: same finding as 10-11 — absent from SNL's primstav table. Leave blank.
@@ -293,7 +293,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 10-18,fixed,Lukasmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 10-19,nameday,Paulus av Korset,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-20,nameday,Johan Cantius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-10-21,nameday,Ursola,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+10-21,nameday,Ursola,,thin,"SNL's primstav table lists this as 'Jomfrudagen', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Ursola') left as-is."
 10-22,nameday,Johannes Paulus II,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-23,nameday,Johan av Capistrano,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-24,nameday,Anton Claret,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -323,8 +323,8 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 11-17,nameday,Elisabet,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-18,nameday,Odo,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-19,nameday,Mechtild,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-11-20,nameday,Edmund,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-11-21,nameday,Presentasjonen av Maria,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+11-20,nameday,Edmund,,thin,"SNL's primstav table lists this as 'Edmundsmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Edmund') left as-is."
+11-21,nameday,Presentasjonen av Maria,,thin,"SNL's primstav table lists this as 'Jomfru Maria', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Presentasjonen av Maria') left as-is."
 11-22,nameday,Cecilia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-23,fixed,Klemetsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 11-24,nameday,Krisogon,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -356,12 +356,12 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 12-20,nameday,Timoteus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 12-21,fixed,Tommasmesse,Tomasdag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 12-22,nameday,Honoratus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-12-23,nameday,Johan of Kanty,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+12-23,nameday,Johan of Kanty,,thin,"SNL's primstav table lists this as 'Tollesmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Johan of Kanty') left as-is."
 12-24,fixed,Julaften,Julaftan,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 12-25,fixed,Juledag,Første juledag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 12-26,fixed,Stefansmesse,Andre juledag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 12-27,none,,,missing,"Removed 2026-08-19: was shipped content, but absent from both SNL's primstav table and the regional museum's month pages. No evidence this was ever a traditional primstav day. See research/entries/fixed-feasts-backfill.json for the original finding."
-12-28,nameday,Uskyldige barns dag,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-12-29,nameday,Thomas Becket,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+12-28,nameday,Uskyldige barns dag,,thin,"SNL's primstav table lists this as 'Barnedagen', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Uskyldige barns dag') left as-is."
+12-29,nameday,Thomas Becket,,thin,"SNL's primstav table lists this as 'Tomasmesse', but Musea i Nord-Østerdalen's month page explicitly does not mention this date — checked directly, not just absent from an earlier excerpt. Single-sourced (SNL only), stays proposed/thin until a second source turns up. Existing DAYNAMES entry ('Thomas Becket') left as-is."
 12-30,nameday,Rogelius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 12-31,none,,,missing,"Removed 2026-08-19: was shipped content, but absent from both SNL's primstav table and the regional museum's month pages. No evidence this was ever a traditional primstav day. See research/entries/fixed-feasts-backfill.json for the original finding."

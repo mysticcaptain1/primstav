@@ -44,8 +44,13 @@ tracker.
   pass promoted 30 of them with 2-source confirmation, including **Olsok
   (7-29, St. Olav's Day)** — one of the most historically significant days
   in the Norwegian calendar, and the single most surprising gap found in
-  this research effort. ~30 more SNL-listed candidates remain unpromoted,
-  single-sourced (SNL only) — future work.
+  this research effort. The remaining ~29 SNL-listed candidates were
+  checked directly against the museum's month pages (not just assumed
+  absent from an earlier excerpt) — none are corroborated there. That
+  pool is genuinely single-sourced for now, not just unresearched; each
+  is noted individually in `coverage.csv` with the SNL name recorded.
+  Not promoted to `FIXED`, consistent with how `1-20`/`8-1`/`8-29` (also
+  single-sourced) were left alone rather than force-added.
 - Also fixed in passing: `10-14` (Vinternatt) existed in `polished.html`
   but was missing from `index.html`/`dual.html` entirely — a pre-existing
   cross-file drift, same category as the earlier Blåmandag bug, caught
