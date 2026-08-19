@@ -14,20 +14,40 @@ separate from the three live HTML apps (see `SCHEMA.md` §
   separately since their calendar date shifts year to year and can't be
   keyed by `M-D`.
 
-## Current state (as of the moveable-feast source backfill, 2026-08-18)
+## Current state (as of the fixed-day source backfill, 2026-08-19)
+
+`coverage.csv` (366 calendar days):
 
 | status | count | meaning |
 |---|---|---|
-| `solid`/`confirmed` | 14 | 2+ independent acceptable sources on record — 3 calendar days (`1-11`, `2-29`, `11-2`, from PR #1) + 11 moveable feasts (from the source backfill) |
-| `thin`/`proposed` | 366 | either 0-1 sources, or full legacy content that predates the sourcing standard — includes the 320 name-only `nameday` days, the 37 remaining `fixed` days, and 5 moveable feasts where a second source couldn't be found |
-| `missing` | 2 | no entry at all, and researched-and-confirmed-absent from the primstav tradition: `10-11`, `10-12` |
-| `needs-regional-variants` | 0 | not yet assessed for any entry |
+| `solid` | 37 | all `fixed`-type days except 6: `1-20`, `8-1`, `8-29`, `2-14`, `12-27`, `12-31` |
+| `thin` | 327 | 320 name-only `nameday` days + the 6 unconfirmed `fixed` days above + `1-12` (Midtvinter, researched but deliberately not filled) |
+| `missing` | 2 | `10-11`, `10-12` — confirmed absent from the primstav tradition |
+
+`coverage-moveable.csv` (16 Easter-relative feasts): 11 `solid`, 5 `thin`
+(`Quinquagesima`, `Fastelavn-mandag`, `Fastelavn-tirsdag`, `Midfaste-søndag`,
+`Andre pinsedag`).
+
+`needs-regional-variants` has not been applied to any entry yet in either
+tracker.
+
+**Notable finding from the fixed-day backfill**: three currently-shipped
+entries — `2-14` (Valentinsdagen), `12-27` (Johannes apostelmesse), and
+`12-31` (Nyttårsaften) — are absent from *both* SNL's ~110-date primstav
+table *and* the regional museum's dedicated month pages. That's real
+evidence these may not be traditional primstav days (Valentine's Day
+almost certainly isn't; New Year's Eve as a big secular event is a modern
+institution). Left in the app as-is — removing shipped content is a
+content-scope call, not something to resolve inside a sourcing pass — but
+flagged clearly in `research/coverage.csv` and
+`research/entries/fixed-feasts-backfill.json` for whoever picks that up.
 
 Per-entry source records live in `research/entries/` — one file per fixed
-day researched so far (`1-11.json`, `2-29.json`, `11-2.json`), plus one
-consolidated `moveable-feasts.json` covering all 16 moveable feasts (a
-single file made more sense for that batch: same 16-entry bounded set,
-researched in one pass, rather than 16 near-duplicate files).
+day researched individually early on (`1-11.json`, `2-29.json`,
+`11-2.json`), plus two consolidated files for later batch work
+(`moveable-feasts.json`, `fixed-feasts-backfill.json`) — a single file per
+bounded batch made more sense than one file per entry once the batches got
+large.
 
 See `../PLAN.md` for where this fits in the overall project roadmap and
 what phase/infra work is done vs. still open — this file just tracks the

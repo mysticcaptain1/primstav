@@ -1,0 +1,189 @@
+[
+  {"date":"1-1","k":"Nyttårsdag","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager jula og januar\"","ref":"https://museainordosterdalen.no/merkedager-jula-og-januar","type":"museum"}
+  ],"notes":"Also called Jesusdagen/Åttende dag jul. Symbols vary by region (SNL: kors/geometrisk figur/tre/krone/kirke; Vingelen stave specifically: sun wheel)."},
+
+  {"date":"1-6","k":"Heilag Tre Kongers dag","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager jula og januar\"","ref":"https://museainordosterdalen.no/merkedager-jula-og-januar","type":"museum"}
+  ],"notes":null},
+
+  {"date":"1-13","k":"Knuts dag","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager jula og januar\"","ref":"https://museainordosterdalen.no/merkedager-jula-og-januar","type":"museum"}
+  ],"notes":"Definitive end of Christmas season — traditionally when people 'danced Christmas out'."},
+
+  {"date":"1-20","k":"Fabian og Sebastian","confidence":"proposed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"}
+  ],"notes":"SNL primstav table lists it (as 'Brødremesse'), but it wasn't covered in the fetched excerpt of the museum's January/February page — stays proposed rather than assuming coverage that wasn't confirmed."},
+
+  {"date":"1-25","k":"Paulus omvendelse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager januar og februar\"","ref":"https://museainordosterdalen.no/merkedager-januar-og-februar","type":"museum"}
+  ],"notes":"Symbol references Paul's beheading (sword/spear) per both sources."},
+
+  {"date":"2-2","k":"Kyndelsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager januar og februar\"","ref":"https://museainordosterdalen.no/merkedager-januar-og-februar","type":"museum"}
+  ],"notes":"Name from Latin candelarum ('light'). One of the most important marked days per the museum source."},
+
+  {"date":"2-14","k":"Valentinsdagen","confidence":"proposed","sources":[],"notes":"IMPORTANT: absent from both SNL's ~110-date primstav table and the museum's dedicated January/February merkedager page — neither lists Feb 14 at all (Feb 3 Blåsmesse, Feb 22 Persok, Feb 24 Mattismesse are the neighboring dates in both). This is real evidence Valentinsdagen is not a traditional Norwegian primstav day — likely a modern import (as it is in most non-English-speaking countries). Left in the app pending a decision on whether to keep it as explicitly modern/imported content, relabel it, or remove it — that's a content-scope call, not something to silently resolve here."},
+
+  {"date":"2-24","k":"Mattiasmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager januar og februar\"","ref":"https://museainordosterdalen.no/merkedager-januar-og-februar","type":"museum"}
+  ],"notes":"Museum source directly corroborates the 2-29 entry's leap-year note: 'Før kalenderskiftet i 1700 vart skuddårsdagen satt inn før Mattismesse' (before the 1700 calendar change, leap day was inserted before this date), also called Laupårsmesse."},
+
+  {"date":"3-12","k":"Gregoriusmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mars\"","ref":"https://museainordosterdalen.no/merkedager-mars","type":"museum"}
+  ],"notes":"Pope Gregory I, who organized church singing (not just 'skolestart' as the app's current desc says — worth a future content pass, not just sourcing)."},
+
+  {"date":"3-25","k":"Mariæ bebudelse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mars\"","ref":"https://museainordosterdalen.no/merkedager-mars","type":"museum"}
+  ],"notes":null},
+
+  {"date":"4-14","k":"Tiburti-messe","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager april\"","ref":"https://museainordosterdalen.no/merkedager-april","type":"museum"}
+  ],"notes":"Better known as Sommerdagen — start of the summer half-year and a traditional servant moving-day."},
+
+  {"date":"4-23","k":"Jørgensmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager april\"","ref":"https://museainordosterdalen.no/merkedager-april","type":"museum"}
+  ],"notes":null},
+
+  {"date":"4-25","k":"Markusmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager april\"","ref":"https://museainordosterdalen.no/merkedager-april","type":"museum"}
+  ],"notes":null},
+
+  {"date":"5-1","k":"Filipp-Jakob-messe","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mai\"","ref":"https://museainordosterdalen.no/merkedager-mai","type":"museum"}
+  ],"notes":"Also called Gauksmesse/Gaukdagen — cuckoo symbolism, per both sources."},
+
+  {"date":"5-3","k":"Kors-oppfinnelsen","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager mai\"","ref":"https://museainordosterdalen.no/merkedager-mai","type":"museum"}
+  ],"notes":"Distinguished from the autumn Korsmesse (9-14) by both sources."},
+
+  {"date":"6-24","k":"Jonsok","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juni\"","ref":"https://museainordosterdalen.no/merkedager-juni","type":"museum"}
+  ],"notes":"Museum source calls it one of the greatest and most important merkedager of the year."},
+
+  {"date":"6-29","k":"Peter og Pauls dag","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juni\"","ref":"https://museainordosterdalen.no/merkedager-juni","type":"museum"}
+  ],"notes":null},
+
+  {"date":"7-25","k":"Jakobsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager juli\"","ref":"https://museainordosterdalen.no/merkedager-juli","type":"museum"}
+  ],"notes":"'Jakob våthatt' — pilgrim's hat symbol reinterpreted as a rain hat."},
+
+  {"date":"8-1","k":"Petersmesse","confidence":"proposed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"}
+  ],"notes":"SNL primstav table lists it ('Per vinkel, Peders fengsel'), but the fetched excerpt of the museum's August page started at Aug 3 — Aug 1 wasn't confirmed there. Stays proposed."},
+
+  {"date":"8-10","k":"Laurentiusmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager august\"","ref":"https://museainordosterdalen.no/merkedager-august","type":"museum"}
+  ],"notes":null},
+
+  {"date":"8-15","k":"Mariæ himmelfartsdag","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager august\"","ref":"https://museainordosterdalen.no/merkedager-august","type":"museum"}
+  ],"notes":null},
+
+  {"date":"8-24","k":"Bartolomeusmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager august\"","ref":"https://museainordosterdalen.no/merkedager-august","type":"museum"}
+  ],"notes":null},
+
+  {"date":"8-29","k":"Johannes halshugning","confidence":"proposed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"}
+  ],"notes":"SNL lists it directly. The museum's August page mentioned Aug 27-29 as 'Jernnettene' (Iron Nights, a frost-risk period) rather than confirming Johannes halshugning specifically on the 29th — not a clean second confirmation of the same topic, so stays proposed."},
+
+  {"date":"9-8","k":"Mariæ fødselsdagen","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager september\"","ref":"https://museainordosterdalen.no/merkedager-september","type":"museum"}
+  ],"notes":null},
+
+  {"date":"9-14","k":"Kors-opphøyelsen","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager september\"","ref":"https://museainordosterdalen.no/merkedager-september","type":"museum"}
+  ],"notes":null},
+
+  {"date":"9-21","k":"Matteusmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager september\"","ref":"https://museainordosterdalen.no/merkedager-september","type":"museum"}
+  ],"notes":null},
+
+  {"date":"9-29","k":"Mikkelsmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager september\"","ref":"https://museainordosterdalen.no/merkedager-september","type":"museum"}
+  ],"notes":"Museum source: 'most significant autumn marked day' — major settlement date for debts and tax payments."},
+
+  {"date":"10-14","k":"Vinternatt","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager oktober\"","ref":"https://museainordosterdalen.no/merkedager-oktober","type":"museum"}
+  ],"notes":"Museum source calls it the most significant marked day of the month — where the primstav's winter side began."},
+
+  {"date":"10-28","k":"Simon og Judas dag","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager oktober\"","ref":"https://museainordosterdalen.no/merkedager-oktober","type":"museum"}
+  ],"notes":null},
+
+  {"date":"11-1","k":"Allehelgensdag","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager november\"","ref":"https://museainordosterdalen.no/merkedager-november","type":"museum"}
+  ],"notes":"Museum source also directly confirms 11-2 (Alle sjelers dag) as a genuine, if minor, Catholic-era observance that disappeared after the Reformation — corroborates PR #1's earlier finding independently."},
+
+  {"date":"11-11","k":"Mårtensmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager november\"","ref":"https://museainordosterdalen.no/merkedager-november","type":"museum"}
+  ],"notes":null},
+
+  {"date":"11-25","k":"Katarinamesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager november\"","ref":"https://museainordosterdalen.no/merkedager-november","type":"museum"}
+  ],"notes":"Also called Kari med rokken — traditional start of spinning work, matching the app's existing desc."},
+
+  {"date":"11-30","k":"Andreasmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager november\"","ref":"https://museainordosterdalen.no/merkedager-november","type":"museum"}
+  ],"notes":null},
+
+  {"date":"12-13","k":"Luciadagen","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager desember\"","ref":"https://museainordosterdalen.no/merkedager-desember","type":"museum"}
+  ],"notes":null},
+
+  {"date":"12-21","k":"Tommasmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager desember\"","ref":"https://museainordosterdalen.no/merkedager-desember","type":"museum"}
+  ],"notes":null},
+
+  {"date":"12-24","k":"Julaften","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager jula og januar\"","ref":"https://museainordosterdalen.no/merkedager-jula-og-januar","type":"museum"}
+  ],"notes":"Minor nuance: SNL's table gives it a symbol (kors, S) under the names Tollesmesse/Sjursmesse, while the museum source calls it 'halv helg' with no mark on the specific (Vingelen) stave they document. Both sources agree the date itself is a recognized primstav day; they differ on regional marking practice, which is expected — the primstav tradition varied by region."},
+
+  {"date":"12-25","k":"Juledag","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager jula og januar\"","ref":"https://museainordosterdalen.no/merkedager-jula-og-januar","type":"museum"}
+  ],"notes":null},
+
+  {"date":"12-26","k":"Stefansmesse","confidence":"confirmed","sources":[
+    {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
+    {"citation":"Musea i Nord-Østerdalen, \"Merkedager jula og januar\"","ref":"https://museainordosterdalen.no/merkedager-jula-og-januar","type":"museum"}
+  ],"notes":null},
+
+  {"date":"12-27","k":"Johannes apostelmesse","confidence":"proposed","sources":[],"notes":"IMPORTANT: absent from both SNL's primstav table and the museum's December page — the museum source explicitly states 'December 27 and 31: Neither date is mentioned in the article.' Same situation as 2-14 (Valentinsdagen): real evidence this may not be a traditional primstav day, not just an unresearched one. Flagged, not removed — content-scope decision for later."},
+
+  {"date":"12-31","k":"Nyttårsaften","confidence":"proposed","sources":[],"notes":"IMPORTANT: same finding as 12-27 — absent from both SNL's table and the museum's December page (explicitly confirmed absent). New Year's Eve as a big secular celebration is a much more modern institution than the primstav tradition itself, so this absence is plausible rather than surprising. Flagged, not removed."}
+]
