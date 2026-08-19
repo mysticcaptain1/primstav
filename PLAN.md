@@ -32,13 +32,38 @@ deciding explicitly rather than drifting into it.
 - [x] Per-entry provenance notes in PRs — see PR #1's description and
       `research/entries/*.json`
 - [x] Test coverage for moveable feasts — `tests/moveable-feasts.test.js`,
-      wired into `.github/workflows/test.yml`, runs on every push/PR
+      wired into `.github/workflows/test.yml`, runs on every push/PR.
+      Extended to also check `FIXED` content parity across the three HTML
+      files (PR #5) — this is what caught two of the three cross-file drift
+      bugs below.
 - [ ] Graduate to scheduled GitHub Action once manual research sessions
-      feel reliable — not started; PR #1 is the first real research run,
-      too early to automate
+      feel reliable — not started; 4 manual research PRs in now (#1-#4),
+      still too early to automate
 - [ ] Surface sourcing in the UI (tooltip/footnote per feast day) — not
       started; holding until there's enough `confirmed` content that a
       sourcing UI has something real to show
+
+**Content status (2026-08-19)**: 67 `solid`/`confirmed` calendar days + 11
+`solid` moveable feasts, out of 366 + 16. Full detail and per-batch
+provenance in `research/README.md` and `research/entries/`.
+
+**Notable findings from this research pass**, worth knowing about even
+without reading the research docs:
+- **Olsok (7-29, St. Olav's Day) was missing from the app entirely** until
+  PR #4 — one of the most historically significant days in the Norwegian
+  calendar (Olav's death at Stiklestad, 1030), found by cross-referencing
+  SNL's full primstav table (~110 dated entries) against what `FIXED`
+  actually covered (was only 59 of them).
+- Three shipped entries — `2-14` Valentinsdagen, `12-27` Johannes
+  apostelmesse, `12-31` Nyttårsaften — are absent from every primstav
+  source checked. Real evidence they may not be traditional primstav days.
+  Left in the app; a content-scope decision for you, not resolved here.
+- Found and fixed 3 pre-existing cross-file content-drift bugs between
+  `index.html`/`dual.html`/`polished.html` (a Blåmandag feast missing from
+  two files, a Vinternatt entry missing from two files, one file's
+  Trettendagen name missing the word "dag"). None were caused by this
+  session's own edits — they predated it and surfaced while
+  cross-referencing sourced content against what the app actually ships.
 
 ## Phase 2: US Market / Positioning
 
