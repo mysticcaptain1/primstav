@@ -28,7 +28,7 @@
     {"citation":"Musea i Nord-Østerdalen, \"Merkedager januar og februar\"","ref":"https://museainordosterdalen.no/merkedager-januar-og-februar","type":"museum"}
   ],"notes":"Name from Latin candelarum ('light'). One of the most important marked days per the museum source."},
 
-  {"date":"2-14","k":"Valentinsdagen","confidence":"proposed","sources":[],"notes":"IMPORTANT: absent from both SNL's ~110-date primstav table and the museum's dedicated January/February merkedager page — neither lists Feb 14 at all (Feb 3 Blåsmesse, Feb 22 Persok, Feb 24 Mattismesse are the neighboring dates in both). This is real evidence Valentinsdagen is not a traditional Norwegian primstav day — likely a modern import (as it is in most non-English-speaking countries). Left in the app pending a decision on whether to keep it as explicitly modern/imported content, relabel it, or remove it — that's a content-scope call, not something to silently resolve here."},
+  {"date":"2-14","k":"Valentinsdagen","confidence":"proposed","sources":[],"notes":"IMPORTANT: absent from both SNL's ~110-date primstav table and the museum's dedicated January/February merkedager page — neither lists Feb 14 at all (Feb 3 Blåsmesse, Feb 22 Persok, Feb 24 Mattismesse are the neighboring dates in both). This is real evidence Valentinsdagen is not a traditional Norwegian primstav day — likely a modern import (as it is in most non-English-speaking countries). REMOVED from the app 2026-08-19 at the user's direction, after this finding was reported."},
 
   {"date":"2-24","k":"Mattiasmesse","confidence":"confirmed","sources":[
     {"citation":"Store norske leksikon, \"primstav\"","ref":"https://snl.no/primstav","type":"reference-work"},
@@ -183,7 +183,7 @@
     {"citation":"Musea i Nord-Østerdalen, \"Merkedager jula og januar\"","ref":"https://museainordosterdalen.no/merkedager-jula-og-januar","type":"museum"}
   ],"notes":null},
 
-  {"date":"12-27","k":"Johannes apostelmesse","confidence":"proposed","sources":[],"notes":"IMPORTANT: absent from both SNL's primstav table and the museum's December page — the museum source explicitly states 'December 27 and 31: Neither date is mentioned in the article.' Same situation as 2-14 (Valentinsdagen): real evidence this may not be a traditional primstav day, not just an unresearched one. Flagged, not removed — content-scope decision for later."},
+  {"date":"12-27","k":"Johannes apostelmesse","confidence":"proposed","sources":[],"notes":"IMPORTANT: absent from both SNL's primstav table and the museum's December page — the museum source explicitly states 'December 27 and 31: Neither date is mentioned in the article.' Same situation as 2-14 (Valentinsdagen): real evidence this may not be a traditional primstav day, not just an unresearched one. REMOVED from the app 2026-08-19 at the user's direction, after this finding was reported."},
 
-  {"date":"12-31","k":"Nyttårsaften","confidence":"proposed","sources":[],"notes":"IMPORTANT: same finding as 12-27 — absent from both SNL's table and the museum's December page (explicitly confirmed absent). New Year's Eve as a big secular celebration is a much more modern institution than the primstav tradition itself, so this absence is plausible rather than surprising. Flagged, not removed."}
+  {"date":"12-31","k":"Nyttårsaften","confidence":"proposed","sources":[],"notes":"IMPORTANT: same finding as 12-27 — absent from both SNL's table and the museum's December page (explicitly confirmed absent). New Year's Eve as a big secular celebration is a much more modern institution than the primstav tradition itself, so this absence is plausible rather than surprising. REMOVED from the app 2026-08-19 at the user's direction, after this finding was reported."}
 ]

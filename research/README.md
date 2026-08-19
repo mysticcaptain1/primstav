@@ -14,15 +14,15 @@ separate from the three live HTML apps (see `SCHEMA.md` §
   separately since their calendar date shifts year to year and can't be
   keyed by `M-D`.
 
-## Current state (as of the secondary-merkedager promotion, 2026-08-19)
+## Current state (as of removing the 3 unsourced days, 2026-08-19)
 
 `coverage.csv` (366 calendar days):
 
 | status | count | meaning |
 |---|---|---|
-| `solid` | 67 | 37 from earlier backfills + 30 promoted from `nameday` to `fixed` this pass |
-| `thin` | 297 | 290 remaining name-only `nameday` days + 6 unconfirmed `fixed` days (`1-20`, `8-1`, `8-29`, `2-14`, `12-27`, `12-31`) + `1-12` (Midtvinter, researched but deliberately not filled) |
-| `missing` | 2 | `10-11`, `10-12` — confirmed absent from the primstav tradition |
+| `solid` | 67 | 37 from earlier backfills + 30 promoted from `nameday` to `fixed` |
+| `thin` | 294 | 290 remaining name-only `nameday` days + 3 unconfirmed `fixed` days (`1-20`, `8-1`, `8-29`) + `1-12` (Midtvinter, researched but deliberately not filled) |
+| `missing` | 5 | `10-11`, `10-12` (confirmed absent from the primstav tradition) + `2-14`, `12-27`, `12-31` (removed 2026-08-19 — see below) |
 
 `coverage-moveable.csv` (16 Easter-relative feasts): 11 `solid`, 5 `thin`.
 
@@ -31,11 +31,13 @@ tracker.
 
 **Findings worth flagging explicitly:**
 
-- Three currently-shipped entries — `2-14` (Valentinsdagen), `12-27`
-  (Johannes apostelmesse), `12-31` (Nyttårsaften) — are absent from *both*
-  SNL's primstav table *and* the museum's month pages. Real evidence they
-  may not be traditional primstav days. Left in the app; a content-scope
-  call, not a sourcing one.
+- Three previously-shipped entries — `2-14` (Valentinsdagen), `12-27`
+  (Johannes apostelmesse), `12-31` (Nyttårsaften) — were absent from *both*
+  SNL's primstav table *and* the museum's month pages, real evidence they
+  weren't traditional primstav days. Reported to the user, who directed
+  removal; removed from `FIXED`/`ICONS` across all three HTML files
+  2026-08-19. `research/entries/fixed-feasts-backfill.json` keeps the
+  original finding for the record.
 - SNL's own primstav article lists ~110 dated entries total, but the app's
   `FIXED` content only covered 59 of them before this pass (43 fixed + 16
   moveable). The other ~50 were sitting as generic `nameday` entries. This
