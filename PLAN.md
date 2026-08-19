@@ -37,10 +37,14 @@ deciding explicitly rather than drifting into it.
       files (PR #5) — this is what caught two of the three cross-file drift
       bugs below.
 - [ ] Graduate to scheduled GitHub Action once manual research sessions
-      feel reliable — not started; 4 manual research PRs in now (#1-#4),
+      feel reliable — not started; 7 manual research PRs in now (#1-#7),
       still too early to automate
-- [ ] Surface sourcing in the UI (tooltip/footnote per feast day) — now
-      unblocked (78 confirmed entries exist), picking this up next
+- [x] Surface sourcing in the UI — PR #8, merged 2026-08-19. Small
+      "📚 Kilder: ..." footnote in the feast popup across all three HTML
+      files, shown only for the 78 confirmed entries.
+
+Only unchecked item left in Phase 1's original plan is the scheduled
+GitHub Action — deliberately held, not blocked on anything.
 
 **Content status (2026-08-19)**: 67 `solid`/`confirmed` calendar days + 11
 `solid` moveable feasts, out of 366 + 16. The SNL-primstav-table ×
@@ -62,9 +66,9 @@ without reading the research docs:
   SNL's full primstav table (~110 dated entries) against what `FIXED`
   actually covered (was only 59 of them).
 - Three shipped entries — `2-14` Valentinsdagen, `12-27` Johannes
-  apostelmesse, `12-31` Nyttårsaften — are absent from every primstav
-  source checked. Real evidence they may not be traditional primstav days.
-  Left in the app; a content-scope decision for you, not resolved here.
+  apostelmesse, `12-31` Nyttårsaften — were absent from every primstav
+  source checked, real evidence they weren't traditional primstav days.
+  Removed from the app 2026-08-19 at your direction (PR #6).
 - Found and fixed 3 pre-existing cross-file content-drift bugs between
   `index.html`/`dual.html`/`polished.html` (a Blåmandag feast missing from
   two files, a Vinternatt entry missing from two files, one file's
