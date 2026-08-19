@@ -14,40 +14,48 @@ separate from the three live HTML apps (see `SCHEMA.md` §
   separately since their calendar date shifts year to year and can't be
   keyed by `M-D`.
 
-## Current state (as of the fixed-day source backfill, 2026-08-19)
+## Current state (as of the secondary-merkedager promotion, 2026-08-19)
 
 `coverage.csv` (366 calendar days):
 
 | status | count | meaning |
 |---|---|---|
-| `solid` | 37 | all `fixed`-type days except 6: `1-20`, `8-1`, `8-29`, `2-14`, `12-27`, `12-31` |
-| `thin` | 327 | 320 name-only `nameday` days + the 6 unconfirmed `fixed` days above + `1-12` (Midtvinter, researched but deliberately not filled) |
+| `solid` | 67 | 37 from earlier backfills + 30 promoted from `nameday` to `fixed` this pass |
+| `thin` | 297 | 290 remaining name-only `nameday` days + 6 unconfirmed `fixed` days (`1-20`, `8-1`, `8-29`, `2-14`, `12-27`, `12-31`) + `1-12` (Midtvinter, researched but deliberately not filled) |
 | `missing` | 2 | `10-11`, `10-12` — confirmed absent from the primstav tradition |
 
-`coverage-moveable.csv` (16 Easter-relative feasts): 11 `solid`, 5 `thin`
-(`Quinquagesima`, `Fastelavn-mandag`, `Fastelavn-tirsdag`, `Midfaste-søndag`,
-`Andre pinsedag`).
+`coverage-moveable.csv` (16 Easter-relative feasts): 11 `solid`, 5 `thin`.
 
 `needs-regional-variants` has not been applied to any entry yet in either
 tracker.
 
-**Notable finding from the fixed-day backfill**: three currently-shipped
-entries — `2-14` (Valentinsdagen), `12-27` (Johannes apostelmesse), and
-`12-31` (Nyttårsaften) — are absent from *both* SNL's ~110-date primstav
-table *and* the regional museum's dedicated month pages. That's real
-evidence these may not be traditional primstav days (Valentine's Day
-almost certainly isn't; New Year's Eve as a big secular event is a modern
-institution). Left in the app as-is — removing shipped content is a
-content-scope call, not something to resolve inside a sourcing pass — but
-flagged clearly in `research/coverage.csv` and
-`research/entries/fixed-feasts-backfill.json` for whoever picks that up.
+**Findings worth flagging explicitly:**
 
-Per-entry source records live in `research/entries/` — one file per fixed
-day researched individually early on (`1-11.json`, `2-29.json`,
-`11-2.json`), plus two consolidated files for later batch work
-(`moveable-feasts.json`, `fixed-feasts-backfill.json`) — a single file per
-bounded batch made more sense than one file per entry once the batches got
-large.
+- Three currently-shipped entries — `2-14` (Valentinsdagen), `12-27`
+  (Johannes apostelmesse), `12-31` (Nyttårsaften) — are absent from *both*
+  SNL's primstav table *and* the museum's month pages. Real evidence they
+  may not be traditional primstav days. Left in the app; a content-scope
+  call, not a sourcing one.
+- SNL's own primstav article lists ~110 dated entries total, but the app's
+  `FIXED` content only covered 59 of them before this pass (43 fixed + 16
+  moveable). The other ~50 were sitting as generic `nameday` entries. This
+  pass promoted 30 of them with 2-source confirmation, including **Olsok
+  (7-29, St. Olav's Day)** — one of the most historically significant days
+  in the Norwegian calendar, and the single most surprising gap found in
+  this research effort. ~30 more SNL-listed candidates remain unpromoted,
+  single-sourced (SNL only) — future work.
+- Also fixed in passing: `10-14` (Vinternatt) existed in `polished.html`
+  but was missing from `index.html`/`dual.html` entirely — a pre-existing
+  cross-file drift, same category as the earlier Blåmandag bug, caught
+  while cross-checking against SNL's table rather than by the test suite
+  (which doesn't check `FIXED` content parity across files, only
+  `easter`/`buildMoveables`/`GN_TABLE`).
+
+Per-entry source records live in `research/entries/` — one file per entry
+researched individually early on, three consolidated files for later batch
+work (`moveable-feasts.json`, `fixed-feasts-backfill.json`,
+`secondary-merkedager-promotion.json`) — one file per bounded batch made
+more sense than one file per entry once the batches got large.
 
 See `../PLAN.md` for where this fits in the overall project roadmap and
 what phase/infra work is done vs. still open — this file just tracks the

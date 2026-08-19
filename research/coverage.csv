@@ -32,7 +32,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 1-31,nameday,Nils,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-1,nameday,Brigitte,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-2,fixed,Kyndelsmesse,Kyndelmesse,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
-2-3,nameday,Blasius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+2-3,fixed,Blåsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 2-4,nameday,Veronika,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-5,nameday,Agata,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-6,nameday,Dorothea,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -51,7 +51,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 2-19,nameday,Bonifatius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-20,nameday,Eleuther,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-21,nameday,Irene,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-2-22,nameday,Kathedra Petri,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+2-22,fixed,Persok,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 2-23,nameday,Polykarpus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-24,fixed,Mattiasmesse,Mattiasdag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 2-25,nameday,Matthias,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -74,12 +74,12 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 3-13,nameday,Nicephor,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 3-14,nameday,Matilda,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 3-15,nameday,Klemens,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-3-16,nameday,Herbert,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-3-17,nameday,Patrik,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+3-16,fixed,Gudmundsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
+3-17,fixed,Gjertrudsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 3-18,nameday,Edvard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 3-19,nameday,Josef,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 3-20,nameday,Wulfram,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-3-21,nameday,Benedikt,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+3-21,fixed,Benediktsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 3-22,nameday,Lea,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 3-23,nameday,Turibius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 3-24,nameday,Irenæus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -105,7 +105,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 4-13,nameday,Hermenegild,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 4-14,fixed,Tiburti-messe,Tiburtius-dag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 4-15,nameday,Anastasia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-4-16,nameday,Magnus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+4-16,fixed,Magnusmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 4-17,nameday,Anicetus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 4-18,nameday,Apollonius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 4-19,nameday,Emma,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -134,17 +134,17 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 5-12,nameday,Pankratius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-13,nameday,Servatius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-14,nameday,Bonifatius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-5-15,nameday,Sofia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+5-15,fixed,Hallvardsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 5-16,nameday,Peregrin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-17,nameday,Paschalis,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-5-18,nameday,Venantius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+5-18,fixed,Eriksmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 5-19,nameday,Peter,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-20,nameday,Bernardin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-21,nameday,Kristoffer,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-5-22,nameday,Rita,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+5-22,fixed,Bjørnevåk,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 5-23,nameday,Desidérius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-24,nameday,David,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-5-25,nameday,Gregor VII,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+5-25,fixed,Urbansmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 5-26,nameday,Filip Neri,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-27,nameday,Augustin av Canterbury,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 5-28,nameday,German,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -153,13 +153,13 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 5-31,nameday,Mariadagen,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-1,nameday,Justin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-2,nameday,Erasmus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-6-3,nameday,Kevin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+6-3,fixed,Rasmusmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 6-4,nameday,Quirinus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-5,nameday,Bonifatius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-6,nameday,Norbert,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-7,nameday,Robert,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-8,nameday,Medard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-6-9,nameday,Efrem,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+6-9,fixed,Kolumbamesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 6-10,nameday,Margaret,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-11,nameday,Barnabas,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-12,nameday,Onuphrius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -167,7 +167,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 6-14,nameday,Valerius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-15,nameday,Vitus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-16,nameday,Benno,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-6-17,nameday,Rainer,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+6-17,fixed,Botolvsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 6-18,nameday,Markus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-19,nameday,Gervasius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 6-20,nameday,Silverius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -182,19 +182,19 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 6-29,fixed,Peter og Pauls dag,Petersmesse,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 6-30,nameday,Otto,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-1,nameday,Aaron,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-7-2,nameday,Mariæ hjemsøkelse,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-2,fixed,Svithunsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 7-3,nameday,Tomas,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-4,nameday,Ulrik,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-5,nameday,Anastasia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-6,nameday,Goar,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-7,nameday,Willibald,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-7-8,nameday,Kilian,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-8,fixed,Seljumannamesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 7-9,nameday,Anatol,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-7-10,nameday,Rufin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-10,fixed,Knutsok,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 7-11,nameday,Benedikt,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-12,nameday,Nabor,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-13,nameday,Henrik,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-7-14,nameday,Kamillus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-14,fixed,Midtsommerdagen,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 7-15,nameday,Bonaventura,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-16,nameday,Vår Frue av Karmel,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-17,nameday,Alexius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -202,19 +202,19 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 7-19,nameday,Arsenius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-20,nameday,Margarita,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-21,nameday,Daniel,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-7-22,nameday,Maria Magdalena,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-22,fixed,Magdalimesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 7-23,nameday,Birgitta,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-24,nameday,Kristina,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-25,fixed,Jakobsmesse,Jakobsdag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 7-26,nameday,Anne,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-7-27,nameday,Pantaleon,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-27,fixed,Sju sovere,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 7-28,nameday,Innocent,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-7-29,nameday,Marta,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+7-29,fixed,Olsok,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 7-30,nameday,Peter Chrysologus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 7-31,nameday,Ignatius av Loyola,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-1,fixed,Petersmesse,Peters lenkefall,thin,"Researched: in SNL's primstav table, but a second source wasn't confirmed in the museum-page excerpt fetched — stays proposed. See research/entries/fixed-feasts-backfill.json."
 8-2,nameday,Eusebius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-8-3,nameday,Lydia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+8-3,fixed,Vesle Olsok,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 8-4,nameday,Dominikus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-5,nameday,Oswald,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-6,nameday,Forklaringsdagen,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -243,7 +243,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 8-29,fixed,Johannes halshugning,Jonsok-hals,thin,"Researched: in SNL's primstav table, but a second source wasn't confirmed in the museum-page excerpt fetched — stays proposed. See research/entries/fixed-feasts-backfill.json."
 8-30,nameday,Felix,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 8-31,nameday,Raymund,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-9-1,nameday,Giles,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+9-1,fixed,Egidiusmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 9-2,nameday,Stefan,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 9-3,nameday,Gregor den store,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 9-4,nameday,Marsellin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -276,21 +276,21 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 10-1,nameday,Teresia av Lisieux,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-2,nameday,Skytsengledagen,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-3,nameday,Gerard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-10-4,nameday,Frans av Assisi,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+10-4,fixed,Fransmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 10-5,nameday,Placidus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-6,nameday,Bruno,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-10-7,nameday,Vår Frue av Rosenkransen,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+10-7,fixed,Britemesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 10-8,nameday,Birgitta,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-9,nameday,Dionysios,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-10,nameday,Frans Borgia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-11,none,,,missing,"Researched: SNL's primstav article (~110-date table, the most complete single source found) does not list this date at all. Evidence points to this genuinely not being a traditional primstav merkedag, not just an app oversight — leave blank rather than invent content."
 10-12,none,,,missing,Researched: same finding as 10-11 — absent from SNL's primstav table. Leave blank.
 10-13,nameday,Edvard,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-10-14,fixed,Vinternatt,Vinterdagen,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
+10-14,fixed,Vinternatt,Vinterdagen,solid,Cross-file consistency fix + confirmed via SNL + museum. See research/entries/secondary-merkedager-promotion.json.
 10-15,nameday,Teresia av Ávila,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-16,nameday,Hedvig,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-17,nameday,Ignatius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-10-18,nameday,Lukas,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+10-18,fixed,Lukasmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 10-19,nameday,Paulus av Korset,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-20,nameday,Johan Cantius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 10-21,nameday,Ursola,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -326,7 +326,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 11-20,nameday,Edmund,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-21,nameday,Presentasjonen av Maria,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-22,nameday,Cecilia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-11-23,nameday,Clemens,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+11-23,fixed,Klemetsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 11-24,nameday,Krisogon,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 11-25,fixed,Katarinamesse,Katarinadag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 11-26,nameday,Silvester,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -337,12 +337,12 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 12-1,nameday,Natalia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 12-2,nameday,Bibiana,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 12-3,nameday,Frans Xavier,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-12-4,nameday,Barbara,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+12-4,fixed,Barbromesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 12-5,nameday,Sabbas,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-12-6,nameday,Nils,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+12-6,fixed,Nilsmesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 12-7,nameday,Ambrosius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-12-8,nameday,Marias uplettede unnfangelse,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-12-9,nameday,Leokadia,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
+12-8,fixed,Maria uplettede unnfangelse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
+12-9,fixed,Annamesse,,solid,Promoted from nameday to fixed: confirmed via SNL's full primstav table + Musea i Nord-Østerdalen. See research/entries/secondary-merkedager-promotion.json.
 12-10,nameday,Lorettas dag,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 12-11,nameday,Damasus,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 12-12,nameday,Jane,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
