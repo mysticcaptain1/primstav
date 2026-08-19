@@ -79,14 +79,35 @@ without reading the research docs:
 ## Phase 2: US Market / Positioning
 
 - [x] Brand direction decided (see above)
+- [x] Full English translation of UI copy and feast-day content — all three
+      HTML variants translated under `en/` (`en/index.html`, `en/dual.html`,
+      `en/polished.html`). Covers all 366 calendar days + 16 moveable feasts
+      + all UI chrome (buttons, legend, popup labels, month/weekday names,
+      moon phases, season labels), not just the 78 confirmed entries —
+      translation preserves whatever confidence level the Norwegian source
+      already had (unconfirmed stays unconfirmed, just in English), it
+      doesn't add or invent facts.
 - [ ] Pick a name + domain for the US-facing product
-- [ ] Full English translation of UI copy and feast-day content — hold
-      until Phase 1 has produced enough `confirmed`/`solid` content that
-      there's something substantial to translate (most of the calendar is
-      still `thin`/name-only per `research/coverage.csv`)
-- [ ] Decide site structure: `/en/` path on the same domain vs. a fully
-      separate US-branded site over the same content backend
+- [ ] URL/site structure — deliberately deferred until a domain is picked.
+      The `en/` files are placed at that path already so this works either
+      way: `/en/` on the current Cloudflare Pages site, or `/en/` on a
+      future custom domain, or restructured into a fully separate site if
+      that's the eventual call. No routing decision was locked in.
 - [ ] Legal/business basics: entity structure, US payment processing (Stripe)
+
+**Translation notes**: `tests/moveable-feasts.test.js` now covers all 6
+files (3 Norwegian + 3 English), with cross-file consistency checked
+*within* each language group only — the English `k` values are translations,
+not duplicates, so comparing them against the Norwegian ones would be a
+false positive. Building this translation surfaced and fixed a real bug
+introduced during the build (a missing `add(0)` argument that would have
+produced an Invalid Date for Easter Sunday in all three English files) —
+caught by a new "no NaN dates" test before it ever shipped, not after.
+Five to seven `FIXED` entries per file needed slightly different desc
+translations since `index.html`/`dual.html`/`polished.html` already had
+minor pre-existing wording differences from each other (predates this
+work) — handled with small per-file overrides rather than forcing them
+to match.
 
 ## Phase 3: Monetization
 
