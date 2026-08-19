@@ -58,6 +58,15 @@ function loadFns(file) {
   return { easter: sandbox.__easter, buildMoveables: sandbox.__buildMoveables, GN_TABLE: sandbox.__GN_TABLE };
 }
 
+function loadFixed(file) {
+  const src = fs.readFileSync(path.join(ROOT, file), 'utf8');
+  const code = extractBlock(src, 'const FIXED') + '\nthis.__FIXED = FIXED;';
+  const sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(code, sandbox, { filename: file });
+  return sandbox.__FIXED;
+}
+
 // Ground truth: independently computed (Anonymous Gregorian algorithm, Python
 // reference) and cross-checked against well-documented historical Easter dates.
 const KNOWN_EASTER = {
@@ -163,6 +172,28 @@ test('buildMoveables() has the same set of feast names across all three HTML fil
     }
   });
   assert.strictEqual(diffs.length, 0, `feast sets diverge between files:\n  ${diffs.join('\n  ')}`);
+});
+
+test('FIXED has the same set of dates and kirkenavn across all three HTML files', () => {
+  const loaded = FILES.map(f => ({ file: f, fixed: loadFixed(f) }));
+  const [base, ...rest] = loaded;
+  const baseKeys = new Set(Object.keys(base.fixed));
+  const diffs = [];
+  for (const { file, fixed } of rest) {
+    const keys = new Set(Object.keys(fixed));
+    const onlyInOther = [...keys].filter(k => !baseKeys.has(k));
+    const onlyInBase = [...baseKeys].filter(k => !keys.has(k));
+    if (onlyInOther.length || onlyInBase.length) {
+      diffs.push(`${base.file} vs ${file}: only in ${file} = [${onlyInOther}], only in ${base.file} = [${onlyInBase}]`);
+    }
+    for (const key of keys) {
+      if (!baseKeys.has(key)) continue;
+      if (fixed[key].k !== base.fixed[key].k) {
+        diffs.push(`${base.file} vs ${file}: ${key} kirkenavn differs: "${base.fixed[key].k}" vs "${fixed[key].k}"`);
+      }
+    }
+  }
+  assert.strictEqual(diffs.length, 0, `FIXED diverges between files:\n  ${diffs.join('\n  ')}`);
 });
 
 console.log(`\n${pass} passed, ${fail} failed`);
