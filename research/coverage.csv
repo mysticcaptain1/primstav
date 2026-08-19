@@ -43,7 +43,7 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 2-11,nameday,Lourdes,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-12,nameday,Euladius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-13,nameday,Katarina,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-2-14,fixed,Valentinsdagen,Valentinsdag,thin,"IMPORTANT: absent from BOTH SNL's primstav table and the museum's dedicated month page — real evidence this may not be a traditional primstav day (see research/entries/fixed-feasts-backfill.json for detail). Content left as-is pending a scope decision, not removed."
+2-14,none,,,missing,"Removed 2026-08-19: was shipped content, but absent from both SNL's primstav table and the regional museum's month pages. No evidence this was ever a traditional primstav day. See research/entries/fixed-feasts-backfill.json for the original finding."
 2-15,nameday,Faustin,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-16,nameday,Juliana,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 2-17,nameday,Donat,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
@@ -360,8 +360,8 @@ date,type,kirkenavn_or_name,folkenavn,status,notes
 12-24,fixed,Julaften,Julaftan,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 12-25,fixed,Juledag,Første juledag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
 12-26,fixed,Stefansmesse,Andre juledag,solid,Confirmed via SNL primstav table + Musea i Nord-Østerdalen (regional museum). See research/entries/fixed-feasts-backfill.json.
-12-27,fixed,Johannes apostelmesse,Tredje juledag,thin,"IMPORTANT: absent from BOTH SNL's primstav table and the museum's dedicated month page — real evidence this may not be a traditional primstav day (see research/entries/fixed-feasts-backfill.json for detail). Content left as-is pending a scope decision, not removed."
+12-27,none,,,missing,"Removed 2026-08-19: was shipped content, but absent from both SNL's primstav table and the regional museum's month pages. No evidence this was ever a traditional primstav day. See research/entries/fixed-feasts-backfill.json for the original finding."
 12-28,nameday,Uskyldige barns dag,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 12-29,nameday,Thomas Becket,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
 12-30,nameday,Rogelius,,thin,"Name-only entry (DAYNAMES), no folk description, no sources — needs full research from scratch."
-12-31,fixed,Nyttårsaften,Nyttårskvelden,thin,"IMPORTANT: absent from BOTH SNL's primstav table and the museum's dedicated month page — real evidence this may not be a traditional primstav day (see research/entries/fixed-feasts-backfill.json for detail). Content left as-is pending a scope decision, not removed."
+12-31,none,,,missing,"Removed 2026-08-19: was shipped content, but absent from both SNL's primstav table and the regional museum's month pages. No evidence this was ever a traditional primstav day. See research/entries/fixed-feasts-backfill.json for the original finding."
