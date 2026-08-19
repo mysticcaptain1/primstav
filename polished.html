@@ -334,6 +334,7 @@ h1 {
 .p-feast.mov .p-feast-name { color:var(--orange); }
 .p-feast-folk { font-style:italic; font-size:.8rem; color:#6a3010; margin-top:.1rem; }
 .p-feast-desc { font-size:.78rem; color:#4a2810; margin-top:.25rem; font-style:italic; line-height:1.55; }
+.p-feast-src { font-size:.66rem; color:#8a6840; margin-top:.4rem; opacity:.75; }
 .p-moon { display:flex; gap:.45rem; margin-top:.85rem; flex-wrap:wrap; }
 .p-moon-tag { background:rgba(44,26,14,.07); border:1px solid rgba(100,70,30,.25); border-radius:20px; padding:.18rem .65rem; font-size:.75rem; color:#4a2810; }
 
@@ -612,6 +613,15 @@ const GN_TABLE = {
   19:[{m:1,d:8},{m:2,d:7},{m:3,d:8},{m:4,d:7},{m:5,d:6},{m:6,d:5},{m:7,d:4},{m:8,d:3},{m:9,d:1},{m:10,d:1},{m:10,d:30},{m:11,d:29},{m:12,d:29}],
 };
 
+// ══════════════════════════════════════════════════════
+// SOURCES — provenance for confirmed entries (see research/ in the repo)
+// ══════════════════════════════════════════════════════
+const SOURCES = {
+  '1-11':'SNL, Musea i Nord-Østerdalen','2-29':'SNL, Musea i Nord-Østerdalen','11-2':'SNL, Den katolske kirke','1-1':'SNL, Musea i Nord-Østerdalen','1-6':'SNL, Musea i Nord-Østerdalen','1-13':'SNL, Musea i Nord-Østerdalen','1-25':'SNL, Musea i Nord-Østerdalen','2-2':'SNL, Musea i Nord-Østerdalen','2-24':'SNL, Musea i Nord-Østerdalen','3-12':'SNL, Musea i Nord-Østerdalen','3-25':'SNL, Musea i Nord-Østerdalen','4-14':'SNL, Musea i Nord-Østerdalen','4-23':'SNL, Musea i Nord-Østerdalen','4-25':'SNL, Musea i Nord-Østerdalen','5-1':'SNL, Musea i Nord-Østerdalen','5-3':'SNL, Musea i Nord-Østerdalen','6-24':'SNL, Musea i Nord-Østerdalen','6-29':'SNL, Musea i Nord-Østerdalen','7-25':'SNL, Musea i Nord-Østerdalen','8-10':'SNL, Musea i Nord-Østerdalen','8-15':'SNL, Musea i Nord-Østerdalen','8-24':'SNL, Musea i Nord-Østerdalen','9-8':'SNL, Musea i Nord-Østerdalen','9-14':'SNL, Musea i Nord-Østerdalen','9-21':'SNL, Musea i Nord-Østerdalen','9-29':'SNL, Musea i Nord-Østerdalen','10-14':'SNL, Musea i Nord-Østerdalen','10-28':'SNL, Musea i Nord-Østerdalen','11-1':'SNL, Musea i Nord-Østerdalen','11-11':'SNL, Musea i Nord-Østerdalen','11-25':'SNL, Musea i Nord-Østerdalen','11-30':'SNL, Musea i Nord-Østerdalen','12-13':'SNL, Musea i Nord-Østerdalen','12-21':'SNL, Musea i Nord-Østerdalen','12-24':'SNL, Musea i Nord-Østerdalen','12-25':'SNL, Musea i Nord-Østerdalen','12-26':'SNL, Musea i Nord-Østerdalen','2-3':'SNL, Musea i Nord-Østerdalen','2-22':'SNL, Musea i Nord-Østerdalen','3-16':'SNL, Musea i Nord-Østerdalen','3-17':'SNL, Musea i Nord-Østerdalen','3-21':'SNL, Musea i Nord-Østerdalen','4-16':'SNL, Musea i Nord-Østerdalen','5-15':'SNL, Musea i Nord-Østerdalen','5-18':'SNL, Musea i Nord-Østerdalen','5-22':'SNL, Musea i Nord-Østerdalen','5-25':'SNL, Musea i Nord-Østerdalen','6-3':'SNL, Musea i Nord-Østerdalen','6-9':'SNL, Musea i Nord-Østerdalen','6-17':'SNL, Musea i Nord-Østerdalen','7-2':'SNL, Musea i Nord-Østerdalen','7-8':'SNL, Musea i Nord-Østerdalen','7-10':'SNL, Musea i Nord-Østerdalen','7-14':'SNL, Musea i Nord-Østerdalen','7-22':'SNL, Musea i Nord-Østerdalen','7-27':'SNL, Musea i Nord-Østerdalen','7-29':'SNL, Musea i Nord-Østerdalen','8-3':'SNL, Musea i Nord-Østerdalen','9-1':'SNL, Musea i Nord-Østerdalen','10-4':'SNL, Musea i Nord-Østerdalen','10-7':'SNL, Musea i Nord-Østerdalen','10-18':'SNL, Musea i Nord-Østerdalen','11-23':'SNL, Musea i Nord-Østerdalen','12-4':'SNL, Musea i Nord-Østerdalen','12-6':'SNL, Musea i Nord-Østerdalen','12-8':'SNL, Musea i Nord-Østerdalen','12-9':'SNL, Musea i Nord-Østerdalen',
+  'Askeonsdag':'SNL, Den norske kirke','Palmesøndag':'SNL, Den norske kirke','Skjærtorsdag':'SNL, Den norske kirke','Langfredag':'SNL, Den norske kirke','Påskeaften':'SNL, Den norske kirke','Første påskedag':'SNL, Den norske kirke','Andre påskedag':'SNL, Den norske kirke','Kristi himmelfartsdag':'SNL, Den norske kirke','Pinsedag':'SNL, Den norske kirke','Treenighetsdag':'SNL','Kristi Legemsfest':'SNL, Den katolske kirke'
+};
+
+
 function easter(yr){
   const a=yr%19,b=Math.floor(yr/100),c=yr%100,d=Math.floor(b/4),e=b%4;
   const f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3);
@@ -853,12 +863,16 @@ function openPopup(m0,d){
     const alt=(nameMode!=='folk'&&feast.f&&feast.f!==name)
       ?`<div class="p-feast-folk">${feast.f}</div>`:'';
     const icon=feast.icon?`<div class="p-feast-icon">${feast.icon}</div>`:'';
+    const srcKey=feast.mov?feast.k:`${m0+1}-${d}`;
+    const sources=SOURCES[srcKey];
+    const src=sources?`<div class="p-feast-src">📚 Kilder: ${sources}</div>`:'';
     document.getElementById('pFeast').innerHTML=`
       <div class="${cls}">
         ${icon}
         <div class="p-feast-name">${name}</div>
         ${alt}
         <div class="p-feast-desc">${feast.desc}</div>
+        ${src}
       </div>`;
   } else {
     document.getElementById('pFeast').innerHTML='';
