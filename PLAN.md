@@ -39,13 +39,20 @@ deciding explicitly rather than drifting into it.
 - [ ] Graduate to scheduled GitHub Action once manual research sessions
       feel reliable — not started; 4 manual research PRs in now (#1-#4),
       still too early to automate
-- [ ] Surface sourcing in the UI (tooltip/footnote per feast day) — not
-      started; holding until there's enough `confirmed` content that a
-      sourcing UI has something real to show
+- [ ] Surface sourcing in the UI (tooltip/footnote per feast day) — now
+      unblocked (78 confirmed entries exist), picking this up next
 
 **Content status (2026-08-19)**: 67 `solid`/`confirmed` calendar days + 11
-`solid` moveable feasts, out of 366 + 16. Full detail and per-batch
-provenance in `research/README.md` and `research/entries/`.
+`solid` moveable feasts, out of 366 + 16. The SNL-primstav-table ×
+Musea i Nord-Østerdalen research line is now cleanly exhausted — every
+date in SNL's ~110-entry table has been checked against the museum's
+month pages; most reached `confirmed`, the rest are genuinely single-sourced
+(not just unresearched). Further FIXED-day promotion needs a different
+source (NFS archive, digitized bygdebok, academic paper), not more of the
+same two sources. The remaining 290 `nameday` entries are outside SNL's
+primstav table entirely — likely correctly minimal, not an unresearched
+gap. Full detail and per-batch provenance in `research/README.md` and
+`research/entries/`.
 
 **Notable findings from this research pass**, worth knowing about even
 without reading the research docs:
